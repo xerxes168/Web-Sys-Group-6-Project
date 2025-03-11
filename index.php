@@ -27,35 +27,47 @@ http://www.templatemo.com/tm-513-avalon
 
 <body>
 
-    <section class="banner" id="top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="left-banner-content">
-                        <div class="text-content">
-                            <h6>There you go</h6>
-                            <div class="line-dec"></div>
-                            <h1>Clean &amp; Minimal <br>Template</h1>
-                            <div class="white-border-button">
-                                <a href="#" class="scroll-link" data-id="best-offer-section">Discover More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="right-banner-content">
-                        <div class="logo"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
-                        <h2>Avalon</h2>
-                        <span>Creative <em>HTML</em> Template</span>
-                        <div class="line-dec"></div>
-                        <p>“ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et sem blandit, rhoncus ante a, varius libero. Cras elementum tincidunt ullamcorper. Sed vehic ula dictum tortor ut aliquet. ”</p>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+        <div class="navbar">
+            <div class="nav-menu">
+                <div class="nav-logo">GatherSpot</div>
+                <ul class="nav-menu-items">
+                    <li class="nav-menu-item home-item">
+                        <a href="#top" class="scroll-link" data-id="top">Home</a>
+                    </li>
+                    <li class="nav-menu-item">About Us</li>
+                    <li class="nav-menu-item dropdown">
+                        <a href="#" class="dropdown-toggle">Make a Booking</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#about-section">Sports</a></li>
+                            <li><a href="#team-section">Birthday</a></li>
+                            <li><a href="#mission-section">Networking/Gathering</a></li>
+                            <li><a href="#mission-section">Seminar/Worksho</a></li>
                         </ul>
+</li>
+                    <li class="nav-menu-item">How to Book?</li>
+                    <li class="nav-menu-item">Help</li>
+                    <li class="nav-menu-item">
+                        <a href="#contact-section" class="scroll-link" data-id="contact-section">Contact Us</a>
+                    </li>
+                </ul>
+            </div>  
+            <div class="nav-actions">
+                <div class="nav-login">Log In</div>
+                <button class="nav-button">Get Started</button>
+            </div>
+        </div>
+
+    <section class="banner" id="top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="left-banner-content">
+                    <div class="text-content">
+                        <h6>Let's GatherSpot!</h6>
+                        <div class="line-dec"></div>
+                        <h1>Book Your Event <br> Space</h1>
+                        <div class="white-border-button">
+                            <a href="#" class="scroll-link" data-id="best-offer-section">Discover More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,21 +75,22 @@ http://www.templatemo.com/tm-513-avalon
     </section>
 
 
-    <section class="best-offer" id=best-offer-section>
+
+    <section class="about-us" id=about-us-section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="best-offer-left-content">
-                        <div class="icon"><img src="img/best-offer-icon.png" alt=""></div>
-                        <h4>Best Offer For You</h4>
+                    <div class="about-us-left-content">
+                        <div class="icon"><img src="img/about-us icon.png" alt=""></div>
+                        <h4>About Us</h4>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="best-offer-right-content">
+                    <div class="about-us-right-content">
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
-                                <h2>Awesome &amp; Unique<br>Layout <em>Theme</em></h2>
-                                <p>Avalon is a full-width responsive web template. Please tell your friends about <a href="https://www.facebook.com/templatemo" target="_parent">templatemo</a>. Thank you. Feel free to use this template. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cura bitur et sem blandit, rhoncus ante, varius libero. Cras elemen tum tincidunt ullamcorper.</p>
+                                <h2>About<em>Us</em></h2>
+                                <p>GatherSpot connects with event planners to rent the most suitable event venues in Singapore for gatherings~ </p>
                                 <ul>
                                     <li>+ Aenean eget ex faucibus, tempor nibh vel.</li>
                                     <li>+ Bibendum tortor. Suspendisse a diam viverra.</li>
@@ -89,7 +102,7 @@ http://www.templatemo.com/tm-513-avalon
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <img src="img/best-offer-image.png" alt="">
+                                <img src="img/about-us-image.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -106,10 +119,10 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="section-heading">
                             <div class="filter-categories">
                                 <ul class="project-filter">
-                                    <li class="filter" data-filter="all"><span>Show All</span></li>
-                                    <li class="filter" data-filter="design"><span>Design Meeting</span></li>
-                                    <li class="filter" data-filter="start"><span>App Start Up</span></li>
-                                    <li class="filter" data-filter="web"><span>Web Conferences</span></li>
+                                    <li class="filter" data-filter="all"><span>Today</span></li>
+                                    <li class="filter" data-filter="design"><span>Tomorrow</span></li>
+                                    <li class="filter" data-filter="start"><span>Near Me</span></li>
+                                    <li class="filter" data-filter="web"><span>TBC</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -126,9 +139,9 @@ http://www.templatemo.com/tm-513-avalon
                                                 </div>
                                             </li>
                                             <li>
-                                                <h4>four loko franzen</h4>
+                                                <h4>Play! Pickle</h4>
                                                 <div class="web">
-                                                    <span>Web Conferences</span>
+                                                    <span>Punggol</span>
                                                 </div>
                                             </li>
                                             <li>
@@ -138,7 +151,7 @@ http://www.templatemo.com/tm-513-avalon
                                             </li>
                                             <li>
                                                 <div class="white-button">
-                                                    <a href="#">I am interested</a>
+                                                    <a href="#">Reserve</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -151,9 +164,9 @@ http://www.templatemo.com/tm-513-avalon
                                                 </div>
                                             </li>
                                             <li>
-                                                <h4>Drink vinegar coloring</h4>
+                                                <h4>HERE</h4>
                                                 <div class="design">
-                                                    <span>Design Meeting</span>
+                                                    <span>Farrer Park</span>
                                                 </div>
                                             </li>
                                             <li>
@@ -163,7 +176,7 @@ http://www.templatemo.com/tm-513-avalon
                                             </li>
                                             <li>
                                                 <div class="white-button">
-                                                    <a href="#">I am interested</a>
+                                                    <a href="#">Reserve</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -188,7 +201,7 @@ http://www.templatemo.com/tm-513-avalon
                                             </li>
                                             <li>
                                                 <div class="white-button">
-                                                    <a href="#">I am interested</a>
+                                                    <a href="#">Reserve</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -213,7 +226,7 @@ http://www.templatemo.com/tm-513-avalon
                                             </li>
                                             <li>
                                                 <div class="white-button">
-                                                    <a href="#">I am interested</a>
+                                                    <a href="#">Reserve</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -238,7 +251,7 @@ http://www.templatemo.com/tm-513-avalon
                                             </li>
                                             <li>
                                                 <div class="white-button">
-                                                    <a href="#">I am interested</a>
+                                                    <a href="#">Reserve</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -358,7 +371,7 @@ http://www.templatemo.com/tm-513-avalon
     <section class="contact-us" id="contact-section"> 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <form id="contact" action="" method="post">
                         <div class="row">
                             <div class="col-md-4">
@@ -383,20 +396,12 @@ http://www.templatemo.com/tm-513-avalon
                             </div>
                             <div class="col-md-6">
                               <fieldset>
-                                <button type="submit" id="form-submit" class="btn">Send it now</button>
+                                <button type="submit" id="form-submit" class="btn">Send</button>
                               </fieldset>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-4">
-                    <div class="contact-right-content">
-                        <div class="icon"><img src="img/map-marker-icon.png" alt=""></div>
-                        <h4>You can find us on maps</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <footer>
@@ -459,5 +464,54 @@ http://www.templatemo.com/tm-513-avalon
         };
     }
     </script>
+
+    <div id="reservation-popup" class="reservation-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2 id="event-title">Event Title</h2>
+            
+            <div class="reservation-details">
+            <div class="detail-row">
+                <label>Date:</label>
+                <span id="event-date">May 12, Saturday</span>
+            </div>
+            
+            <!-- <div class="detail-row">
+                <label>Location:</label>
+                <select id="location-select">
+                <option value="main-hall">Main Hall</option>
+                <option value="conference-room">Conference Room</option>
+                <option value="outdoor-space">Outdoor Space</option>
+                <option value="studio">Studio Space</option>
+                </select>
+            </div> -->
+            
+            <div class="detail-row">
+                <label>Time Slot:</label>
+                <select id="timeslot-select">
+                <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                <option value="afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
+                </select>
+            </div>
+            
+            <div class="detail-row">
+                <label>Number of Guests:</label>
+                <input type="number" id="guest-count" min="1" max="100" value="1">
+            </div>
+            
+            <div class="detail-row">
+                <label>Special Requests:</label>
+                <textarea id="special-requests" placeholder="Any specific requirements?"></textarea>
+            </div>
+            </div>
+            
+            <div class="popup-buttons">
+            <button id="cancel-reservation" class="cancel-button">Cancel</button>
+            <button id="confirm-reservation" class="confirm-button">Confirm Reservation</button>
+            </div>
+        </div>
+        </div>
+
 </body>
 </html>
