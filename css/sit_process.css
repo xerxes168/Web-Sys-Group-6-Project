@@ -1,0 +1,93 @@
+/* Full viewport height, no scrolling */
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Fixed navbar at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+/* Result section styling (mirrors register-section) */
+.result-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7;
+    padding-top: 80px; /* Space for navbar */
+    box-sizing: border-box;
+}
+
+/* Result form styling (mirrors register-form) */
+.result-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Success message styling */
+.success-message {
+    background: #d4edda; /* Light green */
+    color: #155724; /* Dark green text */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.success-message a {
+    color: #155724;
+    text-decoration: underline;
+}
+
+/* Error message styling */
+.error-message {
+    background: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error-message ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error-message a {
+    color: #721c24;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .result-form {
+        padding: 15px;
+        max-width: 90%;
+    }
+    .navbar {
+        padding: 5px 0;
+    }
+    .nav-menu-items {
+        display: block;
+    }
+    .nav-menu-item {
+        margin: 5px 0;
+    }
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+    }
+}

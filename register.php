@@ -25,72 +25,7 @@
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/sit_validator.js"></script>
-
-        <style>
-            /* Full viewport height, no scrolling */
-            html, body {
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-
-            /* Fixed navbar at the top */
-            .navbar {
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 1000;
-                padding: 10px 0; /* Consistent padding */
-            }
-
-            /* Main container takes full height */
-            .register-section {
-                height: 100vh; /* Full viewport height */
-                display: flex;
-                justify-content: center; /* Center horizontally */
-                align-items: center; /* Center vertically */
-                background: #f7f7f7;
-                padding-top: 80px; /* Adjusted for taller navbar with dropdown */
-                box-sizing: border-box; /* Include padding in height calculation */
-            }
-
-            /* Register form styling */
-            .register-form {
-                background: #fff;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                width: 100%;
-                max-width: 400px; /* Limit width for readability */
-            }
-
-            /* Ensure form elements fit within the container */
-            .form-group {
-                margin-bottom: 15px;
-            }
-
-            /* Responsive adjustments for smaller screens */
-            @media (max-width: 767px) {
-                .register-form {
-                    padding: 15px;
-                    max-width: 90%; /* Allow form to shrink on very small screens */
-                }
-                .navbar {
-                    padding: 5px 0; /* Reduce navbar padding on mobile */
-                }
-                .nav-menu-items {
-                    display: block; /* Stack items vertically on mobile if needed */
-                }
-                .nav-menu-item {
-                    margin: 5px 0;
-                }
-                .dropdown-menu {
-                    position: static; /* Prevent dropdown from overflowing */
-                    box-shadow: none;
-                }
-            }
-        </style>
+        
     </head>
 
     <body>
@@ -132,22 +67,26 @@
                 <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
                 
                 <!-- Registration Form -->
-                <form action="register.php" method="POST">
+                <form action="process_register.php" method="POST">
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+                        <label for="fname">First Name (Optional)</label>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Create a password" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                        <label for="pwd_confirm">Confirm Password</label>
+                        <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" placeholder="Confirm your password" required>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; background: #ff589e; border: none; padding: 12px;">Register</button>
                 </form>
