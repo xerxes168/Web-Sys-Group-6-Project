@@ -35,7 +35,7 @@
                 <div class="nav-logo">GatherSpot</div>
                 <ul class="nav-menu-items">
                     <li class="nav-menu-item home-item">
-                        <a href="#top" class="scroll-link" data-id="top">Home</a>
+                        <a href="index.php" class="scroll-link" data-id="top">Home</a>
                     </li>
                     <li class="nav-menu-item">About Us</li>
                     <li class="nav-menu-item dropdown">
@@ -55,7 +55,7 @@
                 </ul>
             </div>  
             <div class="nav-actions">
-                <div class="nav-login">Log In</div>
+            <div class="nav-login"><a href="register.php" style="color:rgb(255, 255, 255);">Log in</a></div>
                 <button class="nav-button">Get Started</button>
             </div>
         </div>
@@ -69,7 +69,7 @@
                 <!-- Registration Form -->
                 <form action="process_register.php" method="POST">
                     <div class="form-group">
-                        <label for="fname">First Name (Optional)</label>
+                        <label for="fname">First Name</label>
                         <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name">
                     </div>
                     <div class="form-group">
@@ -92,7 +92,7 @@
                 </form>
 
                 <!-- Login Prompt -->
-                <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="login.html" style="color: #ff589e;">Log In</a></p>
+                <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="login.php" style="color: #ff589e;">Log In</a></p>
             </div>
         </section>
     </body>
