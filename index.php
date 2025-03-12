@@ -470,10 +470,9 @@ http://www.templatemo.com/tm-513-avalon
             <span class="close-popup">&times;</span>
             <h2 id="event-title">Event Title</h2>
             
-            <div class="reservation-details">
             <div class="detail-row">
                 <label>Date:</label>
-                <span id="event-date">May 12, Saturday</span>
+                <input type="text" id="datepicker" placeholder="Select Date" readonly>
             </div>
             
             <!-- <div class="detail-row">

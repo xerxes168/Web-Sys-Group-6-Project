@@ -1308,6 +1308,31 @@ footer p em {
 		font-weight: 600;
 	}
 
+	.cancel-button, .confirm-button {
+		min-width: 150px; /* Ensure both buttons have the same minimum width */
+		transition: background-color 0.3s ease;
+	}
+
 	.confirm-button:hover {
 		background-color: #4a3f9f;
+	}
+
+	.datepicker {
+		z-index: 9999 !important;
+	}
+	
+	.datepicker-dropdown {
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		border-radius: 4px;
+	}
+	
+	.datepicker table tr td.active, 
+	.datepicker table tr td.active:hover {
+		background-color: #5f52b0;
+		color: white;
+	}
+	
+	.datepicker table tr td.today {
+		background-color: #f4bc51;
+		color: white;
 	}
