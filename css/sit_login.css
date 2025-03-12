@@ -1,0 +1,65 @@
+/* login.css */
+
+/* Full viewport height, no scrolling */
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Fixed navbar at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0; /* Consistent padding */
+}
+
+/* Main container takes full height */
+.login-section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background: #f7f7f7;
+    padding-top: 80px; /* Adjusted for taller navbar with dropdown */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Login form styling */
+.login-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px; /* Limit width for readability */
+}
+
+/* Ensure form elements fit within the container */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+    .login-form {
+        padding: 15px;
+        max-width: 90%; /* Allow form to shrink on very small screens */
+    }
+    .navbar {
+        padding: 5px 0; /* Reduce navbar padding on mobile */
+    }
+    .nav-menu-items {
+        display: block; /* Stack items vertically on mobile if needed */
+    }
+    .nav-menu-item {
+        margin: 5px 0;
+    }
+    .dropdown-menu {
+        position: static; /* Prevent dropdown from overflowing */
+        box-shadow: none;
+    }
+}
