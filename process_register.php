@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hash Password and Save to DB if Validation Passed
     if ($success) {
         $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
-        // saveMemberToDB(); // Uncomment this line to save to database
+        saveMemberToDB(); // Uncomment this line to save to database
     }
 }
 
@@ -65,7 +65,7 @@ function saveMemberToDB()
     global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
 
     // Define the config file path relative to this script
-    $configFile = __DIR__ . '/private/db-config.ini';
+    $configFile = '/var/www/private/db-config.ini';
 
     // Check if the file exists before parsing
     if (!file_exists($configFile)) {
@@ -154,7 +154,7 @@ function sanitize_input($data) {
     <body>
         <!-- Navigation Bar -->
         <?php include "inc/nav.inc.php";?>
-        
+
         <!-- Result Section -->
         <section class="result-section" id="top">
             <div class="result-form">

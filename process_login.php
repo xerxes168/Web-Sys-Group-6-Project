@@ -38,7 +38,7 @@ function verifyLogin() {
     global $username, $password, $errorMsg, $success;
 
     // Define the config file path relative to this script
-    $configFile = __DIR__ . '/private/db-config.ini';
+    $configFile = '/var/www/private/db-config.ini';
 
     // Check if the file exists before parsing
     if (!file_exists($configFile)) {
