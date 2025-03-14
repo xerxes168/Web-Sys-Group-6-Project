@@ -154,6 +154,48 @@
             // Close the popup
             popup.css("display", "none");
         });
+
+
+        // Add heart icons to each event item
+        $('.event-item').each(function() {
+            // Get event information for saving
+            const eventTitle = $(this).find('h4').text();
+            const eventLocation = $(this).find('.web span, .design span, .app span').text();
+            const eventDate = $(this).find('.date span').text();
+            
+            // Create unique ID for the event based on its information
+            const eventId = btoa(eventTitle + eventLocation + eventDate).replace(/=/g, '');
+            
+            // Add heart icon
+            $(this).prepend(`<i class="fa fa-heart favorite-heart" data-event-id="${eventId}"></i>`);
+            
+            // Check if this event is already in favorites
+            if (localStorage.getItem('favorite_' + eventId)) {
+                $(this).find('.favorite-heart').addClass('active');
+            }
+        });
+        
+        // Handle click on heart icon
+        $(document).on('click', '.favorite-heart', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            const $heart = $(this);
+            const eventId = $heart.data('event-id');
+            
+            // Toggle favorite status
+            if ($heart.hasClass('active')) {
+                // Remove from favorites
+                $heart.removeClass('active');
+                localStorage.removeItem('favorite_' + eventId);
+            } else {
+                // Add to favorites
+                $heart.addClass('active');
+                
+                // Save to localStorage - just the ID is enough if no display is needed
+                localStorage.setItem('favorite_' + eventId, 'true');
+            }
+        });
+    });
     
         /************** Mixitup (Filter Projects) *********************/
         $('.projects-holder').mixitup({
@@ -161,4 +203,3 @@
             easing: 'snap',
             transitionSpeed: 400
         });
-    });

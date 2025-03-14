@@ -26,55 +26,13 @@ http://www.templatemo.com/tm-513-avalon
     </head>
 
 <body>
+    <?php 
+        include "inc/nav.inc.php"; 
+    ?> 
 
-        <div class="navbar">
-            <div class="nav-menu">
-                <div class="nav-logo">GatherSpot</div>
-                <ul class="nav-menu-items">
-                    <li class="nav-menu-item home-item">
-                        <a href="#top" class="scroll-link" data-id="top">Home</a>
-                    </li>
-                    <li class="nav-menu-item">About Us</li>
-                    <li class="nav-menu-item dropdown">
-                        <a href="#" class="dropdown-toggle">Make a Booking</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#about-section">Sports</a></li>
-                            <li><a href="#team-section">Birthday</a></li>
-                            <li><a href="#mission-section">Networking/Gathering</a></li>
-                            <li><a href="#mission-section">Seminar/Worksho</a></li>
-                        </ul>
-</li>
-                    <li class="nav-menu-item">How to Book?</li>
-                    <li class="nav-menu-item">Help</li>
-                    <li class="nav-menu-item">
-                        <a href="#contact-section" class="scroll-link" data-id="contact-section">Contact Us</a>
-                    </li>
-                </ul>
-            </div>  
-            <div class="nav-actions">
-                <div class="nav-login">Log In</div>
-                <button class="nav-button">Get Started</button>
-            </div>
-        </div>
-
-    <section class="banner" id="top">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="left-banner-content">
-                    <div class="text-content">
-                        <h6>Let's GatherSpot!</h6>
-                        <div class="line-dec"></div>
-                        <h1>Book Your Event <br> Space</h1>
-                        <div class="white-border-button">
-                            <a href="#" class="scroll-link" data-id="best-offer-section">Discover More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    <?php 
+        include "inc/header.inc.php"; 
+    ?> 
 
     <section class="about-us" id=about-us-section>
         <div class="container-fluid">
@@ -89,7 +47,7 @@ http://www.templatemo.com/tm-513-avalon
                     <div class="about-us-right-content">
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
-                                <h2>About<em>Us</em></h2>
+                                <h2>About<em> Us</em></h2>
                                 <p>GatherSpot connects with event planners to rent the most suitable event venues in Singapore for gatherings~ </p>
                                 <ul>
                                     <li>+ Aenean eget ex faucibus, tempor nibh vel.</li>
@@ -122,7 +80,7 @@ http://www.templatemo.com/tm-513-avalon
                                     <li class="filter" data-filter="all"><span>Today</span></li>
                                     <li class="filter" data-filter="design"><span>Tomorrow</span></li>
                                     <li class="filter" data-filter="start"><span>Near Me</span></li>
-                                    <li class="filter" data-filter="web"><span>TBC</span></li>
+                                    <!-- <li class="filter" data-filter="web"><span>TBC</span></li> -->
                                 </ul>
                             </div>
                         </div>
