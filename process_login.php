@@ -1,68 +1,41 @@
 <?php
-// Start the session (if needed)
+// Start the session
 session_start();
 
 // Initialize variables
-$fname = $lname = $email = $password = "";
+$username = $password = "";
 $errorMsg = "";
 $success = true;
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate Last Name (Required)
-    if (empty($_POST["lname"])) {
-        $errorMsg .= "<li>Last name is required.</li>";
+    // Validate Username/Email (Required)
+    if (empty($_POST["username"])) {
+        $errorMsg .= "<li>Username or Email is required.</li>";
         $success = false;
     } else {
-        $lname = sanitize_input($_POST["lname"]);
+        $username = sanitize_input($_POST["username"]);
     }
 
-    // Validate Email (Required & Proper Format)
-    if (empty($_POST["email"])) {
-        $errorMsg .= "<li>Email is required.</li>";
+    // Validate Password (Required)
+    if (empty($_POST["password"])) {
+        $errorMsg .= "<li>Password is required.</li>";
         $success = false;
     } else {
-        $email = sanitize_input($_POST["email"]);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errorMsg .= "<li>Invalid email format.</li>";
-            $success = false;
-        }
+        $password = $_POST["password"];
     }
 
-    // Validate Password (Required & Match Confirmation)
-    if (empty($_POST["pwd"]) || empty($_POST["pwd_confirm"])) {
-        $errorMsg .= "<li>Password and confirmation are required.</li>";
-        $success = false;
-    } else {
-        $password = $_POST["pwd"];
-        $password_confirm = $_POST["pwd_confirm"];
-        if ($password !== $password_confirm) {
-            $errorMsg .= "<li>Passwords do not match.</li>";
-            $success = false;
-        } elseif (strlen($password) < 6) {
-            $errorMsg .= "<li>Password must be at least 6 characters long.</li>";
-            $success = false;
-        }
-    }
-
-    // Sanitize Optional First Name
-    if (!empty($_POST["fname"])) {
-        $fname = sanitize_input($_POST["fname"]);
-    }
-
-    // Hash Password and Save to DB if Validation Passed
+    // If no validation errors, attempt login
     if ($success) {
-        $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
-        // saveMemberToDB(); // Uncomment this line to save to database
+        verifyLogin();
     }
 }
 
 /**
- * Function to save the user's data into the database
+ * Function to verify login credentials against the database
  */
-function saveMemberToDB()
-{
-    global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
+function verifyLogin() {
+    global $username, $password, $errorMsg, $success;
 
     // Define the config file path relative to this script
     $configFile = __DIR__ . '/private/db-config.ini';
@@ -96,18 +69,28 @@ function saveMemberToDB()
         return;
     }
 
-    // Prepare the statement
-    $stmt = $conn->prepare(
-        "INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)"
-    );
-
+    // Prepare the statement to fetch user by email (assuming email is used for login)
+    $stmt = $conn->prepare("SELECT email, password FROM world_of_pets_members WHERE email = ?");
     if (!$stmt) {
         $errorMsg .= "<li>Prepare failed: (" . $conn->errno . ") " . $conn->error . "</li>";
         $success = false;
     } else {
-        $stmt->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
-        if (!$stmt->execute()) {
-            $errorMsg .= "<li>Execute failed: (" . $stmt->errno . ") " . $stmt->error . "</li>";
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            // Verify password
+            if (password_verify($password, $row['password'])) {
+                // Login successful, set session variable
+                $_SESSION['email'] = $row['email'];
+            } else {
+                $errorMsg .= "<li>Invalid email or password.</li>";
+                $success = false;
+            }
+        } else {
+            $errorMsg .= "<li>Invalid email or password.</li>";
             $success = false;
         }
         $stmt->close();
@@ -132,7 +115,7 @@ function sanitize_input($data) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>GatherSpot - Registration Result</title>
+        <title>GatherSpot - Login Result</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -144,7 +127,7 @@ function sanitize_input($data) {
         <link rel="stylesheet" href="css/owl-carousel.css">
         <link rel="stylesheet" href="css/datepicker.css">
         <link rel="stylesheet" href="css/templatemo-style.css">
-        <link rel="stylesheet" href="css/sit_process.css">
+        <link rel="stylesheet" href="css/sit_process.css"> <!-- Reusing sit_process.css -->
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -154,32 +137,32 @@ function sanitize_input($data) {
     <body>
         <!-- Navigation Bar -->
         <?php include "inc/nav.inc.php";?>
-        
+
         <!-- Result Section -->
         <section class="result-section" id="top">
             <div class="result-form">
                 <h2 style="text-align: center; margin-bottom: 20px;">
-                    <?php echo $success ? "Registration Successful" : "Registration Failed"; ?>
+                    <?php echo $success ? "Login Successful" : "Login Failed"; ?>
                 </h2>
                 <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
                 
                 <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
                     <?php if ($success) { ?>
                         <div class="success-message">
-                            Registration successful! <br>
-                            <a href="login.php">Log in here</a>
+                            Login successful! <br>
+                            <a href="index.php">Go to homepage</a>
                         </div>
                     <?php } else { ?>
                         <div class="error-message">
                             <p>The following errors occurred:</p>
                             <ul><?php echo $errorMsg; ?></ul>
-                            <a href="register.php">Try again</a>
+                            <a href="login.php">Try again</a>
                         </div>
                     <?php } ?>
                 <?php } else { ?>
                     <div class="error-message">
-                        No registration attempt made. <br>
-                        <a href="register.php">Go to registration</a>
+                        No login attempt made. <br>
+                        <a href="login.php">Go to login</a>
                     </div>
                 <?php } ?>
             </div>

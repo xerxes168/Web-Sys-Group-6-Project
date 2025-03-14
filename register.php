@@ -30,35 +30,7 @@
 
     <body>
         <!-- Navigation Bar -->
-        <div class="navbar">
-            <div class="nav-menu">
-                <div class="nav-logo">GatherSpot</div>
-                <ul class="nav-menu-items">
-                    <li class="nav-menu-item home-item">
-                        <a href="index.php" class="scroll-link" data-id="top">Home</a>
-                    </li>
-                    <li class="nav-menu-item">About Us</li>
-                    <li class="nav-menu-item dropdown">
-                        <a href="#" class="dropdown-toggle">Make a Booking</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#about-section">Sports</a></li>
-                            <li><a href="#team-section">Birthday</a></li>
-                            <li><a href="#mission-section">Networking/Gathering</a></li>
-                            <li><a href="#mission-section">Seminar/Workshop</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-menu-item">How to Book?</li>
-                    <li class="nav-menu-item">Help</li>
-                    <li class="nav-menu-item">
-                        <a href="#contact-section" class="scroll-link" data-id="contact-section">Contact Us</a>
-                    </li>
-                </ul>
-            </div>  
-            <div class="nav-actions">
-            <div class="nav-login"><a href="register.php" style="color:rgb(255, 255, 255);">Log in</a></div>
-                <button class="nav-button">Get Started</button>
-            </div>
-        </div>
+        <?php include "inc/nav.inc.php";?>
 
         <!-- Register Section -->
         <section class="register-section" id="top">

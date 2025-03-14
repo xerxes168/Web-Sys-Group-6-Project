@@ -22,7 +22,7 @@
         </ul>
     </div>
     <div class="nav-actions">
-        <div class="nav-login">Log In</div>
+        <div class="nav-login"><a href="login.php" style="color:rgb(255, 255, 255);">Login</a></div>
         <button class="nav-button">Get Started</button>
     </div>
 </div>
