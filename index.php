@@ -1,3 +1,25 @@
+<?php
+// Start the session at the very beginning of the file
+session_start();
+
+// Now you can access session variables anywhere in this file
+// You might want to add some debugging code to see what's in the session
+// This can be removed later
+if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
+    // User is logged in
+    $loggedIn = true;
+    $userEmail = $_SESSION['email'] ?? 'Unknown';
+    $userId = $_SESSION['member_id'] ?? 'Unknown';
+    
+    // For debugging - you can remove this once confirmed working
+    // echo "Logged in as: " . htmlspecialchars($userEmail) . " (ID: " . htmlspecialchars($userId) . ")";
+} else {
+    // User is not logged in
+    $loggedIn = false;
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
