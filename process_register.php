@@ -98,7 +98,7 @@ function saveMemberToDB()
 
     // Prepare the statement
     $stmt = $conn->prepare(
-        "INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)"
+        "INSERT INTO members (fname, lname, email, password) VALUES (?, ?, ?, ?)"
     );
 
     if (!$stmt) {

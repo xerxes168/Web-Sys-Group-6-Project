@@ -1,4 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+<?php
 // Start the session
 session_start();
 
@@ -70,12 +76,12 @@ function verifyLogin() {
     }
 
     // Prepare the statement to fetch user by email (assuming email is used for login)
-    $stmt = $conn->prepare("SELECT email, password FROM world_of_pets_members WHERE email = ?");
+    $stmt = $conn->prepare("SELECT email, password, member_id FROM members WHERE email = ? OR username = ?");
     if (!$stmt) {
         $errorMsg .= "<li>Prepare failed: (" . $conn->errno . ") " . $conn->error . "</li>";
         $success = false;
     } else {
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("ss", $username, $username); 
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -84,7 +90,7 @@ function verifyLogin() {
             // Verify password
             if (password_verify($password, $row['password'])) {
                 // Login successful, set session variable
-                $_SESSION['email'] = $row['email'];
+                $_SESSION['member_id'] = $row['member_id']; //use member_id instead of email.
             } else {
                 $errorMsg .= "<li>Invalid email or password.</li>";
                 $success = false;
