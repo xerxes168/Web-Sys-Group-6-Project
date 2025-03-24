@@ -18,8 +18,6 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
         <div class="nav-logo">GatherSpot</div>
         <ul class="nav-menu-items">
             <li class="nav-menu-item home-item">
-            <li class="nav-menu-item"><a href="#home-section" class="scroll-link">Home</a>
-            <li class="nav-menu-item"><a href="#about-us-section" class="scroll-link">About Us</a></li>
                 <a href="index.php">Home</a>
             </li>
             <li class="nav-menu-item">
@@ -28,15 +26,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
             <li class="nav-menu-item dropdown">
                 <a href="#" class="dropdown-toggle">Make a Booking</a>
                 <ul class="dropdown-menu">
-                    <li><a href="sports.php">Sports</a></li>
-                    <li><a href="birthday.php">Birthday</a></li>
-                    <li><a href="netgath. php">Networking/Gathering</a></li>
-                    <li><a href="semwork.php">Seminar/Workshop</a></li>
-                </ul>
-            </li>
-            <li class="nav-menu-item how-to-book-item">
-            <li class="nav-menu-item"><a href="#how-to-book-section" class="scroll-link">How to Book?</a>
-            </li>
+                <li><a href="sports.php">Sports</a></li>
                     <li><a href="#">Birthday</a></li>
                     <li><a href="#">Networking/Gathering</a></li>
                     <li><a href="#">Seminar/Workshop</a></li>
