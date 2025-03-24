@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Avalon full-width responsive template</title>
+        <title>GatherSpot</title>
 <!-- 
 Avalon Template 
 http://www.templatemo.com/tm-513-avalon
@@ -48,12 +48,13 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <h2>About<em> Us</em></h2>
-                                <p>GatherSpot connects with event planners to rent the most suitable event venues in Singapore for gatherings~ </p>
+                                <p>GatherSpot connects with event planners to rent the most suitable sport or event venues in Singapore for any occasion. Whether you're planning a birthday party, gathering or corporate seminar, we have a diverse selection of venues to suit your needs. </p>
+                                <p> Choose GatherSpot for</p>
                                 <ul>
-                                    <li>+ Aenean eget ex faucibus, tempor nibh vel.</li>
-                                    <li>+ Bibendum tortor. Suspendisse a diam viverra.</li>
-                                    <li>+ Finibus ipsum et, imperdiet felis.</li>
-                                    <li>+ Donec laoreet efficitur ultrices sit amet enim.</li>
+                                    <li>+ Wide variety of venues</li>
+                                    <li>+ Access to trusted venues in Singapore</li>
+                                    <li>+ Personalized event support</li>
+                                    <li>Let's make a memorable experience</li>
                                 </ul>
                                 <div class="pink-button">
                                     <a href="#" class="scroll-link" data-id="events-section">Discover More</a>
@@ -224,40 +225,56 @@ http://www.templatemo.com/tm-513-avalon
     </section>
 
 
-    <section class="testimonial" id="testimonial-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="testimonial-image"></div>
-                </div>
-                <div class="col-md-8">
-                    <div id="owl-testimonial" class="owl-carousel owl-theme">
-                        <div class="item col-md-12">
-                            <img src="img/author_01.png" alt="Steven Walker">
-                            <span>Web Designer</span>
-                            <h4>Steven Walker</h4>
-                            <br>
-                            <p><em>"</em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cura bitur et sem blandit, rhoncus ante, varius libero. Cras elemen tum tincidunt ullamcorper sed vehic ula dictum.<em>"</em></p>
-                        </div>
-                        <div class="item col-md-12">
-                            <img src="img/author_02.png" alt="Johnny Smith">
-                            <span>Web Developer</span>
-                            <h4>Johnny Smith</h4>
-                            <br>
-                            <p><em>"</em>Morbi elit est, pharetra ac enim a, faucibus dignissim augue. Quisque erat erat, placerat non pulvinar eget, sodales eget ex. Cras pulvinar purus et rutrum faucibus.<em>"</em></p>
-                        </div>
-                        <div class="item col-md-12">
-                            <img src="img/author_03.png" alt="William Smoker">
-                            <span>Managing Director</span>
-                            <h4>William Smoker</h4>
-                            <br>
-                            <p><em>"</em>Praesent luctus lacinia erat, quis lacinia ipsum varius a. Nullam a velit mollis, suscipit felis vitae, dictum libero hendrerit nibh quis sodales gravida ornare ultricies viverra.<em>"</em></p>
-                        </div>
+    <section class="how-to-book" id="how-to-book-section">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <!-- Left Image -->
+            <div class="col-md-5">
+                <img src="img/reservation.jpg" alt="Booking Guide" class="booking-image">
+            </div>
+
+            <!-- Right Steps -->
+            <div class="col-md-7 booking-steps">
+                <h2 class="section-title">How to Book a Venue</h2>
+                <div class="step">
+                    <div class="icon">1</div>
+                    <div class="text">
+                        <h4>Select a Venue</h4>
+                        <p>Browse our selection of event spaces and choose the perfect venue.</p>
                     </div>
+                </div>
+                <div class="step">
+                    <div class="icon">2</div>
+                    <div class="text">
+                        <h4>Pick a Date & Time</h4>
+                        <p>Use our calendar to check availability and pick a slot that suits you.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="icon">3</div>
+                    <div class="text">
+                        <h4>Confirm Your Booking</h4>
+                        <p>Provide your details and submit your reservation request.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="icon">4</div>
+                    <div class="text">
+                        <h4>Receive Confirmation</h4>
+                        <p>We’ll send you a confirmation email with your booking details.</p>
+                    </div>
+                </div>
+
+                <div class="booking-button">
+                    <a href="#" class="btn btn-booking">Start Booking</a>
+                </div>
                 </div>
             </div>
         </div>
-    </section>      
+    </section>
+
+
+      
     
     <section class="services" id="services-section">
         <div class="container-fluid">
@@ -267,12 +284,14 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="flipper first-service">
                             <div class="front">
                                 <div class="icon">
-                                    <img src="img/heart-icon.png" alt="">
+                                    <img src="img/sports-icon.png" alt="">
                                 </div>
-                                <h4>Aliquam finibus est</h4>
+                                <h4>Sports</h4>
                             </div>
                             <div class="back">
-                                <p>Donec malesuada eu est in mattis. Aenean velit eros, blandit et tortor non, viverra hendrerit velit. Maecenas ut orci nec velit convallis lobortis sit amet ut magna. Ut rhoncus suscipit arcu, sed facilisis risus.</p>
+                                <p>Book venues suitable for sports to play with your family, friends or colleauges! 
+                                    Example venues: Badminton Court, Tennis Court, Indoor Basketball Court and many more! 
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -282,12 +301,14 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="flipper second-service">
                             <div class="front">
                                 <div class="icon">
-                                    <img src="img/home-icon.png" alt="">
+                                    <img src="img/birthday-icon.png" alt="">
                                 </div>
-                                <h4>Nullam sed turpis</h4>
+                                <h4>Birthday</h4>
                             </div>
                             <div class="back">
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas vel diam porttitor, fermentum ante et, ornare elit. Morbi nec diam ex. Pellentesque habitant morbi tristique senectus.</p>
+                                <p>Find fun, festive spaces for birthday parties of all ages! From children's party venues to adult birthday venues, we offer a variety of spaces to suit your needs.
+                                    Example Venues: Party halls, Private dining rooms, Outdoor garden spaces and many more!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -297,12 +318,14 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="flipper third-service">
                             <div class="front">
                                 <div class="icon">
-                                    <img src="img/revision-icon.png" alt="">
+                                    <img src="img/GathNet-icon.png" alt="">
                                 </div>
-                                <h4>Sed in luctus</h4>
+                                <h4>Networking/Gathering</h4>
                             </div>
                             <div class="back">
-                                <p>Mauris congue ex eu enim suscipit, in suscipit est efficitur. Donec quis orci malesuada nunc lobortis aliquet et ut lacus. Sed erat magna, fringilla ac imperdiet in, pulvinar quis ante. Maecenas eleifend, sem vitae tristique.</p>
+                                <p>Perfect for business networking events, meetups, and social gatherings. Book spaces with the right ambiance for professional mingling and creating new connections.
+                                    Example Venues: Conference rooms, Event halls, Hotel lounges and many more!
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -312,12 +335,14 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="flipper fourth-service">
                             <div class="front">
                                 <div class="icon">
-                                    <img src="img/chat-icon.png" alt="">
+                                    <img src="img/semwork-icon.png" alt="">
                                 </div>
-                                <h4>Fusce congue ipsum</h4>
+                                <h4>Seminar/Workshop</h4>
                             </div>
                             <div class="back">
-                                <p>Donec venenatis erat at leo dictum, at dictum eros volutpat. Phasellus in dui sed purus varius hendrerit. Duis ac enim ac orci efficitur condimentum vel eget purus. Sed vel massa nulla. Curabitur consequat sem ac velit sollicitudin ornare.</p>
+                                <p>Book a seminar room or workshop venue with facilities like AV equipment, projectors, and breakout rooms for a productive learning environment.</p>
+
+                                <p>Example Venues: Seminar halls, Classrooms, Training spaces, Conference rooms</p>
                             </div>
                         </div>
                     </div>
@@ -361,67 +386,6 @@ http://www.templatemo.com/tm-513-avalon
                     </form>
                 </div>
     </section>
-
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>Copyright &copy; 2018 Your Company 
-                    
-                    - <a rel="nofollow" href="http://www.templatemo.com/tm-513-avalon" target="_parent">Avalon</a> 
-                    by <a rel="nofollow" href="http://www.html5max.com" target="_parent">HTML5 Max</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="js/vendor/bootstrap.min.js"></script>
-    
-    <script src="js/datepicker.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(document).ready(function() 
-	{
-        // navigation click actions 
-        $('.scroll-link').on('click', function(event){
-            event.preventDefault();
-            var sectionID = $(this).attr("data-id");
-            scrollToID('#' + sectionID, 750);
-        });
-        // scroll to top action
-        $('.scroll-top').on('click', function(event) {
-            event.preventDefault();
-            $('html, body').animate({scrollTop:0}, 'slow');         
-        });
-        // mobile nav toggle
-        $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
-            $('#main-nav').toggleClass("open");
-        });
-    });
-    // scroll function
-    function scrollToID(id, speed){
-        var offSet = 0;
-        var targetOffset = $(id).offset().top - offSet;
-        var mainNav = $('#main-nav');
-        $('html,body').animate({scrollTop:targetOffset}, speed);
-        if (mainNav.hasClass("open")) {
-            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-            mainNav.removeClass("open");
-        }
-    }
-    if (typeof console === "undefined") {
-        console = {
-            log: function() { }
-        };
-    }
-    </script>
 
     <div id="reservation-popup" class="reservation-popup">
         <div class="popup-content">
@@ -469,6 +433,32 @@ http://www.templatemo.com/tm-513-avalon
             </div>
         </div>
         </div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright &copy; 2018 Your Company 
+                    
+                    - <a rel="nofollow" href="http://www.templatemo.com/tm-513-avalon" target="_parent">Avalon</a> 
+                    by <a rel="nofollow" href="http://www.html5max.com" target="_parent">HTML5 Max</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    
+    <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    </script>
 
 </body>
 </html>
