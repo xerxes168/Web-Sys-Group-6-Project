@@ -10,7 +10,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
 ?>
 <html>
     <body>
-    <script src="js/dropdown.js"></script>
+    <script defer src="js/dropdown.js"></script>
     </body>
 
 <div class="navbar">

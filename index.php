@@ -456,18 +456,7 @@ http://www.templatemo.com/tm-513-avalon
         </div>
         </div>
 
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>Copyright &copy; 2018 Your Company 
-                    
-                    - <a rel="nofollow" href="http://www.templatemo.com/tm-513-avalon" target="_parent">Avalon</a> 
-                    by <a rel="nofollow" href="http://www.html5max.com" target="_parent">HTML5 Max</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <?php include "inc/footer.inc.php"; ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>

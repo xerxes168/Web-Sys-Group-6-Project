@@ -117,8 +117,7 @@ function sanitize_input($data)
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GatherSpot - Book Sports Venue</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    <?php include "inc/head.inc.php"; ?>
 </head>
 
 <body>
@@ -255,6 +254,8 @@ function sanitize_input($data)
         </form>
     </div>
 
+    <?php include "inc/footer.inc.php"; ?>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Set minimum date to today
@@ -272,3 +273,4 @@ if ($conn) {
     $conn->close();
 }
 ?>
+

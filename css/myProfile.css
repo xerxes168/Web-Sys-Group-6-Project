@@ -1,0 +1,154 @@
+    .profile-section {
+        padding: 120px 0 60px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .profile-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    
+    .profile-header {
+        background-color: #5f52b0;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .profile-header h3 {
+        margin: 0;
+        font-weight: 600;
+    }
+    
+    .profile-body {
+        padding: 30px;
+    }
+    
+    .profile-info {
+        margin-bottom: 30px;
+    }
+    
+    .profile-info h4 {
+        color: #5f52b0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .info-item {
+        margin-bottom: 15px;
+    }
+    
+    .info-item label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+    
+    .info-item p {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .credits-box {
+        background-color: #f4bc51;
+        color: #fff;
+        border-radius: 6px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .credits-box h3 {
+        margin: 0 0 5px 0;
+        font-size: 36px;
+        font-weight: 700;
+    }
+    
+    .credits-box p {
+        margin: 0;
+        font-size: 16px;
+        opacity: 0.8;
+    }
+    
+    .topup-button {
+        display: block;
+        background-color: #5f52b0;
+        color: #fff;
+        text-align: center;
+        padding: 12px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: all 0.3s;
+    }
+    
+    .topup-button:hover {
+        background-color: #4a4090;
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    .bookings-button {
+        display: block;
+        background-color: #3CB371;
+        color: #fff;
+        text-align: center;
+        padding: 12px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: all 0.3s;
+    }
+    
+    .bookings-button:hover {
+        background-color: #2E8B57;
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    .form-control {
+        height: 45px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-change-password {
+        background-color: #5f52b0;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .btn-change-password:hover {
+        background-color: #4a4090;
+    }
+    
+    .alert {
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .alert-success {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+    
+    .alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
