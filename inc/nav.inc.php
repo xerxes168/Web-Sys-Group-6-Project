@@ -38,6 +38,9 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 <a href="#">Make a Booking</a>
             </li>
             <li class="nav-menu-item">
+                <a href="credits.php">Credits</a>
+            </li>
+            <li class="nav-menu-item">
                 <a href="#">How to Book?</a>
             </li>
             <li class="nav-menu-item">
@@ -54,7 +57,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 </a>
                 <ul class="dropdown-menu user-menu">
                     <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
-                    <li><a href="myBookings.php"><i class="fa fa-calendar"></i> My Bookings</a></li>
+                    <li><a href="mybookings.php"><i class="fa fa-calendar"></i> My Bookings</a></li>
                     <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div>

@@ -163,11 +163,11 @@ if ($conn) {
                                     <p>Available Credits</p>
                                 </div>
                                 
-                                <a href="topup.php" class="topup-button">
+                                <a href="credits.php" class="topup-button">
                                     <i class="fa fa-plus-circle"></i> Top Up Credits
                                 </a>
                                 
-                                <a href="my-bookings.php" class="bookings-button">
+                                <a href="mybookings.php" class="bookings-button">
                                     <i class="fa fa-calendar"></i> My Bookings
                                 </a>
                             <?php else: ?>
