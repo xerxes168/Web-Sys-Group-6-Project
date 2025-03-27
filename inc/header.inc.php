@@ -3,7 +3,7 @@
             <div class="col-md-12">
                 <div class="left-banner-content">
                     <div class="text-content">
-                        <h6>Let's GatherSpot!</h6>
+                        <h6>Let's HoopSpaces!</h6>
                         <div class="line-dec"></div>
                         <h1>Book Your Event <br> Space</h1>
                         <div class="white-border-button">

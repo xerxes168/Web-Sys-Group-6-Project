@@ -45,4 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.nav-menu-items');
+        
+        // If the hamburger icon exists
+        if (hamburger && menu) {
+            hamburger.addEventListener('click', function() {
+                menu.classList.toggle('show');  // Toggle visibility of the nav menu
+            });
+        }
+    });    
 });

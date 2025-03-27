@@ -1,0 +1,150 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #5f52b0;
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;  /* Allow absolute positioning of elements inside */
+}
+
+/* Nav Menu Items should always be visible */
+.nav-menu-items {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;  /* Allow menu to take up remaining space */
+}
+
+/* Individual nav items */
+.nav-menu-item {
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-menu-item a {
+    color: white; 
+    text-decoration: none;  
+}
+
+.nav-menu-item a:hover {
+    color: #f4bc51; 
+}
+
+/* Nav action buttons (like Register/Login) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-button {
+    background-color: #116dff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Logo */
+.nav-logo {
+    position: absolute;  
+    left: 5%;  /* Adjust this value to position the logo */
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-right: auto;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    display: none;  
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Hamburger icon for mobile devices */
+@media only screen and (max-width: 768px) {
+    /* Hamburger icon position and visibility */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        left: 20px;  /* Align hamburger icon to the left */
+        top: 20px;  /* Position it at the top */
+        z-index: 100;  /* Ensure it's above other elements */
+    }
+
+    .hamburger .bar {
+        width: 30px;
+        height: 3px;
+        margin: 6px 0;
+        background-color: white;  /* Color for the hamburger lines */
+        transition: 0.3s;
+    }
+
+    /* Hide nav menu items by default */
+    .nav-menu-items {
+        display: none;  /* Initially hidden on mobile */
+        position: absolute;
+        top: 60px;  /* Position below the navbar */
+        left: 0;
+        width: 100%;
+        background-color: #5f52b0;  /* Same background color as navbar */
+        text-align: center;
+        flex-direction: column;  /* Stack menu items vertically */
+    }
+
+    /* Show the nav menu when 'show' class is added */
+    .nav-menu-items.show {
+        display: flex;
+    }
+}
+
+/* For larger screens (remove hamburger icon and show menu horizontally) */
+@media only screen and (min-width: 769px) {
+    /* Hide the hamburger icon on larger screens */
+    .hamburger {
+        display: none;
+    }
+
+    /* Display menu items horizontally on larger screens */
+    .nav-menu-items {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-menu-items ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-menu-items li {
+        margin: 0 15px;
+    }
+
+    .nav-menu-items a {
+        color: white;
+        text-decoration: none;
+    }
+}
