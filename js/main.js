@@ -248,8 +248,20 @@
                 scrollTop: $(target).offset().top - 50
             }, 750);
         });
-        
-    
+
+        // Function to toggle the navigation menu visibility on mobile
+        function toggleNavbar() {
+        var navMenu = document.querySelector('.nav-menu-items');
+        navMenu.classList.toggle('active');
+        }
+
+        $(document).ready(function() {
+            // Hamburger toggle for mobile view
+            $('.navbar-toggler').click(function() {
+                $('.nav-menu-items').toggleClass('active');
+            });
+        });
+      
         /************** Mixitup (Filter Projects) *********************/
         $('.projects-holder').mixitup({
             effects: ['fade','grayscale'],

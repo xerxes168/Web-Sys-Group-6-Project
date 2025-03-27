@@ -65,120 +65,6 @@ p {
 	transition: all 0.5s;
 }
 
-
-.navbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: #5f52b0;
-	color: white;
-	padding: 10px 20px;
-	font-family: 'Open Sans', sans-serif;
-}
-
-.nav-logo {
-	font-weight: bold;
-	font-size: 20px;
-	margin-right: 20px;
-}
-
-.nav-menu {
-	display: flex;
-	align-items: center;
-}
-
-.nav-menu-item a {
-    color: white;
-    text-decoration: none;
-}
-
-.nav-menu-items {
-	display: flex;
-	flex-direction: row;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.nav-menu-item {
-	margin: 0 15px;
-	font-size: 14px;
-	font-weight: 500;
-	position: relative;
-	cursor: pointer;
-}
-
-.nav-menu-item.event-item::after {
-	content: "▾";
-	margin-left: 5px;
-	font-size: 10px;
-	vertical-align: middle;
-}
-
-.nav-actions {
-	display: flex;
-	align-items: center;
-}
-
-.nav-login {
-	margin-right: 10px;
-	font-size: 14px;
-	cursor: pointer;
-}
-
-.nav-button {
-	background-color: #116dff;
-	color: white;
-	border: none;
-	border-radius: 20px;
-	padding: 8px 16px;
-	font-size: 14px;
-	font-weight: 500;
-	cursor: pointer;
-}
-
-/* Dropdown styling */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    min-width: 160px;
-    z-index: 1000;
-    padding: 10px 0;
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-.dropdown-menu li {
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-menu li a {
-    padding: 8px 15px;
-    display: block;
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #f8f8f8;
-}
-
-/* Show dropdown on hover or click */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 .banner .col-md-8 {
 	padding-left: 0px;
 	padding-right: 5px;
@@ -206,13 +92,13 @@ p {
 .left-banner-content h6 {
 	font-size: 14px;
 	font-weight: 700;
-	color: #000000;
+	color: #ffffff;
 }
 
 .left-banner-content h1 {
 	font-size: 64px;
 	font-weight: 300;
-	color: #000000;
+	color: #ffffff;
 	line-height: 70px;
 }
 

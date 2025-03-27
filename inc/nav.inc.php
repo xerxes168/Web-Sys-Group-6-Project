@@ -11,11 +11,22 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
 <html>
     <body>
     <script defer src="js/dropdown.js"></script>
+    <script defer src="js/navbar.js"></script> 
     </body>
 
-<div class="navbar">
+    <head>
+    <link rel="stylesheet" href="css/navbar.css">
+    </head>
+    
+    <div class="navbar">
     <div class="nav-menu">
-        <div class="nav-logo">GatherSpot</div>
+        <div class="nav-logo">HoopSpaces</div>
+        <!-- Hamburger Button -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <ul class="nav-menu-items">
             <li class="nav-menu-item home-item">
                 <a href="index.php">Home</a>
@@ -23,14 +34,8 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
             <li class="nav-menu-item">
                 <a href="#about-us-section">About Us</a>
             </li>
-            <li class="nav-menu-item dropdown">
-                <a href="#" class="dropdown-toggle">Make a Booking</a>
-                <ul class="dropdown-menu">
-                <li><a href="sports.php">Sports</a></li>
-                    <li><a href="#">Birthday</a></li>
-                    <li><a href="#">Networking/Gathering</a></li>
-                    <li><a href="#">Seminar/Workshop</a></li>
-                </ul>
+            <li class="nav-menu-item">
+                <a href="#">Make a Booking</a>
             </li>
             <li class="nav-menu-item">
                 <a href="#">How to Book?</a>
@@ -42,7 +47,6 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
     </div>
     <div class="nav-actions">
         <?php if ($isLoggedIn): ?>
-            <!-- User is logged in - show member options -->
             <div class="nav-user dropdown">
                 <a href="#" class="dropdown-toggle">
                     <i class="fa fa-user-circle"></i> 
@@ -55,9 +59,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 </ul>
             </div>
         <?php else: ?>
-            <!-- User is not logged in - show login and registration options -->
             <button class="nav-button" onclick="location.href='register.php'">Register/Login</button>
         <?php endif; ?>
     </div>
 </div>
-</html>
