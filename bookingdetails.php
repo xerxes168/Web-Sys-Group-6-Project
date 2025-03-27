@@ -58,7 +58,7 @@ function getDbConnection() {
 $booking_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($booking_id <= 0) {
-    header("Location: my-bookings.php");
+    header("Location: mybookings.php");
     exit;
 }
 
@@ -81,7 +81,7 @@ if (getDbConnection()) {
         
         // If booking not found or doesn't belong to user
         if ($result->num_rows === 0) {
-            header("Location: my-bookings.php");
+            header("Location: mybookings.php");
             exit;
         }
         
@@ -302,7 +302,7 @@ if (getDbConnection()) {
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
-                <a href="my-bookings.php" class="btn btn-sm btn-back mb-3">
+                <a href="mybookings.php" class="btn btn-sm btn-back mb-3">
                     <i class="fa fa-arrow-left"></i> Back to My Bookings
                 </a>
                 
@@ -475,7 +475,7 @@ if (getDbConnection()) {
                             
                             <div class="booking-actions">
                                 <div>
-                                    <a href="my-bookings.php" class="btn btn-back">
+                                    <a href="mybookings.php" class="btn btn-back">
                                         <i class="fa fa-arrow-left"></i> Back
                                     </a>
                                 </div>

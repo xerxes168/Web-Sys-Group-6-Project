@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             $_SESSION['booking_message'] = "Your booking has been cancelled. " . 
                                           ($refund_amount > 0 ? number_format($refund_amount, 2) . " credits have been refunded to your account." : "No refund was issued due to late cancellation.");
             
-            header("Location: my-bookings.php");
+            header("Location: mybookings.php");
             exit;
         } 
         catch (Exception $e) {
@@ -471,7 +471,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
                                             <?php endif; ?>
                                         <?php endif; ?>
                                         
-                                        <a href="booking_details.php?id=<?php echo $booking['id']; ?>" class="btn btn-details">
+                                        <a href="bookingdetails.php?id=<?php echo $booking['id']; ?>" class="btn btn-details">
                                             <i class="fa fa-eye"></i> View Details
                                         </a>
                                     </div>
