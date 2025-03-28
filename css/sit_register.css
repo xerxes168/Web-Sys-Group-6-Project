@@ -19,12 +19,11 @@ html, body {
 
 /* Main container takes full height */
 .register-section {
-    height: 100vh; /* Full viewport height */
+    height: 80vh; /* Full viewport height */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     background: #f7f7f7;
-    padding-top: 80px; /* Adjusted for taller navbar with dropdown */
     box-sizing: border-box; /* Include padding in height calculation */
 }
 
