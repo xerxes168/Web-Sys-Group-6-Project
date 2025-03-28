@@ -32,7 +32,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 <a href="index.php">Home</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#about-us-section">About Us</a>
+                <a href="aboutus.php">About Us</a>
             </li>
             <li class="nav-menu-item">
                 <a href="#">Make a Booking</a>

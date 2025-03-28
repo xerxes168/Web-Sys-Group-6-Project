@@ -26,7 +26,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GatherSpot</title>
+        <title>HoopSpaces</title>
 <!-- 
 Avalon Template 
 http://www.templatemo.com/tm-513-avalon
@@ -72,7 +72,7 @@ http://www.templatemo.com/tm-513-avalon
                                     <li>Let's make a memorable experience</li>
                                 </ul>
                                 <div class="pink-button">
-                                    <a href="#" class="scroll-link" data-id="events-section">Discover More</a>
+                                    <a href="aboutus.php" class="scroll-link">Discover More</a>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">

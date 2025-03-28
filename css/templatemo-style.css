@@ -42,15 +42,17 @@ p {
 }
 
 .pink-button a {
-	padding: 14px 20px;
-	background-color: #b94e5e;
-	border-radius: 30px;
-	color: #fff;
-	font-size: 13px;
-	text-transform: uppercase;
-	font-weight: 700;
-	text-decoration: none;
-	transition: all 0.5s;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fe6190;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.pink-button a:hover {
+    background-color: #fa4e82;
 }
 
 .white-button a {
