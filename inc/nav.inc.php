@@ -20,7 +20,9 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
     
     <div class="navbar">
     <div class="nav-menu">
-        <div class="nav-logo">HoopSpaces</div>
+        <div class="nav-logo">
+            <img src="img/logo.png" alt="HoopSpaces Logo" class="logo-img">
+        </div>
         <!-- Hamburger Button -->
         <div class="hamburger" onclick="toggleMenu()">
             <span class="bar"></span>
