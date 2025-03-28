@@ -35,7 +35,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 <a href="aboutus.php">About Us</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#">Make a Booking</a>
+                <a href="viewSports.php">Make a Booking</a>
             </li>
             <li class="nav-menu-item">
                 <a href="credits.php">Credits</a>
