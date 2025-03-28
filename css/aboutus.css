@@ -1,40 +1,91 @@
-/* Styles for About Us Page */
-
 /* General About Us Section */
 .about-us {
-    padding: 50px 20px;
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+    text-align: center;
 }
 
 .about-us h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #5f52b0;
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
 .about-us p {
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.8;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 0 15px;
 }
 
 /* History and About Us sections styles */
 .history, .about-us-section {
-    padding: 40px;
-    margin: 20px 0;
+    background-color: #fff;
+    padding: 50px;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .history h3, .about-us-section h3 {
-    font-size: 28px;
+    font-size: 30px;
+    color: #5f52b0;
     margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .history p, .about-us-section p {
     font-size: 18px;
+    line-height: 1.8;
+    color: #777;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Why Us Section */
+.choose-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.choose-item {
+    width: 280px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.choose-item:hover {
+    transform: translateY(-5px);
+}
+
+.choose-item h3 {
+    font-size: 24px;
+    color: #5f52b0;
+    margin-bottom: 15px;
+}
+
+.choose-item p {
+    font-size: 16px;
+    color: #777;
     line-height: 1.6;
 }
 
 /* Team Section (Horizontal Scrolling) */
 .team {
     padding: 50px 0;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
     text-align: center;
 }
 
@@ -45,39 +96,90 @@
 .team .team-members {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
+    gap: 30px;
     padding: 10px;
-    margin-bottom: 30px;
 }
 
 .team .team-member {
     flex-shrink: 0;
     width: 250px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team .team-member:hover {
+    transform: scale(1.05);
 }
 
 .team .team-member img {
-    width: 100%;
-    height: auto;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border: 3px solid #5f52b0;
 }
 
 .team h2 {
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #5f52b0;
+    text-transform: uppercase;
 }
 
 .team-member h3 {
     font-size: 22px;
-    margin-bottom: 10px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .team-member p {
     font-size: 16px;
     color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .choose-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choose-item {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .team .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team .team-member {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us h1 {
+        font-size: 36px;
+    }
+
+    .history h3, .about-us-section h3 {
+        font-size: 26px;
+    }
+
+    .team .team-member {
+        width: 90%;
+    }
+
+    .team h2 {
+        font-size: 30px;
+    }
 }

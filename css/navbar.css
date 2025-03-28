@@ -7,7 +7,14 @@
     color: white;
     padding: 10px 20px;
     font-family: 'Open Sans', sans-serif;
-    position: relative;  /* Allow absolute positioning of elements inside */
+    position: fixed;  /* Fix navbar to top of screen */
+    top: 0;  /* Keep navbar on top */
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1000;  /* Ensures navbar is above other elements */
+    flex-wrap: wrap;
 }
 
 /* Nav Menu Items should always be visible */
@@ -17,11 +24,13 @@
     margin: 0;
     padding: 0;
     flex-grow: 1;  /* Allow menu to take up remaining space */
+    flex-wrap: wrap;  
+    justify-content: space-between;
+    gap: 15px;  /* Space between menu items */
 }
 
 /* Individual nav items */
 .nav-menu-item {
-    margin: 0 15px;
     font-size: 14px;
     font-weight: 500;
     position: relative;
@@ -56,13 +65,19 @@
 
 /* Logo */
 .nav-logo {
-    position: absolute;  
-    left: 5%;  /* Adjust this value to position the logo */
+    position: absolute;
+    left: 8%; /* Position the logo at the center */
+    transform: translateX(-50%); /* Center the logo horizontally */
     font-size: 24px;
     font-weight: bold;
     color: white;
     text-align: center;
-    margin-right: auto;
+}
+
+.nav-logo img {
+    width: 150px;               
+    height: auto;               
+    display: block;            
 }
 
 /* Dropdown menu styling */
@@ -81,28 +96,32 @@
 }
 
 /* Hamburger icon for mobile devices */
+.hamburger {
+    display: none;  /* Hidden by default */
+    cursor: pointer;
+    position: absolute;
+    left: 20px;  /* Align hamburger icon to the left */
+    top: 20px;   /* Position it at the top */
+    z-index: 100;  /* Ensure it's above other elements */
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 3px;
+    margin: 6px 0;
+    background-color: white;  /* Color for the hamburger lines */
+    transition: 0.3s;
+}
+
+/* Show hamburger on small screens (mobile view) */
 @media only screen and (max-width: 768px) {
-    /* Hamburger icon position and visibility */
     .hamburger {
-        display: block;
-        cursor: pointer;
-        position: absolute;
-        left: 20px;  /* Align hamburger icon to the left */
-        top: 20px;  /* Position it at the top */
-        z-index: 100;  /* Ensure it's above other elements */
+        display: block; /* Display hamburger icon */
     }
 
-    .hamburger .bar {
-        width: 30px;
-        height: 3px;
-        margin: 6px 0;
-        background-color: white;  /* Color for the hamburger lines */
-        transition: 0.3s;
-    }
-
-    /* Hide nav menu items by default */
+    /* Hide nav menu items by default on mobile */
     .nav-menu-items {
-        display: none;  /* Initially hidden on mobile */
+        display: none;
         position: absolute;
         top: 60px;  /* Position below the navbar */
         left: 0;
@@ -116,35 +135,4 @@
     .nav-menu-items.show {
         display: flex;
     }
-}
-
-/* For larger screens (remove hamburger icon and show menu horizontally) */
-@media only screen and (min-width: 769px) {
-    /* Hide the hamburger icon on larger screens */
-    .hamburger {
-        display: none;
-    }
-
-    /* Display menu items horizontally on larger screens */
-    .nav-menu-items {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .nav-menu-items ul {
-        display: flex;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-menu-items li {
-        margin: 0 15px;
-    }
-
-    .nav-menu-items a {
-        color: white;
-        text-decoration: none;
-    }
-}
+} 
