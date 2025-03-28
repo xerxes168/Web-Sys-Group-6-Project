@@ -1,11 +1,30 @@
+<?php
+// Start the session at the very beginning of the file
+session_start();
+
+// Now you can access session variables anywhere in this file
+// You might want to add some debugging code to see what's in the session
+// This can be removed later
+if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
+    // User is logged in
+    $loggedIn = true;
+    $userEmail = $_SESSION['email'] ?? 'Unknown';
+    $userId = $_SESSION['member_id'] ?? 'Unknown';
+    
+    // For debugging - you can remove this once confirmed working
+    // echo "Logged in as: " . htmlspecialchars($userEmail) . " (ID: " . htmlspecialchars($userId) . ")";
+} else {
+    // User is not logged in
+    $loggedIn = false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include "inc/head.inc.php"; ?>
     <title>About Us - HoopSpaces</title>
-    <link rel="stylesheet" href="css/navbar.css"> <!-- Link to navbar CSS -->
-    <link rel="stylesheet" href="css/aboutus.css"> <!-- Link to the new aboutus.css -->
+    <link rel="stylesheet" href="css/aboutus.css">
 </head>
 
 <body>
@@ -28,7 +47,7 @@
 
                             We aim to be your go-to partner for booking sports venues. Our commitment is to provide you with personalized support, allowing you to focus on what matters most—your event and the people you're connecting with.</p>
                         
-                        <!-- New History Section -->
+                        <!-- History Section -->
                         <div class="history">
                             <h3>Our History</h3>
                             <p>The story of HoopSpaces began with a passion for sports and a frustration with the complexity of booking sports venues. Founders were avid sports enthusiasts who found it difficult to find a reliable, easy-to-use platform for booking sports facilities in Singapore. What started as a simple idea to make sports venue booking more accessible eventually grew into the full-fledged platform that is now HoopSpaces.

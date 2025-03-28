@@ -7,7 +7,7 @@
                         <div class="line-dec"></div>
                         <h1>Book Your Event <br> Space</h1>
                         <div class="white-border-button">
-                            <a href="#" class="scroll-link" data-id="best-offer-section">Discover More</a>
+                            <a href="sports.php" class="discover-button">Discover More</a>
                         </div>
                     </div>
                 </div>

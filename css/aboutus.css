@@ -1,4 +1,3 @@
-/* General About Us Section */
 .about-us {
     padding: 60px 20px;
     background-color: #f8f8f8;
@@ -17,13 +16,21 @@
     font-size: 18px;
     line-height: 1.8;
     color: #555;
-    max-width: 800px;
     margin: 0 auto 30px;
     padding: 0 15px;
+    width: 100%; /* Allow text to take up full width */
 }
 
-/* History and About Us sections styles */
-.history, .about-us-section {
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    width: 100%; /* Allow content to fill container */
+}
+
+.history {
     background-color: #fff;
     padding: 50px;
     margin: 30px 0;
@@ -31,7 +38,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-.history h3, .about-us-section h3 {
+.history h3 {
     font-size: 30px;
     color: #5f52b0;
     margin-bottom: 20px;
@@ -39,7 +46,7 @@
     text-transform: uppercase;
 }
 
-.history p, .about-us-section p {
+.history p {
     font-size: 18px;
     line-height: 1.8;
     color: #777;
@@ -48,7 +55,6 @@
     padding: 0 15px;
 }
 
-/* Why Us Section */
 .choose-list {
     display: flex;
     flex-wrap: wrap;
@@ -82,7 +88,7 @@
     line-height: 1.6;
 }
 
-/* Team Section (Horizontal Scrolling) */
+/* Team Section */
 .team {
     padding: 50px 0;
     background-color: #f4f4f4;
@@ -90,7 +96,7 @@
 }
 
 .team .container {
-    overflow-x: auto;  /* Enable horizontal scrolling */
+    overflow-x: auto;
 }
 
 .team .team-members {
@@ -141,45 +147,4 @@
     font-size: 16px;
     color: #555;
     line-height: 1.6;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .choose-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .choose-item {
-        width: 90%;
-        margin: 10px 0;
-    }
-
-    .team .team-members {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team .team-member {
-        width: 80%;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-us h1 {
-        font-size: 36px;
-    }
-
-    .history h3, .about-us-section h3 {
-        font-size: 26px;
-    }
-
-    .team .team-member {
-        width: 90%;
-    }
-
-    .team h2 {
-        font-size: 30px;
-    }
 }
