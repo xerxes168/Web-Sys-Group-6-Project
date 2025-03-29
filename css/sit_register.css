@@ -1,6 +1,6 @@
 /* sit_register.css */
 
-/* Full viewport height, no scrolling */
+/* Reset defaults for consistency */
 html, body {
     height: 100vh;
     margin: 0;
@@ -8,40 +8,34 @@ html, body {
     overflow: hidden;
 }
 
-/* Main container takes full height with improved styling */
+/* Ensure section doesn’t interfere with grid */
 .register-section {
-    min-height: 95vh; /* Changed to min-height for better flexibility */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #f7f7f7 0%, #e9ecef 100%); /* Added gradient */
+    min-height: 95vh;
+    background: linear-gradient(135deg, #f7f7f7 0%, #e9ecef 100%);
     padding-top: 80px;
-    padding-bottom: 20px; /* Added bottom padding */
+    padding-bottom: 20px;
     box-sizing: border-box;
+    /* Remove flex if it’s causing issues, rely on Bootstrap grid */
 }
 
-/* Enhanced register form styling */
+/* Form styling with explicit centering */
 .register-form {
     background: #ffffff;
-    padding: 25px; /* Slightly increased padding */
-    border-radius: 12px; /* Slightly larger radius */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Enhanced shadow */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     width: 100%;
     max-width: 400px;
-    transition: transform 0.2s ease; /* Added hover effect */
+    margin-left: auto; /* Explicit centering */
+    margin-right: auto;
+    transition: transform 0.2s ease;
 }
 
-/* Hover effect for form */
-.register-form:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-/* Improved form elements styling */
+/* Rest of your CSS remains the same */
 .form-group {
-    margin-bottom: 15px; /* Increased spacing */
+    margin-bottom: 15px;
 }
 
-/* Style for labels */
 .form-group label {
     font-weight: 600;
     color: #333;
@@ -49,7 +43,6 @@ html, body {
     display: block;
 }
 
-/* Input field enhancements */
 .form-control {
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -62,7 +55,6 @@ html, body {
     box-shadow: 0 0 5px rgba(255, 88, 158, 0.3);
 }
 
-/* Button styling to match theme */
 .btn-primary {
     background: #ff589e !important;
     border: none !important;
@@ -72,35 +64,48 @@ html, body {
 }
 
 .btn-primary:hover {
-    background: #e04c89 !important; /* Darker shade on hover */
+    background: #e04c89 !important;
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) { /* Changed from 650px to match Bootstrap's breakpoint */
+@media (max-width: 768px) {
     .register-section {
-        padding-top: 65px; /* Reduced for smaller screens */
+        padding-top: 80px;
     }
-
     .register-form {
+        padding: 25px;
         max-width: 90%;
     }
-
     .register-form h2 {
-        font-size: 24px; /* Slightly larger than original 20px */
+        font-size: 24px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .register-form {
-        padding: 5px 30px ;
+        padding: 15px;
         max-width: 100%;
     }
-
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
+    .btn-primary {
+        padding: 10px;
+    }
     .register-form h2 {
         font-size: 20px;
     }
+    .form-group {
+        margin-bottom: 12px;
+    }
+}
 
-    .btn-primary {
-        padding: 10px;
+@media (max-width: 650px) {
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        border: none;
     }
 }
