@@ -48,49 +48,42 @@ function getDbConnection()
 
 // Connect to database
 $conn = getDbConnection();
+
+// Initialize the sport types array
 $sportTypes = [];
 
-if ($conn) {
+if (getDbConnection()) {
     // Get unique sport types from the venues table
     $stmt = $conn->prepare("SELECT DISTINCT sport_type FROM venues WHERE suitable_for_sports = 1");
     
-    if (!$stmt) {
-        // If query fails, use default sport types
-        $sportTypes = [
-            ['id' => 'basketball', 'name' => 'Basketball', 'image' => 'img/sports/basketball.jpg', 'description' => 'Book a basketball court for your team practice or friendly match.'],
-            ['id' => 'volleyball', 'name' => 'Volleyball', 'image' => 'img/sports/volleyball.jpg', 'description' => 'Reserve a volleyball court for your group or team.'],
-            ['id' => 'badminton', 'name' => 'Badminton', 'image' => 'img/sports/badminton.jpg', 'description' => 'Book a badminton court for singles or doubles games.'],
-            ['id' => 'soccer', 'name' => 'Soccer', 'image' => 'img/sports/soccer.jpg', 'description' => 'Reserve a soccer field for your team practice or match.']
-        ];
-    } else {
+    if ($stmt) {
         $stmt->execute();
         $result = $stmt->get_result();
         
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $sportType = $row['sport_type'];
-                $imagePath = 'img/sports/' . $sportType . '.jpg';
-                
-                $sportTypes[] = [
-                    'id' => $sportType,
-                    'name' => ucfirst($sportType),
-                    'image' => $imagePath,
-                    'description' => 'Book a ' . ucfirst($sportType) . ' facility for your event.'
-                ];
-            }
-            $stmt->close();
-        } else {
-            // If no sport types found in venues, use default sport types
-            $sportTypes = [
-                ['id' => 'basketball', 'name' => 'Basketball', 'image' => 'img/sports/basketball.jpg', 'description' => 'Book a basketball court for your team practice or friendly match.'],
-                ['id' => 'volleyball', 'name' => 'Volleyball', 'image' => 'img/sports/volleyball.jpg', 'description' => 'Reserve a volleyball court for your group or team.'],
-                ['id' => 'badminton', 'name' => 'Badminton', 'image' => 'img/sports/badminton.jpg', 'description' => 'Book a badminton court for singles or doubles games.'],
-                ['id' => 'soccer', 'name' => 'Soccer', 'image' => 'img/sports/soccer.jpg', 'description' => 'Reserve a soccer field for your team practice or match.']
+        while ($row = $result->fetch_assoc()) {
+            $sportType = $row['sport_type'];
+            $imagePath = 'img/' . strtolower($sportType) . '.jpg';
+            
+            $sportTypes[] = [
+                'id' => strtolower($sportType),
+                'name' => ucfirst($sportType),
+                'image' => $imagePath,
+                'description' => 'Book a ' . ucfirst($sportType) . ' facility for your event.'
             ];
         }
+        $stmt->close();
+    } else {
+        // Log error if query fails
+        error_log("Error preparing sport types query: " . $conn->error);
     }
     
     $conn->close();
+}
+
+// If no sport types were found, you might want to handle this case
+if (empty($sportTypes)) {
+    // Display message or redirect
+    echo "<div class='alert alert-info'>No sports available at the moment. Please check back later.</div>";
 }
 ?>
 
@@ -99,7 +92,7 @@ if ($conn) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - Browse Sports</title>
+    <title>HoopSpaces - Browse Sports</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo-style.css">
     <link rel="stylesheet" href="css/fontAwesome.css">

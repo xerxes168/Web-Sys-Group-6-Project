@@ -134,7 +134,7 @@ http://www.templatemo.com/tm-513-avalon
                 </div>
                 
                 <div class="booking-action">
-                    <a href="sports.php" class="booking-button">Start Booking</a>
+                    <a href="viewSports.php" class="booking-button">Start Booking</a>
                 </div>
             </div>
         </div>

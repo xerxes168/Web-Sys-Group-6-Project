@@ -10,7 +10,7 @@ $conn = null;
 $sport_type = isset($_GET['sport_type']) ? $_GET['sport_type'] : '';
 
 // Validate sport type
-$valid_sports = ['Basketball', 'Volleyball', 'Badminton', 'soccer'];
+$valid_sports = ['basketball', 'volleyball', 'badminton', 'soccer'];
 if (!in_array($sport_type, $valid_sports)) {
     // Redirect to sports selection page if no valid sport type
     header("Location: viewSports.php");
@@ -101,6 +101,10 @@ if (getDbConnection()) {
     <link rel="stylesheet" href="css/templatemo-style.css">
     <link rel="stylesheet" href="css/fontAwesome.css">
     <style>
+        p {
+            font color: black;
+        }
+
         .venues-container {
             padding: 60px 0;
         }
@@ -200,7 +204,7 @@ if (getDbConnection()) {
             margin: 10px auto 20px;
         }
         .sport-banner {
-            background-image: url('img/sports/<?php echo htmlspecialchars($sport_type); ?>-banner.jpg');
+            background-image: url('img/<?php echo htmlspecialchars($sport_type); ?>.jpg');
             background-size: cover;
             background-position: center;
             height: 250px;
