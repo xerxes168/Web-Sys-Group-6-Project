@@ -85,13 +85,13 @@ http://www.templatemo.com/tm-513-avalon
         </div>
     </section>
 
+
     <section class="how-to-book" id="how-to-book-section">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-5">
-                    <img src="img/reservation.jpg" alt="Booking Guide" class="booking-image">
+        <div class="booking-container">
+            <div class="booking-image-wrapper">
+                <img src="img/reservation.jpg" alt="Booking Guide" class="booking-image">
             </div>
-            <div class="booking-content">
+        <div class="booking-content-overlay">
                 <h2 class="booking-title">How to Book a Venue</h2>
                 <div class="booking-divider">
                     <span class="divider-line"></span>
@@ -205,52 +205,57 @@ http://www.templatemo.com/tm-513-avalon
                 </div>
     </section>
 
-    <div id="reservation-popup" class="reservation-popup">
-        <div class="popup-content">
-            <span class="close-popup">&times;</span>
-            <h2 id="event-title">Event Title</h2>
-            
-            <div class="detail-row">
-                <label>Date:</label>
-                <input type="text" id="datepicker" placeholder="Select Date" readonly>
-            </div>
-            
-            <!-- <div class="detail-row">
-                <label>Location:</label>
-                <select id="location-select">
-                <option value="main-hall">Main Hall</option>
-                <option value="conference-room">Conference Room</option>
-                <option value="outdoor-space">Outdoor Space</option>
-                <option value="studio">Studio Space</option>
-                </select>
-            </div> -->
-            
-            <div class="detail-row">
-                <label>Time Slot:</label>
-                <select id="timeslot-select">
-                <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
-                <option value="afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
-                <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
-                </select>
-            </div>
-            
-            <div class="detail-row">
-                <label>Number of Guests:</label>
-                <input type="number" id="guest-count" min="1" max="100" value="1">
-            </div>
-            
-            <div class="detail-row">
-                <label>Special Requests:</label>
-                <textarea id="special-requests" placeholder="Any specific requirements?"></textarea>
-            </div>
-            </div>
-            
-            <div class="popup-buttons">
-            <button id="cancel-reservation" class="cancel-button">Cancel</button>
-            <button id="confirm-reservation" class="confirm-button">Confirm Reservation</button>
+    <section class="contact-details" id="contact-details-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-details-container">
+                    <h2 class="contact-main-title">GatherSpot</h2>
+                    
+                    <h3 class="contact-subtitle">Email</h3>
+                    
+                    <p class="contact-type">For Venue Enquiries:</p>
+                    <p class="contact-info">support@gatherspot.com</p>
+                    
+                    <p class="contact-type">For Corporate Bookings:</p>
+                    <p class="contact-info">corporate@gatherspot.com</p>
+                    
+                    <h3 class="contact-subtitle">GatherSpot Main Office</h3>
+                    
+                    <p class="contact-address">
+                        Sunshine Tower, 8 Raffles Avenue, #03-12B,<br>
+                        Singapore 039802
+                    </p>
+                    
+                    <p class="contact-hours-title">Operating hours:</p>
+                    
+                    <p class="contact-hours">
+                        Mon - Fri: 9AM - 6PM (By Appointment Only*)<br>
+                        (Lunch Hours: 12pm - 1pm)
+                    </p>
+                    
+                    <p class="contact-type">For Venue Enquiries: +65 8123 4567</p>
+                    <p class="contact-type">For Corporate Bookings: +65 9876 5432</p>
+                    
+                    <h3 class="contact-subtitle">GatherSpot at Sports Hub</h3>
+                    
+                    <p class="contact-address">
+                        Sports Hub, 2 Stadium Walk, #02-05<br>
+                        Singapore 397718
+                    </p>
+                    
+                    <p class="contact-hours-title">Operating hours:</p>
+                    
+                    <p class="contact-hours">
+                        Sat - Sun: 10AM - 5PM (By Appointment Only*)
+                    </p>
+                    
+                    <p class="contact-type">For Weekend Bookings: +65 9123 4567</p>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
+    </section>
 
         <?php include "inc/footer.inc.php"; ?>
 

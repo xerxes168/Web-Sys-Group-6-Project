@@ -43,7 +43,7 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                 <a href="credits.php">Credits</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#">How to Book?</a>
+                <a href="#how-to-book-section" class="scroll-link" data-id="how-to-book">How to Book?</a>
             </li>
             <li class="nav-menu-item">
                 <a href="#contact-section" class="scroll-link" data-id="contact-section">Contact Us</a>
