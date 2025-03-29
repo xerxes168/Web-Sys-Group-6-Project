@@ -8,17 +8,18 @@ html, body {
     overflow: hidden;
 }
 
-/* Main container styling with vertical centering */
+/* Ensure section doesn’t interfere with grid */
 .login-section {
-    height: 100vh; /* Changed to full height for consistency */
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    min-height: 95vh;
     background: linear-gradient(135deg, #f7f7f7 0%, #e9ecef 100%);
-    padding-top: 80px; /* Space for navbar */
+    padding-top: 80px;
     padding-bottom: 20px;
     box-sizing: border-box;
     overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.login-section h1{
+    font-size: 30px;
 }
 
 /* Form styling with explicit centering and minimum height */

@@ -18,6 +18,10 @@ html, body {
     /* Remove flex if it’s causing issues, rely on Bootstrap grid */
 }
 
+.register-section h1{
+    font-size: 30px;
+}
+
 /* Form styling with explicit centering */
 .register-form {
     background: #ffffff;
