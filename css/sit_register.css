@@ -1,4 +1,4 @@
-/* register.css */
+/* sit_register.css */
 
 /* Full viewport height, no scrolling */
 html, body {
@@ -8,44 +8,99 @@ html, body {
     overflow: hidden;
 }
 
-/* Main container takes full height */
+/* Main container takes full height with improved styling */
 .register-section {
-    height: 95vh; /* Full viewport height */
+    min-height: 95vh; /* Changed to min-height for better flexibility */
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    background: #f7f7f7;
-    padding-top: 80px; /* Adjusted for taller navbar with dropdown */
-    box-sizing: border-box; /* Include padding in height calculation */
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f7f7f7 0%, #e9ecef 100%); /* Added gradient */
+    padding-top: 80px;
+    padding-bottom: 20px; /* Added bottom padding */
+    box-sizing: border-box;
 }
 
-/* Register form styling */
+/* Enhanced register form styling */
 .register-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 25px; /* Slightly increased padding */
+    border-radius: 12px; /* Slightly larger radius */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Enhanced shadow */
     width: 100%;
-    max-width: 400px; /* Limit width for readability */
+    max-width: 400px;
+    transition: transform 0.2s ease; /* Added hover effect */
 }
 
-/* Ensure form elements fit within the container */
+/* Hover effect for form */
+.register-form:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Improved form elements styling */
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Increased spacing */
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 650px) {
-    .register-form {
-        padding: 15px;
-        max-width: 90%; /* Allow form to shrink on very small screens */
+/* Style for labels */
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input field enhancements */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff589e;
+    box-shadow: 0 0 5px rgba(255, 88, 158, 0.3);
+}
+
+/* Button styling to match theme */
+.btn-primary {
+    background: #ff589e !important;
+    border: none !important;
+    border-radius: 6px;
+    padding: 12px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #e04c89 !important; /* Darker shade on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* Changed from 650px to match Bootstrap's breakpoint */
+    .register-section {
+        padding-top: 65px; /* Reduced for smaller screens */
     }
+
+    .register-form {
+        max-width: 90%;
+    }
+
+    .register-form h2 {
+        font-size: 24px; /* Slightly larger than original 20px */
+    }
+}
+
+@media (max-width: 480px) {
+    .register-form {
+        padding: 5px 30px ;
+        max-width: 100%;
+    }
+
     .register-form h2 {
         font-size: 20px;
     }
-    
-    .dropdown-menu {
-        position: static; /* Prevent dropdown from overflowing */
-        box-shadow: none;
+
+    .btn-primary {
+        padding: 10px;
     }
 }
