@@ -1,4 +1,4 @@
-/* login.css */
+/* sit_login.css */
 
 /* Full viewport height, no scrolling */
 html, body {
@@ -8,57 +8,73 @@ html, body {
     overflow: hidden;
 }
 
-/* Fixed navbar at the top */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 10px 0; /* Consistent padding */
-}
-
-/* Main container takes full height */
+/* Main container styling with vertical centering */
 .login-section {
-    height: 100vh; /* Full viewport height */
+    height: 100vh; /* Changed to full height for consistency */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    background: #f7f7f7;
-    box-sizing: border-box; /* Include padding in height calculation */
+    background: linear-gradient(135deg, #f7f7f7 0%, #e9ecef 100%);
+    padding-top: 80px; /* Space for navbar */
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
-/* Login form styling */
+/* Form styling with explicit centering and minimum height */
 .login-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     width: 100%;
-    max-width: 400px; /* Limit width for readability */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.2s ease;
+    min-height: 300px; /* Ensure form has enough vertical space */
 }
 
-/* Ensure form elements fit within the container */
+/* Hover effect */
+.login-form:hover {
+    transform: translateY(-2px);
+}
+
+/* Form elements */
 .form-group {
     margin-bottom: 15px;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 767px) {
-    .login-form {
-        padding: 15px;
-        max-width: 90%; /* Allow form to shrink on very small screens */
-    }
-    .navbar {
-        padding: 5px 0; /* Reduce navbar padding on mobile */
-    }
-    .nav-menu-items {
-        display: block; /* Stack items vertically on mobile if needed */
-    }
-    .nav-menu-item {
-        margin: 5px 0;
-    }
-    .dropdown-menu {
-        position: static; /* Prevent dropdown from overflowing */
-        box-shadow: none;
-    }
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff589e;
+    box-shadow: 0 0 5px rgba(255, 88, 158, 0.3);
+}
+
+.btn-primary {
+    background: #ff589e !important;
+    border: none !important;
+    border-radius: 6px;
+    padding: 12px; /* Ensure padding is respected */
+    transition: background 0.3s ease;
+    width: 100%; /* Explicitly set to match inline style */
+    display: block; /* Ensure proper block behavior */
+    line-height: 1.5; /* Maintain readable height */
+}
+
+.btn-primary:hover {
+    background: #e04c89 !important;
 }
