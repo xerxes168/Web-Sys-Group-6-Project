@@ -499,7 +499,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             </ul>
         </div>
         
-        <form action="my-bookings.php" method="post" id="cancel-form">
+        <form action="mybookings.php" method="post" id="cancel-form">
             <input type="hidden" name="booking_id" id="modal-booking-id">
             <input type="hidden" name="cancel_booking" value="1">
             
