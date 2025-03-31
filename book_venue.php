@@ -85,7 +85,7 @@ $venue = null;
 $user_credit = 0;
 
 // Get venue details
-$stmt = $conn->prepare("SELECT id, name, location, capacity, hourly_rate, description
+$stmt = $conn->prepare("SELECT id, name, location, capacity, hourly_rate, description, sport_type
                       FROM venues 
                       WHERE id = ? AND suitable_for_sports = 1");
 $stmt->bind_param("i", $venue_id);
@@ -94,8 +94,19 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $venue = $result->fetch_assoc();
+
+    // Convert both strings to lowercase for case-insensitive comparison
+    $venue_sport_type = strtolower(trim($venue['sport_type']));
+    $requested_sport_type = strtolower(trim($sport_type));
+
+// Validate that the requested sport_type matches the venue's supported sport
+    if ($venue_sport_type !== $requested_sport_type) {
+        // Redirect or show error
+        header("Location: venues.php?sport_type=" . urlencode($venue['sport_type']) . "&error=invalid_sport");
+        exit;
+    }
 } else {
-    header("Location: venues.php?sport_type=" . urlencode($sport_type));
+    header("Location: viewSports.php");
     exit;
 }
 $stmt->close();

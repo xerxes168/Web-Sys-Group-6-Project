@@ -66,7 +66,7 @@ $venues = [];
 
 if (getDbConnection()) {
     // Prepare the query to find venues suitable for the selected sport
-    $stmt = $conn->prepare("SELECT id, name, location, capacity, hourly_rate, description, amenities 
+    $stmt = $conn->prepare("SELECT id, name, location, capacity, hourly_rate, description, amenities, sport_type 
                             FROM venues 
                             WHERE suitable_for_sports = 1 AND sport_type = ?
                             ORDER BY hourly_rate");
