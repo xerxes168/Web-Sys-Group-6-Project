@@ -76,13 +76,13 @@ function verifyLogin() {
         return;
     }
 
-    // Prepare the statement to fetch user by email (assuming email is used for login)
-    $stmt = $conn->prepare("SELECT email, password, member_id, role FROM members WHERE email = ? OR username = ?");
+    // Prepare the statement to fetch user by email (email is used for login)
+    $stmt = $conn->prepare("SELECT email, password, member_id, role FROM members WHERE email = ?");
     if (!$stmt) {
         $errorMsg .= "<li>Prepare failed: (" . $conn->errno . ") " . $conn->error . "</li>";
         $success = false;
     } else {
-        $stmt->bind_param("ss", $username, $username); 
+        $stmt->bind_param("s", $username); 
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -124,7 +124,7 @@ function sanitize_input($data) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>GatherSpot - Login Result</title>
+        <title>Login Result</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">

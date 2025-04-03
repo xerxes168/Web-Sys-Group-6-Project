@@ -39,8 +39,8 @@
                                 <!-- Login Form -->
                                 <form action="process_login.php" method="POST">
                                     <div class="form-group">
-                                        <label for="username">Username or Email</label>
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email" required>
+                                        <label for="username">Email</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
@@ -57,8 +57,5 @@
                 </div>
             </section>
         </main>
-
-        <!-- Optional Footer (if you add one later) -->
-        <!-- <footer id="footer">...</footer> -->
     </body>
 </html>

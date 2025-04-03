@@ -9,6 +9,14 @@ $success = true;
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate First Name (Required)
+    if (empty($_POST["fname"])) {
+        $errorMsg .= "<li>First name is required.</li>";
+        $success = false;
+    } else {
+        $fname = sanitize_input($_POST["fname"]);
+    }
+
     // Validate Last Name (Required)
     if (empty($_POST["lname"])) {
         $errorMsg .= "<li>Last name is required.</li>";
@@ -45,27 +53,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Sanitize Optional First Name
-    if (!empty($_POST["fname"])) {
-        $fname = sanitize_input($_POST["fname"]);
-    }
-
     // Hash Password and Save to DB if Validation Passed
     if ($success) {
-        $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
-        saveMemberToDB(); // Uncomment this line to save to database
+        // Check if email is already registered
+        if (isEmailRegistered($email)) {
+            $errorMsg .= "<li>Email already registered.</li>";
+            $success = false;
+        } else {
+            $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
+            saveMemberToDB($fname, $lname, $email, $pwd_hashed);
+        }
     }
 }
 
 /**
- * Function to save the user's data into the database
+ * Function to check if an email is already registered
+ * Returns true if email exists, false if not
  */
-function saveMemberToDB()
-{
-    global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success;
+function isEmailRegistered($email) {
+    // Use __DIR__ for a relative path
+    $configFile = __DIR__ . '/../private/db-config.ini'; // Adjust path as needed
 
-    // Define the config file path relative to this script
-    $configFile = '/var/www/private/db-config.ini';
+    if (!file_exists($configFile)) {
+        return false; // Assume not registered if config is missing
+    }
+
+    $config = parse_ini_file($configFile);
+    if ($config === false) {
+        return false; // Assume not registered if config can't be parsed
+    }
+
+    $conn = new mysqli(
+        $config['servername'],
+        $config['username'],
+        $config['password'],
+        $config['dbname']
+    );
+
+    if ($conn->connect_error) {
+        $conn->close();
+        return false; // Assume not registered if connection fails
+    }
+
+    $stmt = $conn->prepare("SELECT email FROM members WHERE email = ?");
+    if ($stmt) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $exists = $result->num_rows > 0;
+        $stmt->close();
+        $conn->close();
+        return $exists;
+    }
+
+    $conn->close();
+    return false; // Assume not registered if query fails
+}
+
+/**
+ * Function to save the user's data into the database
+ * Modified to accept parameters instead of using globals
+ */
+function saveMemberToDB($fname, $lname, $email, $pwd_hashed)
+{
+    global $errorMsg, $success; // Still need these for feedback
+
+    // Use __DIR__ for a relative path
+    $configFile = __DIR__ . '/../private/db-config.ini'; // Adjust path as needed
 
     // Check if the file exists before parsing
     if (!file_exists($configFile)) {
@@ -96,7 +150,7 @@ function saveMemberToDB()
         return;
     }
 
-    // Prepare the statement
+    // Prepare the statement for insertion
     $stmt = $conn->prepare(
         "INSERT INTO members (fname, lname, email, password) VALUES (?, ?, ?, ?)"
     );
@@ -132,7 +186,7 @@ function sanitize_input($data) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>GatherSpot - Registration Result</title>
+        <title>Registration Result</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
