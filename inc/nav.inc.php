@@ -67,7 +67,34 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
             </div>
         <?php else: ?>
             <button class="nav-button" onclick="location.href='register.php'">Register/Login</button>
-            <button class="nav-button" onclick="location.href='admin_login.php'">Admin Login</button>
         <?php endif; ?>
     </div>
 </div>
+<script>
+// Toggle the navigation menu on mobile
+function toggleMenu() {
+    document.querySelector('.nav-menu-items').classList.toggle('active');
+}
+
+// Dropdown functionality for user menu
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.user-menu').classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                const dropdown = document.querySelector('.user-menu');
+                if (dropdown && dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+    }
+});
+</script>

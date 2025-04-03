@@ -77,7 +77,7 @@ function verifyLogin() {
     }
 
     // Prepare the statement to fetch user by email (assuming email is used for login)
-    $stmt = $conn->prepare("SELECT email, password, member_id FROM members WHERE email = ? OR username = ?");
+    $stmt = $conn->prepare("SELECT email, password, member_id, role FROM members WHERE email = ? OR username = ?");
     if (!$stmt) {
         $errorMsg .= "<li>Prepare failed: (" . $conn->errno . ") " . $conn->error . "</li>";
         $success = false;

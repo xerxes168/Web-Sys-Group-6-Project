@@ -104,136 +104,7 @@ if (getDbConnection()) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HoopSpaces - Admin Panel</title>
     <?php include "inc/head.inc.php"; ?>
-    <style>
-        .admin-dashboard {
-            padding: 20px;
-        }
-        .stats-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-card {
-            flex: 1;
-            min-width: 200px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-            text-align: center;
-        }
-        .stat-card h3 {
-            color: #5f52b0;
-            margin-bottom: 10px;
-        }
-        .stat-card .number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-        }
-        .admin-panel {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .admin-sidebar {
-            width: 250px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .admin-sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .admin-sidebar li {
-            margin-bottom: 10px;
-        }
-        .admin-sidebar a {
-            display: block;
-            padding: 10px 15px;
-            border-radius: 4px;
-            color: #333;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .admin-sidebar a:hover, .admin-sidebar a.active {
-            background-color: #5f52b0;
-            color: white;
-        }
-        .admin-content {
-            flex: 1;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-        }
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .admin-header h1 {
-            color: #5f52b0;
-            margin: 0;
-        }
-        .admin-action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .admin-action-buttons a {
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            color: white;
-            background-color: #5f52b0;
-            transition: background-color 0.3s;
-        }
-        .admin-action-buttons a:hover {
-            background-color: #4a4098;
-        }
-        .recent-bookings {
-            margin-top: 30px;
-        }
-        .booking-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .booking-table th, .booking-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .booking-table th {
-            background-color: #f8f9fa;
-            color: #333;
-            font-weight: bold;
-        }
-        .booking-table tr:hover {
-            background-color: #f8f9fa;
-        }
-        .status-confirmed {
-            color: #28a745;
-            font-weight: bold;
-        }
-        .status-cancelled {
-            color: #dc3545;
-            font-weight: bold;
-        }
-        .admin-welcome {
-            background: linear-gradient(to right, #5f52b0, #ff589e);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        .admin-welcome h2 {
-            margin-top: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body>
@@ -273,7 +144,6 @@ if (getDbConnection()) {
             </div>
         </div>
         
-        <!-- Admin Panel -->
         <div class="admin-panel">
             <div class="admin-sidebar">
                 <ul>
@@ -282,7 +152,6 @@ if (getDbConnection()) {
                     <li><a href="admin_members.php">Manage Members</a></li>
                     <li><a href="admin_credits.php">Credits Management</a></li>
                     <li><a href="admin_bookings.php">Booking Reports</a></li>
-                    <li><a href="admin_logout.php">Logout</a></li>
                 </ul>
             </div>
             
