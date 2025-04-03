@@ -136,7 +136,7 @@ function sanitize_input($data) {
         <link rel="stylesheet" href="css/owl-carousel.css">
         <link rel="stylesheet" href="css/datepicker.css">
         <link rel="stylesheet" href="css/templatemo-style.css">
-        <link rel="stylesheet" href="css/sit_process.css"> <!-- Reusing sit_process.css -->
+        <link rel="stylesheet" href="css/sit_process.css">
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -145,36 +145,38 @@ function sanitize_input($data) {
 
     <body>
         <!-- Navigation Bar -->
-        <?php include "inc/nav.inc.php";?>
+        <nav><?php include "inc/nav.inc.php"; ?></nav>
 
-        <!-- Result Section -->
-        <section class="result-section" id="top">
-            <div class="result-form">
-                <h2 style="text-align: center; margin-bottom: 20px;">
-                    <?php echo $success ? "Login Successful" : "Login Failed"; ?>
-                </h2>
-                <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
-                
-                <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
-                    <?php if ($success) { ?>
-                        <div class="success-message">
-                            Login successful! <br>
-                            <a href="index.php">Go to homepage</a>
-                        </div>
+        <!-- Main Content -->
+        <main>
+            <section class="result-section" id="top">
+                <div class="result-form">
+                    <h1 style="text-align: center; margin-bottom: 20px; font-size: 20px">
+                        <?php echo "Login Status"; ?>
+                    </h1>
+                    <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
+                    
+                    <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+                        <?php if ($success) { ?>
+                            <div class="success-message">
+                                Login successful! <br>
+                                <a href="index.php">Go to homepage</a>
+                            </div>
+                        <?php } else { ?>
+                            <div class="error-message">
+                                <p>The following errors occurred:</p>
+                                <ul><?php echo $errorMsg; ?></ul>
+                                <a href="login.php">Try again</a>
+                            </div>
+                        <?php } ?>
                     <?php } else { ?>
                         <div class="error-message">
-                            <p>The following errors occurred:</p>
-                            <ul><?php echo $errorMsg; ?></ul>
-                            <a href="login.php">Try again</a>
+                            No login attempt made. <br>
+                            <a href="login.php">Go to login</a>
                         </div>
                     <?php } ?>
-                <?php } else { ?>
-                    <div class="error-message">
-                        No login attempt made. <br>
-                        <a href="login.php">Go to login</a>
-                    </div>
-                <?php } ?>
-            </div>
-        </section>
+                </div>
+            </section>
+        </main>
     </body>
 </html>

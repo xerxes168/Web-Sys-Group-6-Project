@@ -206,37 +206,38 @@ function sanitize_input($data) {
     </head>
 
     <body>
-        <!-- Navigation Bar -->
-        <?php include "inc/nav.inc.php";?>
+        <nav><?php include "inc/nav.inc.php"; ?></nav>
 
-        <!-- Result Section -->
-        <section class="result-section" id="top">
-            <div class="result-form">
-                <h2 style="text-align: center; margin-bottom: 20px;">
-                    <?php echo $success ? "Registration Successful" : "Registration Failed"; ?>
-                </h2>
-                <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
-                
-                <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
-                    <?php if ($success) { ?>
-                        <div class="success-message">
-                            Registration successful! <br>
-                            <a href="login.php">Log in here</a>
-                        </div>
+        <!-- Main Content -->
+        <main>
+            <section class="result-section" id="top">
+                <div class="result-form">
+                    <h1 style="text-align: center; margin-bottom: 20px; font-size: 20px">
+                        <?php echo "Registration Status"; ?>
+                    </h1>
+                    <div class="line-dec" style="width: 50px; height: 3px; background: #ff589e; margin: 0 auto 20px;"></div>
+                    
+                    <?php if ($_SERVER["REQUEST_METHOD"] == "POST") { ?>
+                        <?php if ($success) { ?>
+                            <div class="success-message">
+                                Registration successful! <br>
+                                <a href="login.php">Log in here</a>
+                            </div>
+                        <?php } else { ?>
+                            <div class="error-message">
+                                <p>The following errors occurred:</p>
+                                <ul><?php echo $errorMsg; ?></ul>
+                                <a href="register.php">Try again</a>
+                            </div>
+                        <?php } ?>
                     <?php } else { ?>
                         <div class="error-message">
-                            <p>The following errors occurred:</p>
-                            <ul><?php echo $errorMsg; ?></ul>
-                            <a href="register.php">Try again</a>
+                            No registration attempt made. <br>
+                            <a href="register.php">Go to registration</a>
                         </div>
                     <?php } ?>
-                <?php } else { ?>
-                    <div class="error-message">
-                        No registration attempt made. <br>
-                        <a href="register.php">Go to registration</a>
-                    </div>
-                <?php } ?>
-            </div>
-        </section>
+                </div>
+            </section>
+        </main>
     </body>
 </html>
