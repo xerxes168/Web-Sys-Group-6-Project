@@ -15,7 +15,7 @@
 .about-us p {
     font-size: 18px;
     line-height: 1.8;
-    color: #555;
+    color: #333;
     margin: 0 auto 30px;
     padding: 0 15px;
     width: 100%; /* Allow text to take up full width */
@@ -49,7 +49,7 @@
 .history p {
     font-size: 18px;
     line-height: 1.8;
-    color: #777;
+    color: #333;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
@@ -84,7 +84,7 @@
 
 .choose-item p {
     font-size: 16px;
-    color: #777;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -97,7 +97,14 @@
 
 .team .container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    outline: none;
 }
+
+.team .container:focus {
+    outline: 2px solid #5f52b0; 
+}
+
 
 .team .team-members {
     display: flex;
@@ -120,14 +127,6 @@
     transform: scale(1.05);
 }
 
-.team .team-member img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    border: 3px solid #5f52b0;
-}
-
 .team h2 {
     font-size: 36px;
     margin-bottom: 30px;
@@ -145,6 +144,6 @@
 
 .team-member p {
     font-size: 16px;
-    color: #555;
+    color: #333;
     line-height: 1.6;
 }

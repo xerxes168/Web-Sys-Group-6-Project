@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('DOMContentLoaded', function() {
         const hamburger = document.querySelector('.hamburger');
         const menu = document.querySelector('.nav-menu-items');
+
+        console.log('Hamburger and menu elements:', hamburger, menu);
         
         // If the hamburger icon exists
         if (hamburger && menu) {

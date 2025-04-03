@@ -1,0 +1,73 @@
+.contact-us {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.contact-us h2, .contact-us h3, .contact-us h4 {
+    font-weight: bold;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #5f52b0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-heading,
+.quality-service-heading {
+    font-size: 28px;
+    color: #5f52b0;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact-details h4 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.contact-details p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 10px;
+    color: #5f52b0; 
+    text-decoration: none;
+    font-size: 40px; 
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #4e48a1; /* Slightly darker shade for hover effect */
+}
+
+.social-icon i {
+    margin-right: 0; /* Optional: Adjust spacing between icons if needed */
+}
+
+

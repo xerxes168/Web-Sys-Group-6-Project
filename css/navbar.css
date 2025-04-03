@@ -64,13 +64,11 @@
 
 /* Logo */
 .nav-logo {
-    position: absolute;
-    left: 8%; /* Position the logo at the center */
-    transform: translateX(-50%); /* Center the logo horizontally */
     font-size: 24px;
     font-weight: bold;
     color: white;
     text-align: center;
+    justify-content: flex-start
 }
 
 .nav-logo img {
@@ -104,34 +102,37 @@
     z-index: 100;  /* Ensure it's above other elements */
 }
 
-.hamburger .bar {
-    width: 30px;
-    height: 3px;
-    margin: 6px 0;
-    background-color: white;  /* Color for the hamburger lines */
-    transition: 0.3s;
-}
-
-/* Show hamburger on small screens (mobile view) */
-@media only screen and (max-width: 768px) {
+/* Show hamburger icon for screens smaller than 768px */
+@media (max-width: 768px) {
     .hamburger {
-        display: block; /* Display hamburger icon */
+        display: grid;  /* Display hamburger icon */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        cursor: pointer;
     }
 
-    /* Hide nav menu items by default on mobile */
+    .hamburger .bar {
+        width: 20px;
+        height: 2px;
+        margin: 4px 0;
+        background-color: white;
+    }
+
     .nav-menu-items {
-        display: none;
+        display: none;  /* Hide menu by default on mobile */
         position: absolute;
         top: 60px;  /* Position below the navbar */
         left: 0;
         width: 100%;
-        background-color: #5f52b0;  /* Same background color as navbar */
+        background-color: #5f52b0;
         text-align: center;
-        flex-direction: column;  /* Stack menu items vertically */
+        flex-direction: column;
     }
 
-    /* Show the nav menu when 'show' class is added */
     .nav-menu-items.show {
-        display: flex;
+        display: flex;  /* Show menu when 'show' class is added */
     }
-} 
+}
+

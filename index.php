@@ -21,7 +21,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -48,14 +48,14 @@ http://www.templatemo.com/tm-513-avalon
     <?php 
         include "inc/header.inc.php"; 
     ?> 
-
+<main>
     <section class="about-us" id=about-us-section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <div class="about-us-left-content">
                         <div class="icon"><img src="img/about-us icon.png" alt=""></div>
-                        <h4>About Us</h4>
+                        <h2>About Us</h2>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -71,12 +71,12 @@ http://www.templatemo.com/tm-513-avalon
                                     <li>+ Personalized event support</li>
                                     <li>Let's make a memorable experience</li>
                                 </ul>
-                                <div class="pink-button">
+                                <div class="discover-button">
                                     <a href="aboutus.php" class="discover-button">Discover More</a>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <img src="img/about-us-image.png" alt="">
+                                <img src="img/aboutus.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ http://www.templatemo.com/tm-513-avalon
                     <h3 class="contact-subtitle">GatherSpot Main Office</h3>
                     
                     <p class="contact-address">
-                        Sunshine Tower, 8 Raffles Avenue, #03-12B,<br>
+                        Sunshine Tower, 8 Raffles Avenue<br>
                         Singapore 039802
                     </p>
                     
@@ -234,28 +234,22 @@ http://www.templatemo.com/tm-513-avalon
                         (Lunch Hours: 12pm - 1pm)
                     </p>
                     
-                    <p class="contact-type">For Venue Enquiries: +65 8123 4567</p>
-                    <p class="contact-type">For Corporate Bookings: +65 9876 5432</p>
-                    
-                    <h3 class="contact-subtitle">GatherSpot at Sports Hub</h3>
-                    
-                    <p class="contact-address">
-                        Sports Hub, 2 Stadium Walk, #02-05<br>
-                        Singapore 397718
-                    </p>
-                    
+                    <p class="contact-type">For Venue Enquiries: +65 8473 4567</p>
+                    <p class="contact-type">For Corporate Bookings: +65 9482 5432</p>
+                                     
                     <p class="contact-hours-title">Operating hours:</p>
                     
                     <p class="contact-hours">
                         Sat - Sun: 10AM - 5PM (By Appointment Only*)
                     </p>
                     
-                    <p class="contact-type">For Weekend Bookings: +65 9123 4567</p>
+                    <p class="contact-type">For Weekend Bookings: +65 9083 4567</p>
                 </div>
             </div>
         </div>
     </div>
     </section>
+</main>
 
         <?php include "inc/footer.inc.php"; ?>
 

@@ -26,10 +26,10 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
     <?php 
         include "inc/nav.inc.php"; 
     ?> 
-
+<main>
     <!-- About Us Section -->
     <section class="about-us">
-        <div class="container">
+        <div class="container" tabindex="0">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="about-content">
@@ -49,10 +49,10 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
     
     <!-- History Section -->
     <section class="history">
-        <div class="container">
+        <div class="container" tabindex="0">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <h3>Our History</h3>
+                    <h2>Our History</h2>
                     <p>The story of HoopSpaces began with a passion for sports and a frustration with the complexity of booking sports venues. Founders were avid sports enthusiasts who found it difficult to find a reliable, easy-to-use platform for booking sports facilities in Singapore. What started as a simple idea to make sports venue booking more accessible eventually grew into the full-fledged platform that is now HoopSpaces.
 
                         The idea was born out of the belief that sports and physical activity should be a part of everyone's life, regardless of their background or skill level. However, booking sports spaces was often a daunting and time-consuming task. That's when HoopSpaces was conceived, as a one-stop solution for people to book venues for their sports events quickly and easily. As we continue to expand and refine our services, we are committed to providing the best 
@@ -64,7 +64,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
 
     <!-- Why Choose Us Section -->
     <section class="why-choose-us">
-        <div class="container">
+        <div class="container" tabindex="0">
             <div class="row justify-content-center">
                 <div class="col-md-10 text-center">
                     <h2>Why Choose HoopSpaces?</h2>
@@ -97,34 +97,41 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
 
     <!-- Team Section -->
     <section class="team">
-        <div class="container">
+        <div class="container" tabindex="0">
             <div class="row justify-content-center">
                 <div class="col-md-10 text-center">
                     <h2>Meet the Team</h2>
                     <div class="team-members">
                         <div class="team-member">
-                            <img src="img/team1.jpg" alt="John Doe" class="team-photo">
-                            <h3>John Doe</h3>
+                            <h3>Tan Zheng Liang</h3>
                             <p>Founder & CEO</p>
                             <p>With over 15 years of experience in the event management industry, John brings his passion for making events unforgettable to every project we take on.</p>
                         </div>
                         <div class="team-member">
-                            <img src="img/team2.jpg" alt="Jane Smith" class="team-photo">
-                            <h3>Jane Smith</h3>
+                            <h3>Alexi Kizhakkepurathu George</h3>
                             <p>Event Coordinator</p>
                             <p>Jane ensures that every event is smoothly coordinated, from initial contact to the final farewell. She thrives on helping clients plan stress-free events.</p>
                         </div>
                         <div class="team-member">
-                            <img src="img/team3.jpg" alt="David Lee" class="team-photo">
-                            <h3>David Lee</h3>
+                            <h3>Elsia Teo Yu Ning</h3>
                             <p>Marketing Manager</p>
                             <p>David leads our marketing efforts to reach more event planners and make HoopSpaces the top choice for booking event spaces in Singapore.</p>
                         </div>
-                    </div>
+                        <div class="team-member">
+                        <h3>Lim Sheng Yang</h3>
+                        <p>Operations Manager</p>
+                        <p>Lim Sheng Yang oversees the day-to-day operations of HoopSpaces, ensuring that everything runs smoothly. With a keen eye for detail, he manages logistics and ensures an excellent user experience for our clients.</p>
+                        </div>
+                        <div class="team-member">
+                            <h3>Lee Jian Yu</h3>
+                            <p>Customer Support Manager</p>
+                            <p>Lee Jian Yu provides outstanding customer support to our users, ensuring that every question is answered and every issue is resolved promptly. With a passion for helping others, Jian Yu makes sure our clients have the best experience possible when using HoopSpaces.</p>
+                        </div>
                 </div>
             </div>
         </div>
     </section>
+</main>
 
     <?php include 'inc/footer.inc.php'; ?>
 

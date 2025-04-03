@@ -25,7 +25,7 @@ ul {
 p {
 	font-size: 13px;
 	line-height: 22px;
-	color: #4a4a4a;
+	color: #333;
 }
 
 .white-border-button a {
@@ -41,18 +41,18 @@ p {
 	transition: all 0.5s;
 }
 
-.pink-button a {
+.discover-button a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #fe6190;
+    background-color: #9c3654;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
 }
 
-.pink-button a:hover {
-    background-color: #fa4e82;
+.discover-button a:hover {
+    background-color: #b14060;
 }
 
 .white-button a {
@@ -167,7 +167,7 @@ p {
 }
 
 .about-us-right-content {
-	background-color: #eee;
+	background-color: #fff;
 	padding: 80px 40px;
 	min-height: 550px;
 	height: 550px;
@@ -189,6 +189,7 @@ p {
 
 .about-us-right-content p {
 	margin: 18px 0px;
+	color: #333;
 }
 
 .about-us-right-content ul {
@@ -201,7 +202,7 @@ p {
 	display: block;
 	font-size: 13px;
 	font-style: italic;
-	color: #7a7a7a;
+	color: #444444;
 	font-weight: 300;
 	margin-bottom: 10px;
 }
@@ -679,7 +680,7 @@ transition-delay: 0.3s;
 #contact button {
     float: left;
     padding: 14px 20px;
-    background-color: #f39e4b; /* Orange color like in the image */
+    background-color: #004aad;
     border-radius: 30px;
     color: #fff;
     font-size: 13px;
@@ -693,7 +694,7 @@ transition-delay: 0.3s;
 }
 
 #contact button:hover {
-    background-color: #e88c37; /* Slightly darker on hover */
+    background-color: #003286; 
 }
 
 .contact-right-content {
@@ -734,7 +735,7 @@ transition-delay: 0.3s;
 }
 
 .contact-main-title {
-	color: #ff6b6b;
+	color: #d94e4e;
 	font-size: 28px;
 	margin-bottom: 30px;
 	font-weight: 700;
@@ -773,7 +774,7 @@ transition-delay: 0.3s;
 
 .contact-info {
 	margin-bottom: 12px;
-	color: #777;
+	color: #333;
 }
 
 .contact-address {
@@ -785,13 +786,13 @@ transition-delay: 0.3s;
 .contact-hours-title {
 	font-weight: 600;
 	margin: 15px 0 2px;
-	color: #555;
+	color: #333;
 }
 
 .contact-hours {
 	margin-bottom: 15px;
 	line-height: 1.6;
-	color: #777;
+	color: #444;
 }
 
 .contact-phone {
@@ -823,6 +824,11 @@ footer p {
 	color: #333;
 	line-height: 80px;
 	margin-bottom: 0px;
+}
+
+footer a {
+    color: #003366;  
+    text-decoration: underline;  
 }
 
 footer p em {
@@ -1269,63 +1275,6 @@ footer p em {
 	.datepicker table tr td.today {
 		background-color: #f4bc51;
 		color: white;
-	}
-
-	.favorite-heart {
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		font-size: 24px;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		color: #ccc;
-		z-index: 10;
-	}
-
-	.favorite-heart:hover {
-		transform: scale(1.2);
-	}
-
-	.favorite-heart.active {
-		color: #e74c3c; /* Red heart when active */
-		animation: heartBeat 0.3s ease-in-out;
-	}
-
-	/* Position the heart properly within the event cards */
-	.event-item {
-		position: relative;
-	}
-
-	/* Animation for when heart is clicked */
-	@keyframes heartBeat {
-		0% { transform: scale(1); }
-		50% { transform: scale(1.3); }
-		100% { transform: scale(1); }
-	}
-
-	/* Add tooltip on hover */
-	.favorite-heart .tooltip {
-		visibility: hidden;
-		width: 120px;
-		background-color: #555;
-		color: #fff;
-		text-align: center;
-		border-radius: 6px;
-		padding: 5px;
-		position: absolute;
-		z-index: 1;
-		bottom: 125%;
-		left: 50%;
-		margin-left: -60px;
-		opacity: 0;
-		transition: opacity 0.3s;
-		font-size: 14px;
-		font-weight: normal;
-	}
-
-	.favorite-heart:hover .tooltip {
-		visibility: visible;
-		opacity: 1;
 	}
 
 	/* Search and Filter Styles */
