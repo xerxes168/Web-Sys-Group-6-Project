@@ -1,6 +1,9 @@
 <?php
 // Start the session at the very beginning of the file
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Now you can access session variables anywhere in this file
 // You might want to add some debugging code to see what's in the session
