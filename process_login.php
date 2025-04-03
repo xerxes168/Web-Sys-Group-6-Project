@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 <?php
 // Start the session
 session_start();
+require_once 'admin_auth.php';
 
 // Initialize variables
 $username = $password = "";
@@ -91,9 +92,11 @@ function verifyLogin() {
             if (password_verify($password, $row['password'])) {
                 // Login successful, set session variable
                 $_SESSION['member_id'] = $row['member_id']; //use member_id instead of email.
-            } else {
-                $errorMsg .= "<li>Invalid email or password.</li>";
-                $success = false;
+                $_SESSION['role'] = $row['role'];
+            } 
+            if (isset($_SESSION['member_id']) && isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
+                header("Location: admin_panel.php");
+                exit;
             }
         } else {
             $errorMsg .= "<li>Invalid email or password.</li>";

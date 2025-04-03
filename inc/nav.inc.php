@@ -61,10 +61,14 @@ $memberName = $isLoggedIn && isset($_SESSION['fname']) ? $_SESSION['fname'] : ''
                     <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
                     <li><a href="mybookings.php"><i class="fa fa-calendar"></i> My Bookings</a></li>
                     <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+                        <li><a href="admin_panel.php"><i class="fa fa-cog"></i> Admin Panel</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         <?php else: ?>
             <button class="nav-button" onclick="location.href='register.php'">Register/Login</button>
+            <button class="nav-button" onclick="location.href='admin_login.php'">Admin Login</button>
         <?php endif; ?>
     </div>
 </div>
