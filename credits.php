@@ -135,84 +135,91 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - Credits</title>
+    <title>HoopSpaces - Credits</title>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="css/credits.css">
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <?php include "inc/nav.inc.php"; ?>
+    <nav>
+        <?php include "inc/nav.inc.php"; ?>
+    </nav>
 
-    <!-- Credits Header -->
-    <section class="credits-header">
-        <div class="container">
-            <h1>GatherSpot Credits</h1>
-            <p>The simple way to book venues for all your activities</p>
-            
-            <?php if ($isLoggedIn): ?>
-            <div class="credits-balance">
-                <h3>Your Balance: <?php echo number_format($credit_balance, 2); ?> credits</h3>
+    <!-- Main Content -->
+    <main>
+        <!-- Credits Header -->
+        <header class="credits-header">
+            <div class="container">
+                <h1>GatherSpot Credits</h1>
+                <p>The simple way to book venues for all your activities</p>
+                
+                <?php if ($isLoggedIn): ?>
+                <div class="credits-balance">
+                    <h3>Your Balance: <?php echo number_format($credit_balance, 2); ?> credits</h3>
+                </div>
+                <?php endif; ?>
             </div>
-            <?php endif; ?>
-        </div>
-    </section>
+        </header>
 
-    <div class="container">
-        <!-- Introduction -->
-        <div class="credits-intro">
-            <h2>Simple Pricing, No Surprises</h2>
-            <p>GatherSpot credits work like a digital wallet for all your bookings. Purchase credits in advance and use them whenever you're ready to book a venue. The more credits you buy, the more you save!</p>
-        </div>
-        
-        <!-- Login Prompt for Non-Logged In Users -->
-        <?php if (!$isLoggedIn): ?>
-        <div class="login-prompt">
-            <h3>Ready to get started?</h3>
-            <p>You need to be logged in to purchase credits. Already have an account? Log in to continue. New to GatherSpot? Register now to start booking venues!</p>
-            <a href="login.php" class="btn-login">Log In</a>
-            <a href="register.php" class="btn-login" style="background-color: #5f52b0; margin-left: 10px;">Register</a>
-        </div>
-        <?php endif; ?>
-        
-        <!-- Pricing Cards -->
-        <div class="price-cards">
-            <?php foreach ($credit_packages as $package): ?>
-            <div class="price-card <?php echo ($package['popular']) ? 'popular' : ''; ?>">
-                <?php if ($package['popular']): ?>
-                <div class="popular-badge">MOST POPULAR</div>
+        <section class="credits-content">
+            <div class="container">
+                <!-- Introduction -->
+                <div class="credits-intro">
+                    <h2>Simple Pricing, No Surprises</h2>
+                    <p>GatherSpot credits work like a digital wallet for all your bookings. Purchase credits in advance and use them whenever you're ready to book a venue. The more credits you buy, the more you save!</p>
+                </div>
+                
+                <!-- Login Prompt for Non-Logged In Users -->
+                <?php if (!$isLoggedIn): ?>
+                <div class="login-prompt">
+                    <h3>Ready to get started?</h3>
+                    <p>You need to be logged in to purchase credits. Already have an account? Log in to continue. New to GatherSpot? Register now to start booking venues!</p>
+                    <a href="login.php" class="btn-login">Log In</a>
+                    <a href="register.php" class="btn-login" style="background-color: #5f52b0; margin-left: 10px;">Register</a>
+                </div>
                 <?php endif; ?>
                 
-                <div class="card-header">
-                    <h3><?php echo htmlspecialchars($package['name']); ?></h3>
-                </div>
-                
-                <div class="card-body">
-                    <div class="credit-amount">
-                        <?php echo number_format($package['credits']); ?> <span>credits</span>
+                <!-- Pricing Cards -->
+                <div class="price-cards">
+                    <?php foreach ($credit_packages as $package): ?>
+                    <div class="price-card <?php echo ($package['popular']) ? 'popular' : ''; ?>">
+                        <?php if ($package['popular']): ?>
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <?php endif; ?>
+                        
+                        <div class="card-header">
+                            <h3><?php echo htmlspecialchars($package['name']); ?></h3>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="credit-amount">
+                                <?php echo number_format($package['credits']); ?> <span>credits</span>
+                            </div>
+                            
+                            <div class="price">
+                                $<?php echo number_format($package['price'], 2); ?>
+                            </div>
+                            
+                            <p><?php echo htmlspecialchars($package['description']); ?></p>
+                            
+                            <?php if ($isLoggedIn): ?>
+                            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                <input type="hidden" name="package_id" value="<?php echo $package['id']; ?>">
+                                <button type="submit" name="buy_credits" class="btn-buy">Buy Now</button>
+                            </form>
+                            <?php else: ?>
+                            <button class="btn-buy" disabled title="Please log in to make a purchase">Log In to Buy</button>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    
-                    <div class="price">
-                        $<?php echo number_format($package['price'], 2); ?>
-                    </div>
-                    
-                    <p><?php echo htmlspecialchars($package['description']); ?></p>
-                    
-                    <?php if ($isLoggedIn): ?>
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <input type="hidden" name="package_id" value="<?php echo $package['id']; ?>">
-                        <button type="submit" name="buy_credits" class="btn-buy">Buy Now</button>
-                    </form>
-                    <?php else: ?>
-                    <button class="btn-buy" disabled title="Please log in to make a purchase">Log In to Buy</button>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
-        
+        </section>
+
         <!-- How It Works Section -->
-        <div class="how-it-works">
+        <section class="how-it-works">
             <div class="container">
                 <h2>How It Works</h2>
                 
@@ -258,7 +265,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
         <!-- FAQ Section -->
         <section class="faq-section">
@@ -301,8 +308,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
                 </div>
             </div>
         </section>
-    </div>
+    </main>
     
+    <!-- Footer -->
     <?php include "inc/footer.inc.php"; ?>
     
     <script>

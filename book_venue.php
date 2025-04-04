@@ -252,7 +252,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <title>GatherSpot - Book Venue</title>
+=======
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HoopSpaces - Book Venue</title>
+>>>>>>> 57a659151df2aa67378b8c2973a30af9de8d7117
     <?php include "inc/head.inc.php"; ?>
 
     <style>
