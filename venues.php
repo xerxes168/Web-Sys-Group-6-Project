@@ -70,85 +70,92 @@ if (getDbConnection()) {
                             FROM venues 
                             WHERE suitable_for_sports = 1 AND sport_type = ?
                             ORDER BY hourly_rate");
-    
+
     if ($stmt) {
         $stmt->bind_param("s", $sport_type);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         while ($row = $result->fetch_assoc()) {
             $venues[] = $row;
         }
-        
+
         $stmt->close();
     } else {
         $errorMsg .= "<li>Error preparing venues query: " . $conn->error . "</li>";
         $success = false;
     }
-    
+
     $conn->close();
 }
 
 ?>
 
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GatherSpot - <?php echo htmlspecialchars($sport_name); ?> Venues</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
-    <link rel="stylesheet" href="css/fontAwesome.css">
+    <?php include "inc/head.inc.php"; ?>
     <style>
         p {
-            font color: black;
+            color: #ffffff;
         }
 
         .venues-container {
             padding: 60px 0;
         }
+
         .venue-card {
             margin-bottom: 30px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .venue-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+
         .venue-info {
             padding: 20px;
             background-color: #fff;
         }
+
         .venue-info h3 {
             margin-top: 0;
             color: #333;
         }
+
         .venue-info p {
             color: #666;
             margin-bottom: 15px;
         }
+
         .venue-details {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
         }
+
         .venue-detail {
             display: flex;
             align-items: center;
         }
+
         .venue-detail i {
             margin-right: 5px;
             color: #f4bc51;
         }
+
         .venue-amenities {
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #eee;
         }
+
         .venue-amenities span {
             display: inline-block;
             background-color: #f8f8f8;
@@ -158,9 +165,10 @@ if (getDbConnection()) {
             border-radius: 4px;
             font-size: 12px;
         }
+
         .book-button {
             display: inline-block;
-            background-color: #f4bc51;
+            background-color: #5f52b0;
             color: #fff;
             padding: 10px 20px;
             border-radius: 30px;
@@ -168,11 +176,13 @@ if (getDbConnection()) {
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
+
         .book-button:hover {
             background-color: #e8a430;
             text-decoration: none;
             color: #fff;
         }
+
         .back-button {
             display: inline-block;
             background-color: #ddd;
@@ -184,25 +194,30 @@ if (getDbConnection()) {
             transition: background-color 0.3s ease;
             margin-right: 10px;
         }
+
         .back-button:hover {
             background-color: #ccc;
             text-decoration: none;
             color: #333;
         }
+
         .section-heading {
             text-align: center;
             margin-bottom: 50px;
         }
+
         .section-heading h2 {
             color: #333;
             font-weight: 600;
         }
+
         .section-heading .line-dec {
             width: 60px;
             height: 3px;
             background-color: #f4bc51;
             margin: 10px auto 20px;
         }
+
         .sport-banner {
             background-image: url('img/<?php echo htmlspecialchars($sport_type); ?>.jpg');
             background-size: cover;
@@ -214,6 +229,7 @@ if (getDbConnection()) {
             position: relative;
             color: white;
         }
+
         .sport-banner::before {
             content: '';
             position: absolute;
@@ -223,20 +239,23 @@ if (getDbConnection()) {
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
         }
+
         .sport-banner-content {
             position: relative;
             z-index: 1;
             text-align: center;
         }
+
         .sport-banner h1 {
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 10px;
         }
+
         .venue-price {
             font-size: 18px;
             font-weight: 700;
-            color: #f4bc51;
+            color: #000000;
             margin-bottom: 20px;
         }
     </style>
@@ -244,15 +263,16 @@ if (getDbConnection()) {
 
 <body>
     <?php include "inc/nav.inc.php"; ?>
-
-    <div class="sport-banner">
+    
+    <header class="sport-banner" role="banner">
         <div class="sport-banner-content">
             <h1><?php echo htmlspecialchars($sport_name); ?> Venues</h1>
             <p>Select a venue to book for your <?php echo htmlspecialchars($sport_name); ?> activity</p>
         </div>
-    </div>
-
-    <div class="container venues-container">
+    </header>
+    
+    <main>
+    <section class="container venues-container" aria-label="Venue Listings">
         <div class="row">
             <div class="col-md-12">
                 <div class="mb-4">
@@ -269,7 +289,8 @@ if (getDbConnection()) {
 
         <?php if (empty($venues)): ?>
             <div class="alert alert-info">
-                <p>No venues are currently available for <?php echo htmlspecialchars($sport_name); ?>. Please check back later or try a different sport.</p>
+                <p>No venues are currently available for <?php echo htmlspecialchars($sport_name); ?>. Please check back
+                    later or try a different sport.</p>
             </div>
         <?php else: ?>
             <div class="row">
@@ -295,9 +316,9 @@ if (getDbConnection()) {
                                     foreach ($amenities as $amenity):
                                         $amenity = trim($amenity);
                                         if (!empty($amenity)):
-                                    ?>
-                                        <span><i class="fa fa-check"></i> <?php echo htmlspecialchars($amenity); ?></span>
-                                    <?php
+                                            ?>
+                                            <span><i class="fa fa-check"></i> <?php echo htmlspecialchars($amenity); ?></span>
+                                            <?php
                                         endif;
                                     endforeach;
                                     ?>
@@ -305,18 +326,21 @@ if (getDbConnection()) {
                                 <div class="venue-price">
                                     $<?php echo number_format($venue['hourly_rate'], 2); ?> per hour
                                 </div>
-                                <a href="book_venue.php?venue_id=<?php echo $venue['id']; ?>&sport_type=<?php echo urlencode($sport_type); ?>" class="book-button">Book Now</a>
+                                <a href="book_venue.php?venue_id=<?php echo $venue['id']; ?>&sport_type=<?php echo urlencode($sport_type); ?>"
+                                    class="book-button">Book Now</a>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-    </div>
+    </section>
+    </main>
 
     <?php include "inc/footer.inc.php"; ?>
 
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
 </body>
+
 </html>

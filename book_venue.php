@@ -1,10 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
-
-<?php
 // Start session and require database connection
 session_start();
 
@@ -256,11 +250,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GatherSpot - Book Venue</title>
     <?php include "inc/head.inc.php"; ?>
 
@@ -295,7 +286,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             .venue-location {
-                color: #777;
+                color: #000000;
                 margin-bottom: 15px;
                 font-size: 14px;
             }
@@ -329,7 +320,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             .venue-price {
                 font-size: 18px;
                 font-weight: 700;
-                color: #f4bc51;
+                color: #000000;
                 margin-top: 20px;
                 padding-top: 15px;
                 border-top: 1px solid #f0f0f0;
@@ -348,6 +339,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             .form-group {
                 margin-bottom: 25px;
+                
             }
 
             .form-group label {
@@ -393,7 +385,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             .btn-book {
-                background-color: #f4bc51;
+                background-color: #5f52b0;
                 color: #fff;
                 padding: 12px 30px;
                 border-radius: 30px;
@@ -446,6 +438,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 background-color: #f4bc51;
                 margin: 0 auto 20px;
             }
+
+            .max-capacity-text {
+            color: #000000;
+            font-weight: bold;
+        }
+
     </style>
 
 </head>
@@ -453,10 +451,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include "inc/nav.inc.php"; ?>
 
-
+    <main>
     <div class="container booking-container">
         <div class="section-heading">
-            <h2>Book <?php echo htmlspecialchars($sport_name); ?> Venue</h2>
+            <h1>Book <?php echo htmlspecialchars($sport_name); ?> Venue</h1>
             <div class="line-dec"></div>
             <p>Complete the form below to book your venue</p>
         </div>
@@ -473,7 +471,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-md-4">
                 <div class="booking-card">
                     <div class="venue-details">
-                        <h3 class="venue-name"><?php echo htmlspecialchars($venue['name']); ?></h3>
+                        <h2 class="venue-name"><?php echo htmlspecialchars($venue['name']); ?></h2>
                         <p class="venue-location">
                             <i class="fa fa-map-marker"></i> <?php echo htmlspecialchars($venue['location']); ?>
                         </p>
@@ -553,8 +551,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="number" class="form-control" id="num_participants" name="num_participants"
                                     min="1" max="<?php echo $venue['capacity']; ?>" required
                                     value="<?php echo isset($_POST['num_participants']) ? htmlspecialchars($_POST['num_participants']) : '1'; ?>">
-                                <small class="form-text text-muted">Maximum capacity: <?php echo $venue['capacity']; ?>
-                                    people</small>
+                                <small class="form-text max-capacity-text">Maximum capacity: <?php echo $venue['capacity']; ?> people</small>
                             </div>
 
                             <!-- Special Requests -->
@@ -576,14 +573,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-
+</main>
     <?php include "inc/footer.inc.php"; ?>
 
     <!-- JavaScript Files -->
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/datepicker.js"></script>
-    <script src="js/booking-scripts.js"></script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@ if (!isset($_SESSION['member_id'])) {
 
 // Check if there's a successful booking in session
 if (!isset($_SESSION['booking_success']) || !isset($_SESSION['booking_id'])) {
-    header("Location: sports.php");
+    header("Location: viewSports.php");
     exit;
 }
 
@@ -102,97 +102,167 @@ unset($_SESSION['remaining_credits']);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GatherSpot - Booking Confirmation</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    <?php include "inc/head.inc.php"; ?>
+    <style>
+        .confirmation-header {
+            background-color: #e8f5e9;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .confirmation-header h1 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+        .booking-id {
+            display: inline-block;
+            background-color: #757575;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin: 1rem 0;
+        }
+        .booking-details {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .detail-row {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: baseline;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #666;
+            width: 140px;
+        }
+        .payment-summary {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .payment-amount {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .action-buttons a {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+        .action-buttons i {
+            margin-right: 0.5rem;
+        }
+        .blue-btn {
+            background-color: #1976d2;
+            color: white;
+        }
+        .blue-btn:hover {
+            background-color: #1565c0;
+            color: white;
+        }
+        .outline-btn {
+            border: 1px solid #666;
+            color: #666;
+        }
+        .outline-btn:hover {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+    </style>
 </head>
-
 <body>
     <?php include "inc/nav.inc.php"; ?>
-
-    <div class="container mt-5">
+    
+    <main class="container mt-4 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        <h3>Booking Confirmed!</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-success">
-                            Your booking has been successfully confirmed.
+                <div class="confirmation-header">
+                    <h1>Booking Confirmed!</h1>
+                    <p>Your reservation has been successfully processed</p>
+                    <div class="booking-id">Booking ID: #<?php echo $booking_id; ?></div>
+                </div>
+                
+                <section>
+                    <h2>Booking Details</h2>
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <div class="detail-label">Sport:</div>
+                            <div><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></div>
                         </div>
                         
-                        <?php if ($booking): ?>
-                        <h4 class="mt-4">Booking Details</h4>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>Booking ID:</th>
-                                <td>#<?php echo $booking_id; ?></td>
-                            </tr>
-                            <tr>
-                                <th>Sport:</th>
-                                <td><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Venue:</th>
-                                <td><?php echo htmlspecialchars($booking['venue_name']); ?> (<?php echo htmlspecialchars($booking['venue_location']); ?>)</td>
-                            </tr>
-                            <tr>
-                                <th>Date:</th>
-                                <td><?php echo date('F j, Y', strtotime($booking['event_date'])); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Time:</th>
-                                <td><?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Participants:</th>
-                                <td><?php echo htmlspecialchars($booking['num_participants']); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Status:</th>
-                                <td><span class="badge bg-success">Confirmed</span></td>
-                            </tr>
-                        </table>
-                        
-                        <h4 class="mt-4">Payment Summary</h4>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>Amount Paid:</th>
-                                <td><?php echo number_format($booking_cost, 2); ?> credits</td>
-                            </tr>
-                            <tr>
-                                <th>Remaining Balance:</th>
-                                <td><?php echo number_format($remaining_credits, 2); ?> credits</td>
-                            </tr>
-                        </table>
-                        
-                        <?php if (!empty($booking['special_requests'])): ?>
-                        <h4 class="mt-4">Special Requests</h4>
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?>
+                        <div class="detail-row">
+                            <div class="detail-label">Venue:</div>
+                            <div><?php echo htmlspecialchars($booking['venue_name']); ?> 
+                                (<?php echo htmlspecialchars($booking['venue_location']); ?>)
                             </div>
                         </div>
-                        <?php endif; ?>
-                        <?php else: ?>
-                        <div class="alert alert-warning">
-                            Could not retrieve booking details. Please contact support.
-                        </div>
-                        <?php endif; ?>
                         
-                        <div class="mt-4 text-center">
-                            <a href="index.php" class="btn btn-primary">Return to Home</a>
+                        <div class="detail-row">
+                            <div class="detail-label">Date:</div>
+                            <div><?php echo date('l, F j, Y', strtotime($booking['event_date'])); ?></div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Time:</div>
+                            <div><?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-label">Participants:</div>
+                            <div><?php echo htmlspecialchars($booking['num_participants']); ?></div>
                         </div>
                     </div>
+                </section>
+                
+                <section class="payment-summary">
+                    <h2>Payment Summary</h2>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Amount Paid:</div>
+                        <div class="payment-amount"><?php echo number_format($booking_cost, 2); ?> credits</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Remaining Balance:</div>
+                        <div class="payment-amount"><?php echo number_format($remaining_credits, 2); ?> credits</div>
+                    </div>
+                </section>
+                
+                <?php if (!empty($booking['special_requests'])): ?>
+                <section class="special-requests">
+                    <h2>Special Requests</h2>
+                    <p><?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?></p>
+                </section>
+                <?php endif; ?>
+                
+                <div class="action-buttons">
+                    <a href="index.php" class="blue-btn"><i class="fas fa-home"></i> Return to Home</a>
+                    <a href="my_bookings.php" class="outline-btn"><i class="fas fa-list"></i> My Bookings</a>
+                    <a href="javascript:window.print()" class="outline-btn"><i class="fas fa-print"></i> Print</a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
     <?php include "inc/footer.inc.php"; ?>
 </body>
 </html>
