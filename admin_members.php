@@ -299,7 +299,7 @@ $showForm = $addMode || $editMode;
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -309,165 +309,210 @@ $showForm = $addMode || $editMode;
 </head>
 
 <body>
-    <?php include "inc/nav.inc.php"; ?>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header role="banner" aria-label="Site header">
+        <?php include "inc/nav.inc.php"; ?>
+    </header>
 
-    <div class="container admin-dashboard">
-        <div class="admin-welcome">
-            <h2>Member Management</h2>
-            <p>Add, edit, or remove members from the system.</p>
-        </div>
-        
-        <?php if (!empty($errorMsg)): ?>
-            <div class="alert alert-danger">
-                <?php echo $errorMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (!empty($successMsg)): ?>
-            <div class="alert alert-success">
-                <?php echo $successMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <div class="admin-panel">
-            <div class="admin-sidebar">
-                <ul>
-                    <li><a href="admin_panel.php">Dashboard</a></li>
-                    <li><a href="admin_venues.php">Manage Venues</a></li>
-                    <li><a href="admin_members.php" class="active">Manage Members</a></li>
-                    <li><a href="admin_credits.php">Credits Management</a></li>
-                    <li><a href="admin_bookings.php">Booking Reports</a></li>
-                </ul>
-            </div>
+    <main id="main-content" aria-label="Member management">
+        <div class="container admin-dashboard">
+            <section class="admin-welcome" aria-labelledby="welcome-heading">
+                <h1 id="welcome-heading">Member Management</h1>
+                <p>Add, edit, or remove members from the system.</p>
+            </section>
             
-            <div class="admin-content">
-                <?php if ($showForm): ?>
-                    <!-- Member Form (for Add/Edit) -->
-                    <div class="form-section">
-                        <h2><?php echo $editMode ? 'Edit Member' : 'Add New Member'; ?></h2>
-                        <form method="post" action="admin_members.php">
-                            <?php if ($editMode): ?>
-                                <input type="hidden" name="member_id" value="<?php echo $member['member_id']; ?>">
-                            <?php endif; ?>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="fname" class="form-label">First Name *</label>
-                                        <input type="text" id="fname" name="fname" class="form-control" value="<?php echo htmlspecialchars($member['fname']); ?>" required>
+            <?php if (!empty($errorMsg)): ?>
+                <div class="alert alert-danger" role="alert" aria-live="assertive">
+                    <?php echo $errorMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (!empty($successMsg)): ?>
+                <div class="alert alert-success" role="alert" aria-live="polite">
+                    <?php echo $successMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <div class="admin-panel">
+                <nav class="admin-sidebar" aria-label="Admin Navigation">
+                    <ul>
+                        <li><a href="admin_panel.php">Dashboard</a></li>
+                        <li><a href="admin_venues.php">Manage Venues</a></li>
+                        <li><a href="admin_members.php" class="active" aria-current="page">Manage Members</a></li>
+                        <li><a href="admin_credits.php">Credits Management</a></li>
+                        <li><a href="admin_bookings.php">Booking Reports</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="admin-content" aria-label="Member Management Content">
+                    <?php if ($showForm): ?>
+                        <!-- Member Form (for Add/Edit) -->
+                        <section aria-labelledby="form-heading">
+                            <h2 id="form-heading"><?php echo $editMode ? 'Edit Member' : 'Add New Member'; ?></h2>
+                            <form method="post" action="admin_members.php" novalidate>
+                                <?php if ($editMode): ?>
+                                    <input type="hidden" name="member_id" value="<?php echo $member['member_id']; ?>">
+                                <?php endif; ?>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fname" class="form-label">First Name <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                            <input type="text" id="fname" name="fname" class="form-control" value="<?php echo htmlspecialchars($member['fname']); ?>" required aria-required="true" aria-describedby="fname-error">
+                                            <?php if(isset($errorMsg) && strpos($errorMsg, "First name") !== false): ?>
+                                            <div id="fname-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lname" class="form-label">Last Name <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                            <input type="text" id="lname" name="lname" class="form-control" value="<?php echo htmlspecialchars($member['lname']); ?>" required aria-required="true" aria-describedby="lname-error">
+                                            <?php if(isset($errorMsg) && strpos($errorMsg, "Last name") !== false): ?>
+                                            <div id="lname-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="lname" class="form-label">Last Name *</label>
-                                        <input type="text" id="lname" name="lname" class="form-control" value="<?php echo htmlspecialchars($member['lname']); ?>" required>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                            <input type="email" id="email" name="email" class="form-control" value="<?php echo htmlspecialchars($member['email']); ?>" required aria-required="true" aria-describedby="email-error">
+                                            <?php if(isset($errorMsg) && (strpos($errorMsg, "Email") !== false || strpos($errorMsg, "email") !== false)): ?>
+                                            <div id="email-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="form-label">Username <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                            <input type="text" id="username" name="username" class="form-control" value="<?php echo htmlspecialchars($member['username']); ?>" required aria-required="true" aria-describedby="username-error">
+                                            <?php if(isset($errorMsg) && strpos($errorMsg, "Username") !== false): ?>
+                                            <div id="username-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email" class="form-label">Email *</label>
-                                        <input type="email" id="email" name="email" class="form-control" value="<?php echo htmlspecialchars($member['email']); ?>" required>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password" class="form-label"><?php echo $editMode ? 'Password (leave blank to keep current)' : 'Password <span class="sr-only">(required)</span><span aria-hidden="true">*</span>'; ?></label>
+                                            <input type="password" id="password" name="password" class="form-control" <?php echo $addMode ? 'required aria-required="true"' : ''; ?> aria-describedby="password-error">
+                                            <?php if(isset($errorMsg) && strpos($errorMsg, "Password") !== false): ?>
+                                            <div id="password-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="credit" class="form-label">Credits</label>
+                                            <input type="number" id="credit" name="credit" class="form-control" value="<?php echo htmlspecialchars($member['credit']); ?>" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="role" class="form-label">Role</label>
+                                            <select id="role" name="role" class="form-control">
+                                                <option value="Member" <?php echo ($member['role'] === 'Member') ? 'selected' : ''; ?>>Member</option>
+                                                <option value="Admin" <?php echo ($member['role'] === 'Admin') ? 'selected' : ''; ?>>Admin</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username" class="form-label">Username *</label>
-                                        <input type="text" id="username" name="username" class="form-control" value="<?php echo htmlspecialchars($member['username']); ?>" required>
-                                    </div>
+                                
+                                <div class="form-buttons">
+                                    <a href="admin_members.php" class="btn btn-cancel">Cancel</a>
+                                    <button type="submit" name="save_member" class="btn btn-save">Save Member</button>
                                 </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="password" class="form-label"><?php echo $editMode ? 'Password (leave blank to keep current)' : 'Password *'; ?></label>
-                                        <input type="password" id="password" name="password" class="form-control" <?php echo $addMode ? 'required' : ''; ?>>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="credit" class="form-label">Credits</label>
-                                        <input type="number" id="credit" name="credit" class="form-control" value="<?php echo htmlspecialchars($member['credit']); ?>" min="0" step="0.01">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="role" class="form-label">Role</label>
-                                        <select id="role" name="role" class="form-control">
-                                            <option value="Member" <?php echo ($member['role'] === 'Member') ? 'selected' : ''; ?>>Member</option>
-                                            <option value="Admin" <?php echo ($member['role'] === 'Admin') ? 'selected' : ''; ?>>Admin</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-buttons">
-                                <a href="admin_members.php" class="btn btn-cancel">Cancel</a>
-                                <button type="submit" name="save_member" class="btn btn-save">Save Member</button>
-                            </div>
-                        </form>
-                    </div>
-                <?php else: ?>
-                    <div class="admin-header">
-                        <h1>Manage Members</h1>
-                        <a href="admin_members.php?action=add" class="btn btn-add">Add New Member</a>
-                    </div>
-                    
-                    <?php if (empty($members)): ?>
-                        <p>No members found. Click "Add New Member" to create one.</p>
+                            </form>
+                        </section>
                     <?php else: ?>
-                        <div class="table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Username</th>
-                                        <th>Credits</th>
-                                        <th>Role</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($members as $m): ?>
-                                    <tr>
-                                    <td><?php echo $m['member_id']; ?></td>
-                                    <td><?php echo htmlspecialchars($m['fname'] ?? '') . ' ' . htmlspecialchars($m['lname'] ?? ''); ?></td>
-                                    <td><?php echo htmlspecialchars($m['email'] ?? ''); ?></td>
-                                    <td><?php echo htmlspecialchars($m['username'] ?? ''); ?></td>
-                                    <td class="credit-amount"><?php echo number_format($m['credit'] ?? 0, 2); ?></td>
-                                    <td>
-                                        <span class="role-<?php echo strtolower($m['role'] ?? 'member'); ?>">
-                                            <?php echo $m['role'] ?? 'Member'; ?>
-                                        </span>
-                                    </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="edit_members.php?id=<?php echo $m['member_id']; ?>" class="btn btn-edit">Edit</a>
-                                                
-                                                <?php if ($_SESSION['member_id'] != $m['member_id']): ?>
-                                                <form method="post" action="admin_members.php" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this member?');">
-                                                    <input type="hidden" name="member_id" value="<?php echo $m['member_id']; ?>">
-                                                    <button type="submit" name="delete_member" class="btn btn-delete">Delete</button>
-                                                </form>
-                                                <?php endif; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                        <section aria-labelledby="members-list-heading">
+                            <div class="admin-header">
+                                <h2 id="members-list-heading">Manage Members</h2>
+                                <a href="admin_members.php?action=add" class="btn btn-add">Add New Member</a>
+                            </div>
+                            
+                            <?php if (empty($members)): ?>
+                                <p>No members found. Click "Add New Member" to create one.</p>
+                            <?php else: ?>
+                                <div class="table-responsive" aria-label="Members table" tabindex="0" aria-live="polite">
+                                    <table>
+                                        <caption>List of members with their details and available actions</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Credits</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($members as $m): ?>
+                                            <tr>
+                                                <td><?php echo $m['member_id']; ?></td>
+                                                <td><?php echo htmlspecialchars($m['fname'] ?? '') . ' ' . htmlspecialchars($m['lname'] ?? ''); ?></td>
+                                                <td><?php echo htmlspecialchars($m['email'] ?? ''); ?></td>
+                                                <td><?php echo htmlspecialchars($m['username'] ?? ''); ?></td>
+                                                <td class="credit-amount"><?php echo number_format($m['credit'] ?? 0, 2); ?></td>
+                                                <td>
+                                                    <span class="role-badge role-<?php echo strtolower($m['role'] ?? 'member'); ?>">
+                                                        <?php echo $m['role'] ?? 'Member'; ?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="admin_members.php?action=edit&id=<?php echo $m['member_id']; ?>" class="btn btn-edit">Edit</a>
+                                                        
+                                                        <?php if ($_SESSION['member_id'] != $m['member_id']): ?>
+                                                        <form method="post" action="admin_members.php" class="delete-form">
+                                                            <input type="hidden" name="member_id" value="<?php echo $m['member_id']; ?>">
+                                                            <button type="submit" name="delete_member" class="btn btn-delete" 
+                                                                aria-label="Delete <?php echo htmlspecialchars($m['fname'] ?? '') . ' ' . htmlspecialchars($m['lname'] ?? ''); ?>"
+                                                                data-confirm-message="Are you sure you want to delete this member?">Delete</button>
+                                                        </form>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php endif; ?>
+                        </section>
                     <?php endif; ?>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <?php include "inc/footer.inc.php"; ?>
+    
+    <!-- Add accessible modal confirmation for delete actions -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form');
+        
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const button = form.querySelector('button[data-confirm-message]');
+                const message = button.getAttribute('data-confirm-message');
+                
+                if (!message || !confirm(message)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

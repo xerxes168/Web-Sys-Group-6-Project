@@ -108,100 +108,101 @@ if (getDbConnection()) {
 
 <body>
     <?php include "inc/nav.inc.php"; ?>
-
-    <div class="container admin-dashboard">
-        <div class="admin-welcome">
-            <h2>Welcome to Admin Panel</h2>
-            <p>Manage venues, users, and bookings from this central dashboard.</p>
-        </div>
-        
-        <?php if (!empty($errorMsg)): ?>
-            <div class="alert alert-danger">
-                <?php echo $errorMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (!empty($successMsg)): ?>
-            <div class="alert alert-success">
-                <?php echo $successMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <div class="stats-container">
-            <div class="stat-card">
-                <h3>Total Venues</h3>
-                <div class="number"><?php echo $stats['total_venues']; ?></div>
-            </div>
-            <div class="stat-card">
-                <h3>Total Members</h3>
-                <div class="number"><?php echo $stats['total_members']; ?></div>
-            </div>
-            <div class="stat-card">
-                <h3>Total Bookings</h3>
-                <div class="number"><?php echo $stats['total_bookings']; ?></div>
-            </div>
-        </div>
-        
-        <div class="admin-panel">
-            <div class="admin-sidebar">
-                <ul>
-                    <li><a href="admin_panel.php" class="active">Dashboard</a></li>
-                    <li><a href="admin_venues.php">Manage Venues</a></li>
-                    <li><a href="admin_members.php">Manage Members</a></li>
-                    <li><a href="admin_credits.php">Credits Management</a></li>
-                    <li><a href="admin_bookings.php">Booking Reports</a></li>
-                </ul>
+    <main>
+        <div class="container admin-dashboard">
+            <div class="admin-welcome">
+                <h2>Welcome to Admin Panel</h2>
+                <p>Manage venues, users, and bookings from this central dashboard.</p>
             </div>
             
-            <div class="admin-content">
-                <div class="admin-header">
-                    <h1>Quick Actions</h1>
-                    <div class="admin-action-buttons">
-                        <a href="admin_venues.php?action=add">Add New Venue</a>
-                        <a href="admin_credits.php?action=manage">Manage Credits</a>
-                    </div>
+            <?php if (!empty($errorMsg)): ?>
+                <div class="alert alert-danger">
+                    <?php echo $errorMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (!empty($successMsg)): ?>
+                <div class="alert alert-success">
+                    <?php echo $successMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Venues</h3>
+                    <div class="number"><?php echo $stats['total_venues']; ?></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Members</h3>
+                    <div class="number"><?php echo $stats['total_members']; ?></div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Bookings</h3>
+                    <div class="number"><?php echo $stats['total_bookings']; ?></div>
+                </div>
+            </div>
+            
+            <div class="admin-panel">
+                <div class="admin-sidebar">
+                    <ul>
+                        <li><a href="admin_panel.php" class="active">Dashboard</a></li>
+                        <li><a href="admin_venues.php">Manage Venues</a></li>
+                        <li><a href="admin_members.php">Manage Members</a></li>
+                        <li><a href="admin_credits.php">Credits Management</a></li>
+                        <li><a href="admin_bookings.php">Booking Reports</a></li>
+                    </ul>
                 </div>
                 
-                <div class="recent-bookings">
-                    <h2>Recent Bookings</h2>
-                    <?php if (empty($stats['recent_bookings'])): ?>
-                        <p>No recent bookings found.</p>
-                    <?php else: ?>
-                        <table class="booking-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                    <th>Venue</th>
-                                    <th>Member</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($stats['recent_bookings'] as $booking): ?>
-                                <tr>
-                                    <td>#<?php echo $booking['id']; ?></td>
-                                    <td>
-                                        <?php echo date('M j, Y', strtotime($booking['event_date'])); ?>
-                                        <?php echo date('g:i A', strtotime($booking['start_time'])); ?>
-                                    </td>
-                                    <td><?php echo htmlspecialchars($booking['venue_name']); ?></td>
-                                    <td>
-                                        <?php echo htmlspecialchars($booking['fname'] . ' ' . $booking['lname']); ?><br>
-                                        <small><?php echo htmlspecialchars($booking['email']); ?></small>
-                                    </td>
-                                    <td class="status-<?php echo strtolower($booking['status']); ?>">
-                                        <?php echo ucfirst($booking['status']); ?>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    <?php endif; ?>
+                <div class="admin-content">
+                    <div class="admin-header">
+                        <h1>Quick Actions</h1>
+                        <div class="admin-action-buttons">
+                            <a href="admin_venues.php?action=add">Add New Venue</a>
+                            <a href="admin_credits.php?action=manage">Manage Credits</a>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-bookings">
+                        <h2>Recent Bookings</h2>
+                        <?php if (empty($stats['recent_bookings'])): ?>
+                            <p>No recent bookings found.</p>
+                        <?php else: ?>
+                            <table class="booking-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Venue</th>
+                                        <th>Member</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($stats['recent_bookings'] as $booking): ?>
+                                    <tr>
+                                        <td>#<?php echo $booking['id']; ?></td>
+                                        <td>
+                                            <?php echo date('M j, Y', strtotime($booking['event_date'])); ?>
+                                            <?php echo date('g:i A', strtotime($booking['start_time'])); ?>
+                                        </td>
+                                        <td><?php echo htmlspecialchars($booking['venue_name']); ?></td>
+                                        <td>
+                                            <?php echo htmlspecialchars($booking['fname'] . ' ' . $booking['lname']); ?><br>
+                                            <small><?php echo htmlspecialchars($booking['email']); ?></small>
+                                        </td>
+                                        <td class="status-<?php echo strtolower($booking['status']); ?>">
+                                            <?php echo ucfirst($booking['status']); ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <?php include "inc/footer.inc.php"; ?>
 </body>

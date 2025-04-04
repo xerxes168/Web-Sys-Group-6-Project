@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -178,198 +178,208 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
 </head>
 
 <body>
-    <?php include "inc/nav.inc.php"; ?>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header role="banner" aria-label="Site header">
+        <?php include "inc/nav.inc.php"; ?>
+    </header>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2><i class="fa fa-calendar"></i> My Bookings</h2>
-                <p>View and manage all your venue reservations.</p>
-                
-                <?php if (isset($_SESSION['booking_message'])): ?>
-                    <div class="alert alert-success">
-                        <?php 
-                            echo $_SESSION['booking_message']; 
-                            unset($_SESSION['booking_message']);
-                        ?>
-                    </div>
-                <?php endif; ?>
-                
-                <?php if (!empty($errorMsg)): ?>
-                    <div class="alert alert-danger">
-                        <?php echo $errorMsg; ?>
-                    </div>
-                <?php endif; ?>
-                
-                <!-- Filters -->
-                <div class="filters">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <select id="status-filter" class="form-control">
-                                <option value="all">All Bookings</option>
-                                <option value="confirmed">Confirmed</option>
-                                <option value="cancelled">Cancelled</option>
-                                <option value="pending">Pending</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select id="sport-filter" class="form-control">
-                                <option value="all">All Sports</option>
-                                <option value="basketball">Basketball</option>
-                                <option value="volleyball">Volleyball</option>
-                                <option value="badminton">Badminton</option>
-                                <option value="soccer">Soccer</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Date Range</span>
-                                </div>
-                                <input type="date" id="date-from" class="form-control">
-                                <input type="date" id="date-to" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button id="apply-filters" class="btn btn-primary w-100">Apply</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <?php if (empty($bookings)): ?>
-                    <div class="empty-bookings">
-                        <i class="fa fa-calendar-times-o"></i>
-                        <h4>No Bookings Found</h4>
-                        <p>You haven't made any bookings yet.</p>
-                        <a href="sports.php" class="btn btn-primary mt-3">Book a Sports Venue</a>
-                    </div>
-                <?php else: ?>
-                    <!-- Group bookings by date -->
-                    <?php
-                    $bookings_by_date = [];
-                    foreach ($bookings as $booking) {
-                        $date = $booking['event_date'];
-                        if (!isset($bookings_by_date[$date])) {
-                            $bookings_by_date[$date] = [];
-                        }
-                        $bookings_by_date[$date][] = $booking;
-                    }
+    <main id="main-content" aria-label="My bookings">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><i class="fa fa-calendar" aria-hidden="true"></i> My Bookings</h1>
+                    <p>View and manage all your venue reservations.</p>
                     
-                    // Sort dates in descending order (newest first)
-                    krsort($bookings_by_date);
-                    ?>
-                    
-                    <?php foreach ($bookings_by_date as $date => $date_bookings): ?>
-                        <div class="booking-date">
-                            <?php echo date('l, F j, Y', strtotime($date)); ?>
-                            <?php
-                            // Check if date is in the past
-                            $is_past = strtotime($date) < strtotime(date('Y-m-d'));
-                            if ($is_past) {
-                                echo '<span class="confirmation-badge badge badge-secondary">Past</span>';
-                            } else {
-                                echo '<span class="confirmation-badge badge badge-info">Upcoming</span>';
-                            }
+                    <?php if (isset($_SESSION['booking_message'])): ?>
+                        <div class="alert alert-success" role="alert" aria-live="polite">
+                            <?php 
+                                echo $_SESSION['booking_message']; 
+                                unset($_SESSION['booking_message']);
                             ?>
                         </div>
-                        
-                        <?php foreach ($date_bookings as $booking): ?>
-                            <div class="booking-card" data-status="<?php echo htmlspecialchars($booking['status']); ?>" data-sport="<?php echo htmlspecialchars($booking['sport_type']); ?>">
-                                <div class="booking-header">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <span class="mr-2">Booking #<?php echo $booking['id']; ?></span>
-                                            <?php
-                                            $badge_class = '';
-                                            switch ($booking['status']) {
-                                                case 'confirmed':
-                                                    $badge_class = 'badge-confirmed';
-                                                    break;
-                                                case 'cancelled':
-                                                    $badge_class = 'badge-cancelled';
-                                                    break;
-                                                default:
-                                                    $badge_class = 'badge-pending';
-                                            }
-                                            ?>
-                                            <span class="badge <?php echo $badge_class; ?>"><?php echo ucfirst($booking['status']); ?></span>
-                                        </div>
-                                        <div class="col-md-4 text-right">
-                                            <span><?php echo date('g:i A', strtotime($booking['start_time'])); ?> - <?php echo date('g:i A', strtotime($booking['end_time'])); ?></span>
-                                        </div>
-                                    </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($errorMsg)): ?>
+                        <div class="alert alert-danger" role="alert" aria-live="assertive">
+                            <?php echo $errorMsg; ?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <!-- Filters -->
+                    <section aria-labelledby="filter-heading">
+                        <h2 id="filter-heading" class="sr-only">Filter Options</h2>
+                        <div class="filters">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="status-filter">Status:</label>
+                                    <select id="status-filter" class="form-control" aria-label="Filter by booking status">
+                                        <option value="all">All Bookings</option>
+                                        <option value="confirmed">Confirmed</option>
+                                        <option value="cancelled">Cancelled</option>
+                                        <option value="pending">Pending</option>
+                                    </select>
                                 </div>
-                                <div class="booking-body">
-                                    <div class="booking-details">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Sport Type</div>
-                                                <div><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Venue</div>
-                                                <div><?php echo htmlspecialchars($booking['venue_name']); ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Location</div>
-                                                <div><?php echo htmlspecialchars($booking['venue_location']); ?></div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Participants</div>
-                                                <div><?php echo htmlspecialchars($booking['num_participants']); ?> person(s)</div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Cost</div>
-                                                <div><?php echo number_format($booking['hourly_rate'] * 2, 2); ?> credits</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="booking-label">Reserved On</div>
-                                                <div><?php echo date('M j, Y', strtotime($booking['created_at'] ?? date('Y-m-d'))); ?></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="booking-actions">
-                                        <?php if ($booking['status'] != 'cancelled'): ?>
-                                            <?php
-                                            // Calculate if it's still possible to cancel (e.g., not in the past)
-                                            $event_datetime = strtotime($booking['event_date'] . ' ' . $booking['start_time']);
-                                            $now = time();
-                                            $can_cancel = $event_datetime > $now;
-                                            ?>
+                                <div class="col-md-3">
+                                    <label for="sport-filter">Sport Type:</label>
+                                    <select id="sport-filter" class="form-control" aria-label="Filter by sport type">
+                                        <option value="all">All Sports</option>
+                                        <option value="basketball">Basketball</option>
+                                        <option value="volleyball">Volleyball</option>
+                                        <option value="badminton">Badminton</option>
+                                        <option value="soccer">Soccer</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset>
+                                        <legend>Date Range</legend>
+                                        <div class="input-group">
+                                            <label for="date-from" class="sr-only">From</label>
+                                            <input type="date" id="date-from" class="form-control" aria-label="Start date">
                                             
-                                            <?php if ($can_cancel): ?>
-                                                <button class="btn btn-cancel" onclick="showCancelModal(<?php echo $booking['id']; ?>, '<?php echo htmlspecialchars($booking['venue_name']); ?>', '<?php echo $booking['event_date']; ?>', '<?php echo $booking['start_time']; ?>')">
-                                                    <i class="fa fa-times"></i> Cancel Booking
-                                                </button>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                        
-                                        <a href="bookingdetails.php?id=<?php echo $booking['id']; ?>" class="btn btn-details">
-                                            <i class="fa fa-eye"></i> View Details
-                                        </a>
-                                    </div>
+                                            <label for="date-to" class="sr-only">To</label>
+                                            <input type="date" id="date-to" class="form-control" aria-label="End date">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="apply-filters" class="btn btn-primary w-100" aria-label="Apply filters">Apply</button>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                        </div>
+                    </section>
+                    
+                    <section aria-labelledby="bookings-heading">
+                        <h2 id="bookings-heading" class="sr-only">Booking List</h2>
+                        <?php if (empty($bookings)): ?>
+                            <div class="empty-bookings" role="status">
+                                <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+                                <h3>No Bookings Found</h3>
+                                <p>You haven't made any bookings yet.</p>
+                                <a href="sports.php" class="btn btn-primary mt-3">Book a Sports Venue</a>
+                            </div>
+                        <?php else: ?>
+                            <!-- Group bookings by date -->
+                            <?php
+                            $bookings_by_date = [];
+                            foreach ($bookings as $booking) {
+                                $date = $booking['event_date'];
+                                if (!isset($bookings_by_date[$date])) {
+                                    $bookings_by_date[$date] = [];
+                                }
+                                $bookings_by_date[$date][] = $booking;
+                            }
+                            
+                            // Sort dates in descending order (newest first)
+                            krsort($bookings_by_date);
+                            ?>
+                            
+                            <div class="bookings-list" aria-live="polite">
+                                <?php foreach ($bookings_by_date as $date => $date_bookings): ?>
+                                    <div class="booking-date">
+                                        <h3><?php echo date('l, F j, Y', strtotime($date)); ?></h3>
+                                        <?php
+                                        // Check if date is in the past
+                                        $is_past = strtotime($date) < strtotime(date('Y-m-d'));
+                                        if ($is_past) {
+                                            echo '<span class="confirmation-badge badge badge-secondary" role="status">Past</span>';
+                                        } else {
+                                            echo '<span class="confirmation-badge badge badge-info" role="status">Upcoming</span>';
+                                        }
+                                        ?>
+                                    </div>
+                                    
+                                    <?php foreach ($date_bookings as $booking): ?>
+                                        <article class="booking-card" data-status="<?php echo htmlspecialchars($booking['status']); ?>" data-sport="<?php echo htmlspecialchars($booking['sport_type']); ?>">
+                                            <div class="booking-header">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <span class="mr-2">Booking #<?php echo $booking['id']; ?></span>
+                                                        <?php
+                                                        $badge_class = '';
+                                                        switch ($booking['status']) {
+                                                            case 'confirmed':
+                                                                $badge_class = 'badge-confirmed';
+                                                                break;
+                                                            case 'cancelled':
+                                                                $badge_class = 'badge-cancelled';
+                                                                break;
+                                                            default:
+                                                                $badge_class = 'badge-pending';
+                                                        }
+                                                        ?>
+                                                        <span class="badge <?php echo $badge_class; ?>" role="status"><?php echo ucfirst($booking['status']); ?></span>
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <span><?php echo date('g:i A', strtotime($booking['start_time'])); ?> - <?php echo date('g:i A', strtotime($booking['end_time'])); ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-body">
+                                                <dl class="booking-details">
+                                                    <dt class="booking-label">Sport Type</dt>
+                                                    <dd class="detail-value"><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></dd>
+                                                    
+                                                    <dt class="booking-label">Venue</dt>
+                                                    <dd class="detail-value"><?php echo htmlspecialchars($booking['venue_name']); ?></dd>
+                                                    
+                                                    <dt class="booking-label">Location</dt>
+                                                    <dd class="detail-value"><?php echo htmlspecialchars($booking['venue_location']); ?></dd>
+                                                    
+                                                    <dt class="booking-label">Participants</dt>
+                                                    <dd class="detail-value"><?php echo htmlspecialchars($booking['num_participants']); ?> person(s)</dd>
+                                                    
+                                                    <dt class="booking-label">Cost</dt>
+                                                    <dd class="detail-value"><?php echo number_format($booking['hourly_rate'] * 2, 2); ?> credits</dd>
+                                                    
+                                                    <dt class="booking-label">Reserved On</dt>
+                                                    <dd class="detail-value"><?php echo date('M j, Y', strtotime($booking['created_at'] ?? date('Y-m-d'))); ?></dd>
+                                                </dl>
+                                                
+                                                <div class="booking-actions">
+                                                    <?php if ($booking['status'] != 'cancelled'): ?>
+                                                        <?php
+                                                        // Calculate if it's still possible to cancel (e.g., not in the past)
+                                                        $event_datetime = strtotime($booking['event_date'] . ' ' . $booking['start_time']);
+                                                        $now = time();
+                                                        $can_cancel = $event_datetime > $now;
+                                                        ?>
+                                                        
+                                                        <?php if ($can_cancel): ?>
+                                                            <button class="btn btn-cancel" 
+                                                                    onclick="showCancelModal(<?php echo $booking['id']; ?>, '<?php echo htmlspecialchars($booking['venue_name']); ?>', '<?php echo $booking['event_date']; ?>', '<?php echo $booking['start_time']; ?>')"
+                                                                    aria-label="Cancel booking for <?php echo htmlspecialchars($booking['venue_name']); ?>">
+                                                                <i class="fa fa-times" aria-hidden="true"></i> Cancel Booking
+                                                            </button>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    
+                                                    <a href="bookingdetails.php?id=<?php echo $booking['id']; ?>" class="btn btn-details"
+                                                       aria-label="View details for booking #<?php echo $booking['id']; ?>">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> View Details
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <!-- Cancellation Popup -->
-    <div id="modal-backdrop"></div>
-    <div id="cancel-modal">
-        <h4>Confirm Cancellation</h4>
+    <div id="modal-backdrop" role="presentation"></div>
+    <div id="cancel-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
+        <h4 id="modal-title">Confirm Cancellation</h4>
         <p>Are you sure you want to cancel your booking for <span id="modal-venue"></span> on <span id="modal-date"></span> at <span id="modal-time"></span>?</p>
         
         <div id="refund-policy">
-            <p><strong>Refund Policy:</strong></p>
+            <h5>Refund Policy:</h5>
             <ul>
                 <li>100% refund if cancelled at least 24 hours before the event</li>
                 <li>50% refund if cancelled less than 24 hours before the event</li>
@@ -412,17 +422,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             
             // Show the popup
             document.getElementById('modal-backdrop').style.display = 'block';
-            document.getElementById('cancel-modal').style.display = 'block';
+            const modal = document.getElementById('cancel-modal');
+            modal.style.display = 'block';
+            modal.removeAttribute('hidden');
+            
+            // Set focus to the first button in the modal
+            setTimeout(() => {
+                modal.querySelector('button').focus();
+            }, 100);
         }
         
         // Function to hide the popup
         function hideModal() {
             document.getElementById('modal-backdrop').style.display = 'none';
-            document.getElementById('cancel-modal').style.display = 'none';
+            const modal = document.getElementById('cancel-modal');
+            modal.style.display = 'none';
+            modal.setAttribute('hidden', 'hidden');
         }
         
         // Close popup if backdrop is clicked
         document.getElementById('modal-backdrop').addEventListener('click', hideModal);
+        
+        // Handle Escape key to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && document.getElementById('cancel-modal').style.display === 'block') {
+                hideModal();
+            }
+        });
         
         // Filter functionality
         document.getElementById('apply-filters').addEventListener('click', function() {
@@ -432,6 +458,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             const dateToFilter = document.getElementById('date-to').value;
             
             const bookingCards = document.querySelectorAll('.booking-card');
+            let visibleCount = 0;
+            const totalCount = bookingCards.length;
             
             bookingCards.forEach(card => {
                 let show = true;
@@ -448,7 +476,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
                 
                 // Show or hide the card
                 card.style.display = show ? 'block' : 'none';
+                if (show) visibleCount++;
             });
+            
+            // Announce results to screen readers
+            const liveRegion = document.createElement('div');
+            liveRegion.setAttribute('role', 'status');
+            liveRegion.setAttribute('aria-live', 'polite');
+            liveRegion.className = 'sr-only';
+            liveRegion.textContent = `Showing ${visibleCount} of ${totalCount} bookings`;
+            document.body.appendChild(liveRegion);
+            
+            setTimeout(() => {
+                document.body.removeChild(liveRegion);
+            }, 1000);
         });
     </script>
 </body>

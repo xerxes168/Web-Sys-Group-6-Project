@@ -326,7 +326,7 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -336,204 +336,257 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
 </head>
 
 <body>
-    <?php include "inc/nav.inc.php"; ?>
-
-    <div class="container admin-dashboard">
-        <div class="admin-welcome">
-            <h2>Venue Management</h2>
-            <p>Add, edit, or remove venues from the system.</p>
-        </div>
-        
-        <div class="admin-panel">
-            <div class="admin-sidebar">
-                <ul>
-                    <li><a href="admin_panel.php">Dashboard</a></li>
-                    <li><a href="admin_venues.php" class="active">Manage Venues</a></li>
-                    <li><a href="admin_members.php">Manage Members</a></li>
-                    <li><a href="admin_credits.php">Credits Management</a></li>
-                    <li><a href="admin_bookings.php">Booking Reports</a></li>
-                </ul>
-            </div>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header role="banner" aria-label="Site header">
+        <?php include "inc/nav.inc.php"; ?>
+    </header>
+    
+    <main id="main-content" aria-label="Venue management">
+        <div class="container admin-dashboard">
+            <section class="admin-welcome" aria-labelledby="welcome-heading">
+                <h1 id="welcome-heading">Venue Management</h1>
+                <p>Add, edit, or remove venues from the system.</p>
+            </section>
             
-            <div class="admin-content">
-                <?php if (!empty($errorMsg)): ?>
-                    <div class="alert alert-danger">
-                        <?php echo $errorMsg; ?>
-                    </div>
-                <?php endif; ?>
+            <?php if (!empty($errorMsg)): ?>
+                <div class="alert alert-danger" role="alert" aria-live="assertive">
+                    <?php echo $errorMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (!empty($successMsg)): ?>
+                <div class="alert alert-success" role="alert" aria-live="polite">
+                    <?php echo $successMsg; ?>
+                </div>
+            <?php endif; ?>
+            
+            <div class="admin-panel">
+                <nav class="admin-sidebar" aria-label="Admin Navigation">
+                    <ul>
+                        <li><a href="admin_panel.php">Dashboard</a></li>
+                        <li><a href="admin_venues.php" class="active" aria-current="page">Manage Venues</a></li>
+                        <li><a href="admin_members.php">Manage Members</a></li>
+                        <li><a href="admin_credits.php">Credits Management</a></li>
+                        <li><a href="admin_bookings.php">Booking Reports</a></li>
+                    </ul>
+                </nav>
                 
-                <?php if (!empty($successMsg)): ?>
-                    <div class="alert alert-success">
-                        <?php echo $successMsg; ?>
-                    </div>
-                <?php endif; ?>
-                
-                <!-- Venue form for add/edit -->
-                <?php if ($showForm): ?>
-                    <div class="form-section">
-                        <h2><?php echo $editMode ? 'Edit Venue' : 'Add New Venue'; ?></h2>
-                        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . ($editMode ? '?action=edit&id=' . $venue['id'] : ''); ?>">
-                            <?php if ($editMode): ?>
-                                <input type="hidden" name="venue_id" value="<?php echo $venue['id']; ?>">
-                            <?php endif; ?>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name" class="form-label">Venue Name *</label>
-                                        <input type="text" id="name" name="name" class="form-control" value="<?php echo htmlspecialchars($venue['name']); ?>" required>
+                <div class="admin-content">
+                    <!-- Venue form for add/edit -->
+                    <?php if ($showForm): ?>
+                        <section aria-labelledby="venue-form-heading">
+                            <h2 id="venue-form-heading"><?php echo $editMode ? 'Edit Venue' : 'Add New Venue'; ?></h2>
+                            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . ($editMode ? '?action=edit&id=' . $venue['id'] : ''); ?>" novalidate>
+                                <?php if ($editMode): ?>
+                                    <input type="hidden" name="venue_id" value="<?php echo $venue['id']; ?>">
+                                <?php endif; ?>
+                                
+                                <!-- Basic Venue Information -->
+                                <fieldset>
+                                    <legend>Basic Information</legend>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">Venue Name <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                                <input type="text" id="name" name="name" class="form-control" value="<?php echo htmlspecialchars($venue['name']); ?>" required aria-required="true" aria-describedby="name-error">
+                                                <?php if(isset($errorMsg) && strpos($errorMsg, "name") !== false): ?>
+                                                <div id="name-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="location" class="form-label">Location <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                                <input type="text" id="location" name="location" class="form-control" value="<?php echo htmlspecialchars($venue['location']); ?>" required aria-required="true" aria-describedby="location-error">
+                                                <?php if(isset($errorMsg) && strpos($errorMsg, "location") !== false): ?>
+                                                <div id="location-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="location" class="form-label">Location *</label>
-                                        <input type="text" id="location" name="location" class="form-control" value="<?php echo htmlspecialchars($venue['location']); ?>" required>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="capacity" class="form-label">Capacity <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                                <input type="number" id="capacity" name="capacity" class="form-control" value="<?php echo htmlspecialchars($venue['capacity']); ?>" min="1" required aria-required="true" aria-describedby="capacity-error">
+                                                <?php if(isset($errorMsg) && strpos($errorMsg, "capacity") !== false): ?>
+                                                <div id="capacity-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="hourly_rate" class="form-label">Hourly Rate (Credits) <span class="sr-only">(required)</span><span aria-hidden="true">*</span></label>
+                                                <input type="number" id="hourly_rate" name="hourly_rate" class="form-control" value="<?php echo htmlspecialchars($venue['hourly_rate']); ?>" min="0.01" step="0.01" required aria-required="true" aria-describedby="rate-error">
+                                                <?php if(isset($errorMsg) && strpos($errorMsg, "rate") !== false): ?>
+                                                <div id="rate-error" class="error-message" role="alert"><?php echo $errorMsg; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="sport_type" class="form-label">Sport Type</label>
+                                                <select id="sport_type" name="sport_type" class="form-control">
+                                                    <?php foreach ($sportTypes as $type): ?>
+                                                    <option value="<?php echo $type; ?>" <?php echo ($venue['sport_type'] === $type) ? 'selected' : ''; ?>><?php echo $type; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-4">
+                                    
                                     <div class="form-group">
-                                        <label for="capacity" class="form-label">Capacity *</label>
-                                        <input type="number" id="capacity" name="capacity" class="form-control" value="<?php echo htmlspecialchars($venue['capacity']); ?>" min="1" required>
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" id="is_available" name="is_available" <?php echo $venue['is_available'] ? 'checked' : ''; ?>>
+                                            <label for="is_available">Venue is available for booking</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </fieldset>
+                                
+                                <!-- Venue Description -->
+                                <fieldset>
+                                    <legend>Description and Amenities</legend>
+                                    
                                     <div class="form-group">
-                                        <label for="hourly_rate" class="form-label">Hourly Rate (in credits) *</label>
-                                        <input type="number" id="hourly_rate" name="hourly_rate" class="form-control" value="<?php echo htmlspecialchars($venue['hourly_rate']); ?>" min="1" step="0.01" required>
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea id="description" name="description" class="form-control" rows="4"><?php echo htmlspecialchars($venue['description']); ?></textarea>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                    
                                     <div class="form-group">
-                                        <label for="sport_type" class="form-label">Sport Type</label>
-                                        <select id="sport_type" name="sport_type" class="form-control">
-                                            <?php foreach ($sportTypes as $type): ?>
-                                                <option value="<?php echo $type; ?>" <?php echo ($venue['sport_type'] == $type) ? 'selected' : ''; ?>><?php echo $type; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                        <label for="amenities" class="form-label">Amenities</label>
+                                        <textarea id="amenities" name="amenities" class="form-control" rows="3" placeholder="List amenities separated by commas"><?php echo htmlspecialchars($venue['amenities']); ?></textarea>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="amenities" class="form-label">Amenities (comma-separated)</label>
-                                        <input type="text" id="amenities" name="amenities" class="form-control" value="<?php echo htmlspecialchars($venue['amenities']); ?>" placeholder="Parking, Restrooms, Lockers, Showers, etc.">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
+                                    
                                     <div class="form-group">
                                         <label for="image_url" class="form-label">Image URL</label>
-                                        <input type="text" id="image_url" name="image_url" class="form-control" value="<?php echo htmlspecialchars($venue['image_url']); ?>" placeholder="https://example.com/image.jpg">
+                                        <input type="url" id="image_url" name="image_url" class="form-control" value="<?php echo htmlspecialchars($venue['image_url']); ?>" placeholder="https://example.com/image.jpg">
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea id="description" name="description" class="form-control" rows="4"><?php echo htmlspecialchars($venue['description']); ?></textarea>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Venue Availability</label>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="is_available" name="is_available" value="1" <?php echo $venue['is_available'] ? 'checked' : ''; ?>>
-                                            <label for="is_available">Available for booking</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Suitable For (select all that apply)</label>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_sports" name="suitable_for_sports" value="1" <?php echo $venue['suitable_for_sports'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_sports">Sports</label>
-                                        </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_birthday" name="suitable_for_birthday" value="1" <?php echo $venue['suitable_for_birthday'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_birthday">Birthday Celebrations</label>
-                                        </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_networking" name="suitable_for_networking" value="1" <?php echo $venue['suitable_for_networking'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_networking">Networking Events</label>
-                                        </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_seminar" name="suitable_for_seminar" value="1" <?php echo $venue['suitable_for_seminar'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_seminar">Seminars/Workshops</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-buttons">
-                                <a href="admin_venues.php" class="btn-cancel">Cancel</a>
-                                <button type="submit" name="save_venue" class="btn-save">Save Venue</button>
-                            </div>
-                        </form>
-                    </div>
-                <?php else: ?>
-                    <!-- Venues List -->
-                    <div class="admin-header">
-                        <h1>Manage Venues</h1>
-                        <a href="admin_venues.php?action=add" class="btn-add">Add New Venue</a>
-                    </div>
-                    
-                    <?php if (empty($venues)): ?>
-                        <p>No venues found. Click "Add New Venue" to create one.</p>
-                    <?php else: ?>
-                        <div class="table-responsive">
-                            <table class="venue-table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Location</th>
-                                        <th>Capacity</th>
-                                        <th>Rate</th>
-                                        <th>Sport Type</th>
-                                        <th>Available</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($venues as $v): ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($v['name']); ?></td>
-                                        <td><?php echo htmlspecialchars($v['location']); ?></td>
-                                        <td><?php echo htmlspecialchars($v['capacity']); ?></td>
-                                        <td><?php echo htmlspecialchars($v['hourly_rate']); ?> credits</td>
-                                        <td><?php echo htmlspecialchars($v['sport_type']); ?></td>
-                                        <td>
-                                            <?php if($v['is_available']): ?>
-                                                <span class="badge bg-success">Available</span>
-                                            <?php else: ?>
-                                                <span class="badge bg-danger">Unavailable</span>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <a href="edit_venues.php?id=<?php echo $v['id']; ?>" class="btn-edit">Edit</a>
-                                                <form method="post" action="admin_venues.php" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this venue?');">
-                                                    <input type="hidden" name="venue_id" value="<?php echo $v['id']; ?>">
-                                                    <button type="submit" name="delete_venue" class="btn-delete">Delete</button>
-                                                </form>
+                                </fieldset>
+                                
+                                <!-- Venue Purpose -->
+                                <fieldset>
+                                    <legend>Venue Purpose</legend>
+                                    
+                                    <p>This venue is suitable for (check all that apply):</p>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="suitable_for_sports" name="suitable_for_sports" <?php echo $venue['suitable_for_sports'] ? 'checked' : ''; ?>>
+                                                <label for="suitable_for_sports">Sports</label>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="suitable_for_birthday" name="suitable_for_birthday" <?php echo $venue['suitable_for_birthday'] ? 'checked' : ''; ?>>
+                                                <label for="suitable_for_birthday">Birthday Parties</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="suitable_for_networking" name="suitable_for_networking" <?php echo $venue['suitable_for_networking'] ? 'checked' : ''; ?>>
+                                                <label for="suitable_for_networking">Networking Events</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="suitable_for_seminar" name="suitable_for_seminar" <?php echo $venue['suitable_for_seminar'] ? 'checked' : ''; ?>>
+                                                <label for="suitable_for_seminar">Seminars</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                
+                                <div class="form-buttons">
+                                    <a href="admin_venues.php" class="btn btn-cancel">Cancel</a>
+                                    <button type="submit" name="save_venue" class="btn btn-save">Save Venue</button>
+                                </div>
+                            </form>
+                        </section>
+                    <?php else: ?>
+                        <!-- Venues List -->
+                        <section aria-labelledby="venue-list-heading">
+                            <div class="admin-header">
+                                <h2 id="venue-list-heading">Manage Venues</h2>
+                                <a href="admin_venues.php?action=add" class="btn btn-add">Add New Venue</a>
+                            </div>
+                            
+                            <?php if (empty($venues)): ?>
+                                <p id="no-venues-message">No venues found. Click "Add New Venue" to create one.</p>
+                            <?php else: ?>
+                                <div class="table-responsive" aria-label="Venues table" tabindex="0">
+                                    <table class="venue-table">
+                                        <caption>List of venues with their details and available actions</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Capacity</th>
+                                                <th scope="col">Rate</th>
+                                                <th scope="col">Sport Type</th>
+                                                <th scope="col">Available</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($venues as $v): ?>
+                                            <tr>
+                                                <td><?php echo htmlspecialchars($v['name']); ?></td>
+                                                <td><?php echo htmlspecialchars($v['location']); ?></td>
+                                                <td><?php echo htmlspecialchars($v['capacity']); ?></td>
+                                                <td><?php echo htmlspecialchars($v['hourly_rate']); ?> credits</td>
+                                                <td><?php echo htmlspecialchars($v['sport_type']); ?></td>
+                                                <td>
+                                                    <span class="status-badge <?php echo $v['is_available'] ? 'bg-success' : 'bg-danger'; ?>" role="status">
+                                                        <?php echo $v['is_available'] ? 'Available' : 'Unavailable'; ?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="admin_venues.php?action=edit&id=<?php echo $v['id']; ?>" class="btn btn-edit">Edit</a>
+                                                        <form method="post" action="admin_venues.php" class="delete-form">
+                                                            <input type="hidden" name="venue_id" value="<?php echo $v['id']; ?>">
+                                                            <button type="submit" name="delete_venue" class="btn btn-delete" 
+                                                                aria-label="Delete <?php echo htmlspecialchars($v['name']); ?>"
+                                                                data-confirm-message="Are you sure you want to delete this venue?">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php endif; ?>
+                        </section>
                     <?php endif; ?>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <?php include "inc/footer.inc.php"; ?>
+    
+    <script>
+        // Improve the delete confirmation
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteForms = document.querySelectorAll('.delete-form');
+            
+            deleteForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const button = form.querySelector('button[data-confirm-message]');
+                    const message = button.getAttribute('data-confirm-message');
+                    
+                    if (!confirm(message)) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

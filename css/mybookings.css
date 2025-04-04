@@ -1,142 +1,331 @@
+/* Main card structure */
 .booking-card {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+}
+
+.booking-header {
+  background: #2a2351; /* Further darkened purple for maximum contrast */
+  color: white;
+  padding: 15px 20px;
+  font-weight: bold;
+}
+
+/* Ensure ALL text in header is white */
+.booking-header p,
+.booking-header span,
+.booking-header div {
+  color: white !important; /* Force white text in header with !important */
+}
+
+.booking-body {
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Badge styling with improved contrast */
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-confirmed {
+  background-color: #0a4219; /* Further darkened green for maximum contrast */
+  color: white;
+}
+
+.badge-cancelled {
+  background-color: #8b0000; /* Adjusted red for better contrast */
+  color: white;
+}
+
+.badge-pending {
+  background-color: #5f4200; /* Further darkened gold for maximum contrast */
+  color: white;
+  font-weight: 700; /* Make it bold for better readability */
+}
+
+.badge-secondary {
+  background-color: #3a3f45; /* Further darkened grey for maximum contrast */
+  color: white;
+}
+
+.badge-info {
+  background-color: #085461; /* Further darkened info blue for maximum contrast */
+  color: white;
+}
+
+/* Action buttons */
+.booking-actions {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.booking-actions button, 
+.booking-actions a {
+  margin-left: 10px;
+}
+
+.btn-cancel {
+  background-color: #8b0000; /* Match cancelled badge color */
+  color: white;
+  border: none;
+}
+
+.btn-details {
+  background-color: #2a2351; /* Match the header color */
+  color: white;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #004494; /* Further darkened blue for maximum contrast */
+  color: white;
+}
+
+/* Empty state */
+.empty-bookings {
+  text-align: center;
+  padding: 50px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #222;
+}
+
+.empty-bookings i {
+  font-size: 48px;
+  color: #444444; /* Further darkened icon color for maximum contrast */
+  margin-bottom: 20px;
+}
+
+/* Filter section */
+.filters {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.filters label {
+  color: #222;
+}
+
+/* Modal styling */
+#modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+#cancel-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: #222; /* Darker text */
+}
+
+#cancel-modal h4, 
+#cancel-modal h5 {
+  color: #000; /* Black headings */
+}
+
+/* Date grouping */
+.booking-date {
+  background: #e5e5e5;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #222; /* Darker text */
+}
+
+.confirmation-badge {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Layout fixes */
+body {
+  padding-top: 30px;
+  color: #222; /* Set a default text color for the whole page */
+}
+
+.container, .main-content {
+  padding-top: 40px;
+}
+
+/* Fixed navbar adjustment */
+.navbar + .container {
+  padding-top: 70px;
+}
+
+.bookings-container {
+  padding-top: 30px;
+  margin-top: 20px;
+}
+
+/* Accessibility improvements */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  background: #000; /* Pure black for maximum contrast */
+  color: white;
+  z-index: 10000;
+}
+
+/* Form element accessibility */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #222; /* Ensure label text has good contrast */
+}
+
+input, select, textarea {
+  border: 1px solid #444; /* Darker border for form elements */
+  color: #222; /* Ensure text in form elements has good contrast */
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Modal accessibility */
+#cancel-modal[aria-modal="true"] {
+  outline: none;
+}
+
+#cancel-modal:focus {
+  outline: 2px solid #2a2351;
+}
+
+/* Definition list proper styling */
+dl.booking-details {
+  margin: 0 0 15px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 20px;
+}
+
+dl.booking-details dt.booking-label {
+  font-weight: 600;
+  color: #222; /* Darker text for contrast */
+  grid-column: 1;
+}
+
+dl.booking-details dd.detail-value {
+  margin: 0;
+  grid-column: 2;
+  color: #222; /* Ensure good contrast */
+}
+
+/* Improved focus styles for all interactive elements */
+a:focus, button:focus, select:focus, input:focus {
+  outline: 3px solid #2a2351;
+  outline-offset: 2px;
+}
+
+/* Text link color adjustment */
+a {
+  color: #004494; /* Darker blue for links on white background */
+  text-decoration: underline; /* Always underline links for better accessibility */
+}
+
+a:hover, a:focus {
+  color: #003366; /* Even darker on hover/focus */
+}
+
+/* Text color enforcement */
+p, h1, h2, h3, h4, h5, h6, span, div {
+  color: #222; /* Default dark color for all text elements */
+}
+
+/* Override for elements inside .booking-header */
+.booking-header p, 
+.booking-header h1, 
+.booking-header h2, 
+.booking-header h3, 
+.booking-header h4, 
+.booking-header h5, 
+.booking-header h6, 
+.booking-header span, 
+.booking-header div {
+  color: white !important; /* Force white text in header */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  dl.booking-details {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
-  .booking-card:hover {
-    transform: translateY(-5px);
+  
+  dl.booking-details dt.booking-label {
+    margin-top: 10px;
+    grid-column: 1;
   }
-  .booking-header {
-    background: linear-gradient(to right, #5f52b0, #ff589e);
-    color: white;
-    padding: 15px 20px;
-    font-weight: bold;
+  
+  dl.booking-details dd.detail-value {
+    grid-column: 1;
   }
-  .booking-body {
-    padding: 20px;
-    background-color: #fff;
-  }
-  .booking-details {
-    margin-bottom: 15px;
-  }
-  .booking-details .row {
-    margin-bottom: 8px;
-  }
-  .booking-label {
-    font-weight: 600;
-    color: #555;
-  }
-  .badge {
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .badge-confirmed {
-    background-color: #28a745;
-    color: white;
-  }
-  .badge-cancelled {
-    background-color: #dc3545;
-    color: white;
-  }
-  .badge-pending {
-    background-color: #ffc107;
-    color: #212529;
-  }
+  
   .booking-actions {
-    margin-top: 15px;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  .booking-actions button, .booking-actions a {
-    margin-left: 10px;
-  }
-  .btn-cancel {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-  }
-  .btn-details {
-    background-color: #5f52b0;
-    color: white;
-    border: none;
-  }
-  .empty-bookings {
+  
+  .booking-actions button,
+  .booking-actions a {
+    margin-left: 0;
     text-align: center;
-    padding: 50px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    margin-top: 20px;
   }
-  .empty-bookings i {
-    font-size: 48px;
-    color: #ccc;
-    margin-bottom: 20px;
-  }
-  .filters {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 10px;
-  }
-  #modal-backdrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-  #cancel-modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 500px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    z-index: 1001;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  .booking-date {
-    background: #f5f5f5;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    font-weight: 600;
-    color: #333;
-  }
-  .confirmation-badge {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 14px;
-  }
-  
-  /* Add this to fix text being cut off */
-  body {
-    padding-top: 30px;
-  }
-  
-  .container, .main-content {
-    padding-top: 40px;
-  }
-  
-  /* If you have a fixed navbar */
-  .navbar + .container {
-    padding-top: 70px;
-  }
-  
-  /* Adjust the main bookings container if it exists */
-  .bookings-container {
-    padding-top: 30px;
-    margin-top: 20px;
-  }
+}

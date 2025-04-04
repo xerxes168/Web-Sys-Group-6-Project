@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
         <!-- Credits Header -->
         <header class="credits-header">
             <div class="container">
-                <h1>GatherSpot Credits</h1>
+                <h1>HoopSpace Credits</h1>
                 <p>The simple way to book venues for all your activities</p>
                 
                 <?php if ($isLoggedIn): ?>
@@ -167,14 +167,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
                 <!-- Introduction -->
                 <div class="credits-intro">
                     <h2>Simple Pricing, No Surprises</h2>
-                    <p>GatherSpot credits work like a digital wallet for all your bookings. Purchase credits in advance and use them whenever you're ready to book a venue. The more credits you buy, the more you save!</p>
+                    <p>HoopSpace credits work like a digital wallet for all your bookings. Purchase credits in advance and use them whenever you're ready to book a venue. The more credits you buy, the more you save!</p>
                 </div>
                 
                 <!-- Login Prompt for Non-Logged In Users -->
                 <?php if (!$isLoggedIn): ?>
                 <div class="login-prompt">
                     <h3>Ready to get started?</h3>
-                    <p>You need to be logged in to purchase credits. Already have an account? Log in to continue. New to GatherSpot? Register now to start booking venues!</p>
+                    <p>You need to be logged in to purchase credits. Already have an account? Log in to continue. New to HoopSpace? Register now to start booking venues!</p>
                     <a href="login.php" class="btn-login">Log In</a>
                     <a href="register.php" class="btn-login" style="background-color: #5f52b0; margin-left: 10px;">Register</a>
                 </div>
@@ -273,23 +273,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
                 <h2>Frequently Asked Questions</h2>
                 
                 <div class="faq-item">
-                    <div class="faq-question">What are GatherSpot Credits?</div>
+                    <div class="faq-question">What are HoopSpace Credits?</div>
                     <div class="faq-answer">
-                        <p>GatherSpot Credits are our digital currency used for booking venues on our platform. They work like a digital wallet, allowing you to pre-purchase credits and use them whenever you want to book a venue. This simplifies the payment process and lets you take advantage of bulk discounts.</p>
+                        <p>HoopSpace Credits are our digital currency used for booking venues on our platform. They work like a digital wallet, allowing you to pre-purchase credits and use them whenever you want to book a venue. This simplifies the payment process and lets you take advantage of bulk discounts.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Do credits expire?</div>
                     <div class="faq-answer">
-                        <p>No, your GatherSpot Credits never expire. Once purchased, they remain in your account until you use them.</p>
+                        <p>No, your HoopSpace Credits never expire. Once purchased, they remain in your account until you use them.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Can I get a refund for unused credits?</div>
                     <div class="faq-answer">
-                        <p>Credits are non-refundable but can be used for any venue booking on GatherSpot. If you have special circumstances, please contact our customer support team to discuss your situation.</p>
+                        <p>Credits are non-refundable but can be used for any venue booking on HoopSpace. If you have special circumstances, please contact our customer support team to discuss your situation.</p>
                     </div>
                 </div>
                 

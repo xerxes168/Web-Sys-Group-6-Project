@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,132 +139,169 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <?php include "inc/nav.inc.php"; ?>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <header role="banner" aria-label="Site header">
+        <?php include "inc/nav.inc.php"; ?>
+    </header>
 
-    <div class="container admin-dashboard">
-        <div class="admin-welcome">
-            <h2>Booking Management</h2>
-            <p>View and manage all bookings in the system.</p>
-        </div>
-        
-        <?php if (!empty($errorMsg)): ?>
-            <div class="alert alert-danger">
-                <?php echo $errorMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (!empty($successMsg)): ?>
-            <div class="alert alert-success">
-                <?php echo $successMsg; ?>
-            </div>
-        <?php endif; ?>
-        
-        <div class="admin-panel">
-            <div class="admin-sidebar">
-                <ul>
-                    <li><a href="admin_panel.php">Dashboard</a></li>
-                    <li><a href="admin_venues.php">Manage Venues</a></li>
-                    <li><a href="admin_members.php">Manage Members</a></li>
-                    <li><a href="admin_credits.php">Credits Management</a></li>
-                    <li><a href="admin_bookings.php" class="active">Booking Reports</a></li>
-                </ul>
-            </div>
+    <main id="main-content" aria-label="Booking management">
+        <div class="container admin-dashboard">
+            <section class="admin-welcome" aria-labelledby="welcome-heading">
+                <h1 id="welcome-heading">Booking Management</h1>
+                <p>View and manage all bookings in the system.</p>
+            </section>
             
-            <div class="admin-content">
-                <div class="admin-header">
-                    <h1>All Bookings</h1>
+            <?php if (!empty($errorMsg)): ?>
+                <div class="alert alert-danger" role="alert" aria-live="assertive">
+                    <?php echo $errorMsg; ?>
                 </div>
-                
-                <div class="booking-filters">
-                    <label for="status-filter">Filter by Status:</label>
-                    <select id="status-filter">
-                        <option value="all">All Bookings</option>
-                        <option value="Confirmed">Confirmed</option>
-                        <option value="Cancelled">Cancelled</option>
-                        <option value="Pending">Pending</option>
-                    </select>
-                    
-                    <label for="date-filter">Filter by Date:</label>
-                    <select id="date-filter">
-                        <option value="all">All Dates</option>
-                        <option value="today">Today</option>
-                        <option value="this-week">This Week</option>
-                        <option value="this-month">This Month</option>
-                    </select>
-                    
-                    <button id="apply-filters">Apply Filters</button>
+            <?php endif; ?>
+            
+            <?php if (!empty($successMsg)): ?>
+                <div class="alert alert-success" role="alert" aria-live="polite">
+                    <?php echo $successMsg; ?>
                 </div>
+            <?php endif; ?>
+            
+            <div class="admin-panel">
+                <nav class="admin-sidebar" aria-label="Admin Navigation">
+                    <ul>
+                        <li><a href="admin_panel.php">Dashboard</a></li>
+                        <li><a href="admin_venues.php">Manage Venues</a></li>
+                        <li><a href="admin_members.php">Manage Members</a></li>
+                        <li><a href="admin_credits.php">Credits Management</a></li>
+                        <li><a href="admin_bookings.php" class="active" aria-current="page">Booking Reports</a></li>
+                    </ul>
+                </nav>
                 
-                <?php if (empty($bookings)): ?>
-                    <p>No bookings found.</p>
-                <?php else: ?>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Venue</th>
-                                    <th>Member</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($bookings as $booking): ?>
-                                <tr data-status="<?php echo $booking['status']; ?>">
-                                    <td>#<?php echo $booking['id']; ?></td>
-                                    <td><?php echo date('M j, Y', strtotime($booking['event_date'])); ?></td>
-                                    <td>
-                                        <?php echo date('g:i A', strtotime($booking['start_time'])); ?> - 
-                                        <?php echo date('g:i A', strtotime($booking['end_time'])); ?>
-                                    </td>
-                                    <td>
-                                        <?php echo htmlspecialchars($booking['venue_name']); ?><br>
-                                        <small><?php echo htmlspecialchars($booking['venue_location']); ?></small>
-                                    </td>
-                                    <td>
-                                        <?php echo htmlspecialchars($booking['fname'] . ' ' . $booking['lname']); ?><br>
-                                        <small><?php echo htmlspecialchars($booking['email']); ?></small>
-                                    </td>
-                                    <td class="status-<?php echo strtolower($booking['status']); ?>">
-                                        <?php echo $booking['status']; ?>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <?php if ($booking['status'] !== 'Cancelled'): ?>
-                                            <form method="post" action="admin_bookings.php" style="display: inline;" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
-                                                <input type="hidden" name="booking_id" value="<?php echo $booking['id']; ?>">
-                                                <button type="submit" name="cancel_booking" class="btn btn-cancel">Cancel</button>
-                                            </form>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endif; ?>
+                <div class="admin-content" aria-labelledby="bookings-heading">
+                    <h2 id="bookings-heading">All Bookings</h2>
+                    
+                    <form class="booking-filters" aria-labelledby="filter-heading">
+                        <h3 id="filter-heading" class="sr-only">Filter Options</h3>
+                        
+                        <div class="filter-group">
+                            <label for="status-filter">Filter by Status:</label>
+                            <select id="status-filter" name="status">
+                                <option value="all">All Bookings</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Cancelled">Cancelled</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="date-filter">Filter by Date:</label>
+                            <select id="date-filter" name="date">
+                                <option value="all">All Dates</option>
+                                <option value="today">Today</option>
+                                <option value="this-week">This Week</option>
+                                <option value="this-month">This Month</option>
+                            </select>
+                        </div>
+                        
+                        <button id="apply-filters" type="button" aria-controls="bookings-table">Apply Filters</button>
+                    </form>
+                    
+                    <?php if (empty($bookings)): ?>
+                        <p id="no-bookings-message">No bookings found.</p>
+                    <?php else: ?>
+                        <div class="table-responsive" aria-label="Bookings table" tabindex="0">
+                            <table id="bookings-table" aria-live="polite">
+                                <caption>List of all bookings with venue, member, and status information</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Venue</th>
+                                        <th scope="col">Member</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($bookings as $booking): ?>
+                                    <tr data-status="<?php echo $booking['status']; ?>">
+                                        <td>#<?php echo $booking['id']; ?></td>
+                                        <td><?php echo date('M j, Y', strtotime($booking['event_date'])); ?></td>
+                                        <td>
+                                            <?php echo date('g:i A', strtotime($booking['start_time'])); ?> - 
+                                            <?php echo date('g:i A', strtotime($booking['end_time'])); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo htmlspecialchars($booking['venue_name']); ?><br>
+                                            <small><?php echo htmlspecialchars($booking['venue_location']); ?></small>
+                                        </td>
+                                        <td>
+                                            <?php echo htmlspecialchars($booking['fname'] . ' ' . $booking['lname']); ?><br>
+                                            <small><?php echo htmlspecialchars($booking['email']); ?></small>
+                                        </td>
+                                        <td>
+                                            <span class="status-badge status-<?php echo strtolower($booking['status']); ?>" role="status">
+                                                <?php echo $booking['status']; ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <?php if ($booking['status'] !== 'Cancelled'): ?>
+                                                <form method="post" action="admin_bookings.php" class="cancel-form">
+                                                    <input type="hidden" name="booking_id" value="<?php echo $booking['id']; ?>">
+                                                    <button type="submit" name="cancel_booking" class="btn btn-cancel" 
+                                                       aria-label="Cancel booking #<?php echo $booking['id']; ?> for <?php echo htmlspecialchars($booking['fname'] . ' ' . $booking['lname']); ?>"
+                                                       data-confirm-message="Are you sure you want to cancel this booking?">
+                                                       Cancel
+                                                    </button>
+                                                </form>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
-        // Client-side filtering
+        // Client-side filtering with accessibility improvements
         document.addEventListener('DOMContentLoaded', function() {
             const statusFilter = document.getElementById('status-filter');
             const dateFilter = document.getElementById('date-filter');
             const applyButton = document.getElementById('apply-filters');
+            const table = document.getElementById('bookings-table');
+            
+            // Function to announce filter results to screen readers
+            function announceFilterResults(visibleCount, totalCount) {
+                const liveRegion = document.createElement('div');
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.setAttribute('role', 'status');
+                liveRegion.classList.add('sr-only');
+                liveRegion.textContent = `Showing ${visibleCount} of ${totalCount} bookings.`;
+                
+                document.body.appendChild(liveRegion);
+                
+                // Remove the live region after it's been announced
+                setTimeout(() => {
+                    document.body.removeChild(liveRegion);
+                }, 1000);
+            }
             
             applyButton.addEventListener('click', function() {
                 const statusValue = statusFilter.value;
                 const dateValue = dateFilter.value;
                 
                 const rows = document.querySelectorAll('tbody tr');
+                let visibleCount = 0;
+                const totalCount = rows.length;
                 
                 rows.forEach(row => {
                     let showRow = true;
@@ -276,7 +313,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             showRow = false;
                         }
                     }
+                    
+                    // Date filtering would go here if implemented
+                    
                     row.style.display = showRow ? '' : 'none';
+                    
+                    if (showRow) {
+                        visibleCount++;
+                    }
+                });
+                
+                // Announce the result to screen readers
+                announceFilterResults(visibleCount, totalCount);
+            });
+            
+            // Make the filters keyboard accessible
+            statusFilter.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    applyButton.click();
+                }
+            });
+            
+            dateFilter.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    applyButton.click();
+                }
+            });
+            
+            // Improve the cancel confirmation
+            const cancelForms = document.querySelectorAll('.cancel-form');
+            
+            cancelForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const button = form.querySelector('button[data-confirm-message]');
+                    const message = button.getAttribute('data-confirm-message');
+                    
+                    if (!confirm(message)) {
+                        e.preventDefault();
+                    }
                 });
             });
         });

@@ -1,0 +1,339 @@
+/* Basic card structure */
+.booking-details-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Header section with improved contrast */
+.booking-header {
+    background: #362e6a; /* Darkened purple for better contrast */
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+/* Ensure ALL text in the header is white */
+.booking-header p, 
+.booking-header span,
+.booking-header div {
+    color: white;
+}
+
+.booking-header h1 {
+    margin-bottom: 5px;
+    font-size: 1.75rem;
+}
+
+/* Status badges with improved contrast */
+.booking-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.badge-confirmed {
+    background-color: #0e5522; /* Darkened green for better contrast */
+    color: white;
+}
+
+.badge-cancelled {
+    background-color: #9b0000; /* Adjusted red for better contrast */
+    color: white;
+}
+
+.badge-pending {
+    background-color: #704d00; /* Adjusted gold for better contrast */
+    color: white;
+    font-weight: 700;
+}
+
+/* Main content section */
+.booking-body {
+    padding: 25px;
+    background-color: #fff;
+}
+
+/* Section styling */
+.detail-section {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.detail-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.detail-section h2 {
+    color: #362e6a; /* Darkened to match header */
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.4rem; /* Fixed typo where it was "A1.4rem" */
+}
+
+/* Details list semantic structure */
+dl.detail-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
+}
+
+dt.detail-label {
+    font-weight: 600;
+    color: #222; /* Darker for better contrast */
+}
+
+dd.detail-value {
+    margin-left: 0;
+}
+
+/* Venue amenities as list */
+.venue-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.amenity-tag {
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #222; /* Darker for better contrast */
+}
+
+/* Action buttons section */
+.booking-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Button styles with better contrast */
+.btn-back {
+    background-color: #494f56; /* Darkened gray for better contrast */
+    color: white;
+    border: none;
+}
+
+.btn-cancel {
+    background-color: #9b0000; /* Match adjusted badge color */
+    color: white;
+    border: none;
+}
+
+.btn-print {
+    background-color: #362e6a; /* Match darkened header */
+    color: white;
+    border: none;
+}
+
+/* Special requests section */
+.special-requests {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #222; /* Darker text */
+}
+
+/* Booking timeline */
+.booking-timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #362e6a; /* Match darkened header */
+    z-index: 1;
+}
+
+.timeline-item:after {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 12px;
+    width: 1px;
+    height: 100%;
+    background-color: #777; /* Darker for better contrast */
+}
+
+.timeline-item:last-child:after {
+    display: none;
+}
+
+.timeline-date {
+    font-size: 12px;
+    color: #444; /* Darker gray for better contrast */
+    margin-bottom: 5px;
+    font-weight: 600; /* Make it bolder for better readability */
+}
+
+.timeline-content {
+    font-weight: 500;
+    color: #222; /* Ensure good contrast */
+}
+
+/* Venue image and map */
+.venue-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.venue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444; 
+    font-style: italic;
+}
+
+
+.skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-to-content:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    background: #222;
+    color: white;
+    z-index: 10000;
+}
+
+/* Improved focus styles */
+a:focus, 
+button:focus,
+input:focus,
+select:focus {
+    outline: 3px solid #362e6a;
+    outline-offset: 2px;
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    dl.detail-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .booking-actions > div {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .btn-back, .btn-print, .btn-cancel {
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}
+
+/* Print styles */
+@media print {
+    .skip-to-content,
+    .btn-back,
+    .btn-print,
+    .btn-cancel,
+    nav,
+    footer {
+        display: none !important;
+    }
+    
+    .booking-details-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .booking-header {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+    }
+    
+    .booking-badge {
+        border: 1px solid #000;
+        color: #000 !important;
+        background: none !important;
+    }
+    
+    .btn {
+        display: none !important;
+    }
+}
