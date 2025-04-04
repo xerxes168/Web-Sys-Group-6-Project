@@ -103,7 +103,7 @@ if (getDbConnection()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - Booking Details</title>
+    <title>HoopSpaces - Booking Details</title>
     <?php include "inc/head.inc.php"; ?>
     <style>
         .booking-details-card {

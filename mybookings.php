@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - My Bookings</title>
+    <title>HoopSpaces - My Bookings</title>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="css/mybookings.css">
 </head>
