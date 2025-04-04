@@ -30,6 +30,10 @@
     gap: 10px;
 }
 
+.dropdown-toggle {
+    color: #ffffff; /* Pure white for maximum contrast */
+}
+
 /* Individual nav items */
 .nav-menu-item {
     font-size: 14px;
