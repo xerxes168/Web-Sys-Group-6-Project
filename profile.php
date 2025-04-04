@@ -97,6 +97,7 @@ if ($conn) {
     <?php include "inc/head.inc.php"; ?>
     <title>My Profile - HoopSpaces</title>
     <link rel="stylesheet" href="css/myProfile.css">
+    <?php include "inc/head.inc.php"; ?> 
 </head>
 <body>
     <?php include "inc/nav.inc.php"; ?>
