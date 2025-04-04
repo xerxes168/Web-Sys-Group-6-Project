@@ -8,9 +8,10 @@ $conn = null;
 $booking = null;
 
 // Function to establish database connection
-function getDbConnection() {
+function getDbConnection()
+{
     global $errorMsg, $success, $conn;
-    
+
     // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
@@ -43,7 +44,7 @@ function getDbConnection() {
         $success = false;
         return false;
     }
-    
+
     return true;
 }
 
@@ -104,9 +105,7 @@ unset($_SESSION['remaining_credits']);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GatherSpot - Booking Confirmation</title>
+    <title>HoopSpaces - Booking Confirmation</title>
     <?php include "inc/head.inc.php"; ?>
     <style>
         /* Main container styling */
@@ -117,7 +116,8 @@ unset($_SESSION['remaining_credits']);
         }
 
         /* Focus styles for accessibility */
-        a:focus, button:focus {
+        a:focus,
+        button:focus {
             outline: 3px solid #4d90fe;
             outline-offset: 2px;
         }
@@ -234,11 +234,12 @@ unset($_SESSION['remaining_credits']);
         }
 
         .primary-button {
-            background-color: #f4bc51;
+            background-color: #5f52b0;
             color: white;
         }
 
-        .primary-button:hover, .primary-button:focus {
+        .primary-button:hover,
+        .primary-button:focus {
             background-color: #e8a430;
             color: white;
             text-decoration: none;
@@ -250,7 +251,8 @@ unset($_SESSION['remaining_credits']);
             border: 1px solid #ddd;
         }
 
-        .secondary-button:hover, .secondary-button:focus {
+        .secondary-button:hover,
+        .secondary-button:focus {
             background-color: #e0e0e0;
             color: #333;
             text-decoration: none;
@@ -262,7 +264,10 @@ unset($_SESSION['remaining_credits']);
 
         /* Print-specific styles */
         @media print {
-            .action-buttons, .nav, footer {
+
+            .action-buttons,
+            .nav,
+            footer {
                 display: none !important;
             }
 
@@ -271,7 +276,8 @@ unset($_SESSION['remaining_credits']);
                 width: 100%;
             }
 
-            .confirmation-banner, .info-card {
+            .confirmation-banner,
+            .info-card {
                 box-shadow: none;
                 border: 1px solid #ddd;
             }
@@ -299,10 +305,13 @@ unset($_SESSION['remaining_credits']);
         }
     </style>
 </head>
+
 <body>
-    <?php include "inc/nav.inc.php"; ?>
-    
-    <div class="booking-confirmation-container">
+    <header role="banner">
+        <?php include "inc/nav.inc.php"; ?>
+    </header>
+
+    <main role="main" class="booking-confirmation-container">
         <!-- Success Banner -->
         <div class="confirmation-banner" role="alert" aria-live="polite">
             <h1>Booking Confirmed!</h1>
@@ -311,71 +320,74 @@ unset($_SESSION['remaining_credits']);
                 Booking ID: #<?php echo $booking_id; ?>
             </div>
         </div>
-        
+
         <!-- Booking Details Card -->
-        <div class="info-card">
-            <h2 class="card-title">Booking Details</h2>
-            
+        <section class="info-card" aria-labelledby="booking-details-heading">
+            <h2 id="booking-details-heading" class="card-title">Booking Details</h2>
+
             <div class="detail-row">
                 <div class="detail-label">Sport:</div>
                 <div class="detail-value"><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></div>
             </div>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Venue:</div>
                 <div class="detail-value">
-                    <?php echo htmlspecialchars($booking['venue_name']); ?> 
+                    <?php echo htmlspecialchars($booking['venue_name']); ?>
                     (<?php echo htmlspecialchars($booking['venue_location']); ?>)
                 </div>
             </div>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Date:</div>
                 <div class="detail-value"><?php echo date('l, F j, Y', strtotime($booking['event_date'])); ?></div>
             </div>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Time:</div>
-                <div class="detail-value"><?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></div>
+                <div class="detail-value">
+                    <?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></div>
             </div>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Participants:</div>
                 <div class="detail-value"><?php echo htmlspecialchars($booking['num_participants']); ?></div>
             </div>
-        </div>
-        
+            </div>
+        </section>
+
         <!-- Payment Summary Card -->
-        <div class="info-card">
+        <section class="info-card" aria-labelledby="payment-summary-heading">
             <h2 class="card-title">Payment Summary</h2>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Amount Paid:</div>
                 <div class="detail-value">
                     <span class="payment-amount"><?php echo number_format($booking_cost, 2); ?> credits</span>
                 </div>
             </div>
-            
+
             <div class="detail-row">
                 <div class="detail-label">Remaining Balance:</div>
                 <div class="detail-value">
                     <span class="payment-amount"><?php echo number_format($remaining_credits, 2); ?> credits</span>
                 </div>
             </div>
-        </div>
-        
-        <?php if (!empty($booking['special_requests'])): ?>
-        <!-- Special Requests Card -->
-        <div class="info-card">
-            <h2 class="card-title">Special Requests</h2>
-            <div class="special-requests-content">
-                <?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?>
             </div>
-        </div>
+        </section>
+
+        <?php if (!empty($booking['special_requests'])): ?>
+            <!-- Special Requests Card -->
+            <section class="info-card" aria-labelledby="special-requests-heading">
+                <h2 class="card-title">Special Requests</h2>
+                <div class="special-requests-content">
+                    <?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?>
+                </div>
+            </section>
         <?php endif; ?>
-        
+
         <!-- Action Buttons -->
-        <div class="action-buttons">
+        <nav class="action-buttons" aria-label="Booking options">
             <a href="index.php" class="action-button primary-button">
                 <i class="fa fa-home button-icon" aria-hidden="true"></i> Return to Home
             </a>
@@ -385,10 +397,12 @@ unset($_SESSION['remaining_credits']);
             <button onclick="window.print()" class="action-button secondary-button">
                 <i class="fa fa-print button-icon" aria-hidden="true"></i> Print
             </button>
-        </div>
-    </div>
+        </nav>
+    </main>
+
 
     <?php include "inc/footer.inc.php"; ?>
     <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -93,9 +93,8 @@ if (getDbConnection()) {
 
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
-    <title>GatherSpot - <?php echo htmlspecialchars($sport_name); ?> Venues</title>
+    <title>HoopSpaces - <?php echo htmlspecialchars($sport_name); ?> Venues</title>
     <?php include "inc/head.inc.php"; ?>
 
     <script src="js/main.js"></script>

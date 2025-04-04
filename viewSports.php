@@ -89,7 +89,6 @@ if (empty($sportTypes)) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>HoopSpaces - Browse Sports</title>
     <?php include "inc/head.inc.php"; ?>
