@@ -58,13 +58,13 @@ http://www.templatemo.com/tm-513-avalon
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <h2>About<em> Us</em></h2>
-                                <p>GatherSpot connects with event planners to rent the most suitable sport or event venues in Singapore for any occasion. Whether you're planning a birthday party, gathering or corporate seminar, we have a diverse selection of venues to suit your needs. </p>
-                                <p> Choose GatherSpot for</p>
+                                <p>HoopSpaces connects individuals, teams, and event planners with the most suitable sports event booking spaces across Singapore. Whether you're organizing a friendly match, team-building session, or a large-scale tournament, we offer a diverse range of venues to meet your needs. </p>
+                                <p> Choose HoopSpaces for</p>
                                 <ul>
-                                    <li>+ Wide variety of venues</li>
+                                    <li>+ Wide variety of sports venues</li>
                                     <li>+ Access to trusted venues in Singapore</li>
-                                    <li>+ Personalized event support</li>
-                                    <li>Let's make a memorable experience</li>
+                                    <li>+ Personalized support for smooth bookings</li>
+                                    <li>Let's make your next game or event unforgettable!</li>
                                 </ul>
                                 <div class="discover-button">
                                     <a href="aboutus.php" class="discover-button">Discover More</a>
@@ -202,7 +202,7 @@ http://www.templatemo.com/tm-513-avalon
   <div class="container-fluid">
     <div class="contact-details-container">
       <!-- Main title spanning full width -->
-      <h2 class="contact-main-title">GatherSpot</h2>
+      <h2 class="contact-main-title">HoopSpaces</h2>
       
       <!-- Row with two columns -->
       <div class="row">
@@ -211,16 +211,16 @@ http://www.templatemo.com/tm-513-avalon
           <div class="contact-details-content">
             <h3 class="contact-subtitle">Email</h3>
             <p class="contact-type">For Venue Enquiries:</p>
-            <p class="contact-info">support@gatherspot.com</p>
+            <p class="contact-info">support@hoopspaces.com</p>
             <p class="contact-type">For Corporate Bookings:</p>
-            <p class="contact-info">corporate@gatherspot.com</p>
+            <p class="contact-info">corporate@hoopspaces.com</p>
           </div>
         </div>
         
         <!-- Right column -->
         <div class="col-md-6">
           <div class="contact-details-content">
-            <h3 class="contact-subtitle">GatherSpot Main Office</h3>
+            <h3 class="contact-subtitle">HoopSpaces Main Office</h3>
             <p class="contact-address">
               Sunshine Tower, 8 Raffles Avenue<br>
               Singapore 039802
