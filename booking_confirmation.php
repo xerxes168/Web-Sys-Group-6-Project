@@ -83,7 +83,7 @@ if (getDbConnection()) {
     // If booking not found or doesn't belong to user
     if ($result->num_rows === 0) {
         $conn->close();
-        header("Location: sports.php");
+        header("Location: viewSports.php");
         exit;
     }
 
