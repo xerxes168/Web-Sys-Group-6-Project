@@ -2,6 +2,8 @@
     padding: 60px 20px;
     background-color: #f8f8f8;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .about-us h1 {
@@ -27,6 +29,7 @@
 
 .about-content {
     max-width: 1000px;
+    width:100%;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.6;
@@ -40,6 +43,15 @@
     margin: 30px 0;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.history h2 {
+    font-size: 36px;
+    color: #5f52b0;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .history h3 {
@@ -150,6 +162,22 @@
     font-size: 16px;
     color: #333;
     line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 @media (max-width: 768px) {
