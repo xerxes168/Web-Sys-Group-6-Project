@@ -136,7 +136,7 @@ function getDbConnection() {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - Process Payment</title>
+    <title>HoopSpaces - Process Payment</title>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="css/process_credit_purchase.css">
 </head>

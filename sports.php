@@ -116,7 +116,7 @@ function sanitize_input($data)
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GatherSpot - Book Sports Venue</title>
+    <title>HoopSpaces - Book Sports Venue</title>
     <?php include "inc/head.inc.php"; ?>
 </head>
 
