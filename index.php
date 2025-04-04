@@ -37,20 +37,12 @@ http://www.templatemo.com/tm-513-avalon
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <?php 
-        include "inc/head.inc.php"; 
-        ?> 
-        
+        <?php include "inc/head.inc.php"; ?> 
     </head>
 
 <body>
-    <?php 
-        include "inc/nav.inc.php"; 
-    ?> 
-
-    <?php 
-        include "inc/header.inc.php"; 
-    ?> 
+    <?php include "inc/nav.inc.php"; ?> 
+    <?php include "inc/header.inc.php"; ?> 
 <main>
     <section class="about-us" id=about-us-section>
         <div class="container-fluid">
@@ -175,86 +167,85 @@ http://www.templatemo.com/tm-513-avalon
     <section class="contact-us" id="contact-section"> 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <form id="contact" action="" method="post">
-                        <div class="row">
+                <form id="contact" action="" method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <fieldset>
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                            <fieldset>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
+                            </fieldset>
+                        </div>
                             <div class="col-md-4">
-                              <fieldset>
-                                <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-4">
-                              <fieldset>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                              </fieldset>
-                            </div>
-                             <div class="col-md-4">
-                              <fieldset>
-                                <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="">
-                              </fieldset>
-                            </div>
-                            <div class="col-md-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-md-6">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="btn">Send</button>
-                              </fieldset>
-                            </div>
+                            <fieldset>
+                            <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="">
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                            <button type="submit" id="form-submit" class="btn">Send</button>
+                            </fieldset>
                         </div>
                     </form>
                 </div>
     </section>
 
     <section class="contact-details" id="contact-details-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="contact-details-container">
-                    <h2 class="contact-main-title">GatherSpot</h2>
-                    
-                    <h3 class="contact-subtitle">Email</h3>
-                    
-                    <p class="contact-type">For Venue Enquiries:</p>
-                    <p class="contact-info">support@gatherspot.com</p>
-                    
-                    <p class="contact-type">For Corporate Bookings:</p>
-                    <p class="contact-info">corporate@gatherspot.com</p>
-                    
-                    <h3 class="contact-subtitle">GatherSpot Main Office</h3>
-                    
-                    <p class="contact-address">
-                        Sunshine Tower, 8 Raffles Avenue<br>
-                        Singapore 039802
-                    </p>
-                    
-                    <p class="contact-hours-title">Operating hours:</p>
-                    
-                    <p class="contact-hours">
-                        Mon - Fri: 9AM - 6PM (By Appointment Only*)<br>
-                        (Lunch Hours: 12pm - 1pm)
-                    </p>
-                    
-                    <p class="contact-type">For Venue Enquiries: +65 8473 4567</p>
-                    <p class="contact-type">For Corporate Bookings: +65 9482 5432</p>
-                                     
-                    <p class="contact-hours-title">Operating hours:</p>
-                    
-                    <p class="contact-hours">
-                        Sat - Sun: 10AM - 5PM (By Appointment Only*)
-                    </p>
-                    
-                    <p class="contact-type">For Weekend Bookings: +65 9083 4567</p>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="contact-details-container">
+      <!-- Main title spanning full width -->
+      <h2 class="contact-main-title">GatherSpot</h2>
+      
+      <!-- Row with two columns -->
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-6">
+          <div class="contact-details-content">
+            <h3 class="contact-subtitle">Email</h3>
+            <p class="contact-type">For Venue Enquiries:</p>
+            <p class="contact-info">support@gatherspot.com</p>
+            <p class="contact-type">For Corporate Bookings:</p>
+            <p class="contact-info">corporate@gatherspot.com</p>
+          </div>
         </div>
+        
+        <!-- Right column -->
+        <div class="col-md-6">
+          <div class="contact-details-content">
+            <h3 class="contact-subtitle">GatherSpot Main Office</h3>
+            <p class="contact-address">
+              Sunshine Tower, 8 Raffles Avenue<br>
+              Singapore 039802
+            </p>
+            <p class="contact-hours-title">Operating hours:</p>
+            <p class="contact-hours">
+              Mon - Fri: 9AM - 6PM (By Appointment Only*)<br>
+              (Lunch Hours: 12pm - 1pm)
+            </p>
+            <p class="contact-type">For Venue Enquiries: +65 8473 4567</p>
+            <p class="contact-type">For Corporate Bookings: +65 9482 5432</p>
+            <p class="contact-hours-title">Operating hours:</p>
+            <p class="contact-hours">
+              Sat - Sun: 10AM - 5PM (By Appointment Only*)
+            </p>
+            <p class="contact-type">For Weekend Bookings: +65 9083 4567</p>
+          </div>
+        </div>
+      </div>
     </div>
-    </section>
-</main>
+  </div>
+</section>
 
-        <?php include "inc/footer.inc.php"; ?>
+</main>
+    <?php include "inc/footer.inc.php"; ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>

@@ -8,7 +8,7 @@
                         <div class="line-dec"></div>
                         <h1>Book Your Event <br> Space</h1>
                         <div class="white-border-button">
-                            <a href="sports.php" class="discover-button">Discover More</a>
+                            <a href="viewSports.php" class="discover-button">Discover More</a>
                         </div>
                     </div>
                 </div>

@@ -96,6 +96,7 @@ if (empty($sportTypes)) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo-style.css">
     <link rel="stylesheet" href="css/fontAwesome.css">
+    <?php include "inc/head.inc.php"; ?>
     <style>
         .sports-container {
             padding: 60px 0;

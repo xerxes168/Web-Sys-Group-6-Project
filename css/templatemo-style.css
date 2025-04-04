@@ -121,10 +121,6 @@ p {
 	height: 680px;
 }
 
-.about-us {
-	margin-top: 10px;
-}
-
 .about-us .col-md-4 {
 	padding-left: 0px;
 	padding-right: 5px;
@@ -480,7 +476,7 @@ p {
 
 
 .services {
-	margin-top: 10px;
+	margin-top: 0px;
 	padding-top: 0vh;
 	padding-bottom: 0vh;
 	text-align: center;
@@ -618,7 +614,6 @@ transition-delay: 0.3s;
 
 
 .contact-us {
-	margin-top: 10px;
 	width:100%;
 }
 
@@ -730,7 +725,7 @@ transition-delay: 0.3s;
 }
 
 .contact-details {
-	padding: 60px 0;
+	padding: 60px;
 	background-color: #f8f9fa;
 }
 
