@@ -265,7 +265,7 @@ if (getDbConnection()) {
 <body>
     <?php include "inc/nav.inc.php"; ?>
     
-    <header class="sport-banner" role="banner">
+    <header class="sport-banner">
         <div class="sport-banner-content">
             <h1><?php echo htmlspecialchars($sport_name); ?> Venues</h1>
             <p>Select a venue to book for your <?php echo htmlspecialchars($sport_name); ?> activity</p>

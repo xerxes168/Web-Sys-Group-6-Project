@@ -177,13 +177,15 @@ if (empty($sportTypes)) {
                 <div class="line-dec"></div>
                 <p>Select a sport to view available venues and make your booking</p>
             </div>
+        
 
             <div class="row">
                 <?php foreach ($sportTypes as $sport): ?>
                     <div class="col-md-6 col-lg-3">
                         <div class="sport-card">
                             <div class="sport-image"
-                                style="background-image: url('<?php echo htmlspecialchars($sport['image']); ?>')"></div>
+                                style="background-image: url('<?php echo htmlspecialchars($sport['image']); ?>')">
+                            </div>
                             <div class="sport-info">
                                 <h2><?php echo htmlspecialchars($sport['name']); ?></h2>
                                 <p><?php echo htmlspecialchars($sport['description']); ?></p>
@@ -194,7 +196,7 @@ if (empty($sportTypes)) {
                     </div>
                 <?php endforeach; ?>
             </div>
-            </div>
+            </section>
     </main>
     <?php include "inc/footer.inc.php"; ?>
 
