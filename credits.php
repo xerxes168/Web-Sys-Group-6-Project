@@ -332,5 +332,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
             });
         });
     </script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
