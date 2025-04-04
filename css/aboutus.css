@@ -12,6 +12,8 @@
     text-transform: uppercase;
     white-space: normal;
     word-break: normal;
+    line-height: 1.2;
+    letter-spacing: 1px;
 }
 
 .about-us p {
@@ -189,4 +191,5 @@
         margin-bottom: 20px;
     }
 }
+
 

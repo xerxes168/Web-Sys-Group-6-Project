@@ -34,17 +34,17 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
                 <div class="col-md-12">
                     <h1 class="section-title">Contact Us</h1>
                     <div class="contact-info">
-                        <h3>HoopSpaces</h3>
-                        <h4>Address</h4>
+                        <h2>HoopSpaces</h2>
+                        <h3>Address</h3>
                         <p>Sunshine Tower<br>
                         8 Raffles Avenue, Singapore 039802</p>
 
-                        <h4>Main Contact</h4>
+                        <h3>Main Contact</h3>
                         <p>For Venue Enquiries: +65 8473 4567</p>
                         <p>For Corporate Bookings: +65 9482 5432</p>
                         <p>For Weekend Bookings: +65 9083 4567</p>
                         
-                        <h4>Connect with Us</h4>
+                        <h3>Connect with Us</h3>
                         <div class="social-links">
                             <a href="#" class="social-icon" target="_blank" aria-label="Facebook">
                                 <i class="fab fa-facebook"></i>
@@ -64,8 +64,8 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
                         </div>
 
                         
-                        <h3> Walk In </h3>
-                        <h4>Operating Hours:</h4>
+                        <h2> Walk In </h2>
+                        <h3>Operating Hours:</h3>
                         <p>Mon - Fri: 9AM - 6PM (By Appointment Only)</p>
                         <p> Break Hours: 12PM - 1PM </p>
                         <p>Sat - Sun: 10AM - 5PM (By Appointment Only)</p>
