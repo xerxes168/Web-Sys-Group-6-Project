@@ -79,7 +79,7 @@ html, body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .register-section {
-        padding-top: 80px;
+        padding-top: 10px;
     }
     .register-form {
         padding: 25px;
