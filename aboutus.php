@@ -1,17 +1,9 @@
 <?php
-// Start the session at the very beginning of the file
 session_start();
 
-// Now you can access session variables anywhere in this file
-if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
-    // User is logged in
-    $loggedIn = true;
-    $userEmail = $_SESSION['email'] ?? 'Unknown';
-    $userId = $_SESSION['member_id'] ?? 'Unknown';
-} else {
-    // User is not logged in
-    $loggedIn = false;
-}
+$loggedIn = isset($_SESSION['member_id']);
+$userEmail = $_SESSION['email'] ?? 'Unknown';
+$userId = $_SESSION['member_id'] ?? 'Unknown';
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +15,8 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
 </head>
 
 <body>
-    <?php 
-        include "inc/nav.inc.php"; 
-    ?> 
+    <?php include "inc/nav.inc.php"; ?> 
+
 <main>
     <!-- About Us Section -->
     <section class="about-us">
@@ -34,29 +25,31 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
                 <div class="col-md-10">
                     <div class="about-content">
                         <h1>About HoopSpaces</h1>
-                        <p>At HoopSpaces, we are driven by a simple yet powerful mission: to make sports event booking easy, accessible, and enjoyable for everyone. Whether you're planning a friendly game of basketball with friends, hosting a company volleyball tournament, or organizing a local sports event, we've got you covered. Our platform is designed to connect sports enthusiasts, teams, and event planners with the best sports facilities available in Singapore.
 
-                            With a wide variety of venues at your fingertips, including indoor basketball courts, tennis courts, badminton halls, and more, we ensure that booking your next event is quick, easy, and hassle-free. No more endless searching or navigating complicated booking systems—just select the venue, pick your time, and you're good to go!
+                        <p>At HoopSpaces, we are driven by a simple yet powerful mission: to make sports event booking easy, accessible, and enjoyable for everyone.</p>
 
-                            At HoopSpaces, we're not just about sports; we're about community, health, and bringing people together through the power of play. Whether you're an athlete, a casual player, or someone organizing a corporate wellness day, we believe everyone deserves access to great sports spaces. Our platform is dedicated to supporting the growth of local sports culture, ensuring that every game, tournament, or team-building activity is memorable and seamless.
+                        <p>Whether you're planning a friendly game of basketball with friends, hosting a company volleyball tournament, or organizing a local sports event, we've got you covered. Our platform is designed to connect sports enthusiasts, teams, and event planners with the best sports facilities available in Singapore.</p>
 
-                            We aim to be your go-to partner for booking sports venues. Our commitment is to provide you with personalized support, allowing you to focus on what matters most—your event and the people you're connecting with.</p>
+                        <p>With a wide variety of venues at your fingertips, including indoor basketball courts, tennis courts, badminton halls, and more, we ensure that booking your next event is quick, easy, and hassle-free.</p>
+
+                        <p>At HoopSpaces, we're not just about sports; we're about community, health, and bringing people together through the power of play.</p>
+
+                        <p>We aim to be your go-to partner for booking sports venues. Our commitment is to provide you with personalized support, allowing you to focus on what matters most—your event and the people you're connecting with.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- History Section -->
     <section class="history">
         <div class="container" tabindex="0">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h2>Our History</h2>
-                    <p>The story of HoopSpaces began with a passion for sports and a frustration with the complexity of booking sports venues. Founders were avid sports enthusiasts who found it difficult to find a reliable, easy-to-use platform for booking sports facilities in Singapore. What started as a simple idea to make sports venue booking more accessible eventually grew into the full-fledged platform that is now HoopSpaces.
-
-                        The idea was born out of the belief that sports and physical activity should be a part of everyone's life, regardless of their background or skill level. However, booking sports spaces was often a daunting and time-consuming task. That's when HoopSpaces was conceived, as a one-stop solution for people to book venues for their sports events quickly and easily. As we continue to expand and refine our services, we are committed to providing the best 
-                        experience for all our users—whether you're an individual looking for a basketball court, a group planning a tennis match, or a company organizing a team-building event. Our goal is simple: to make sports more accessible, to keep people active, and to foster a sense of community through shared physical experiences.</p>
+                    <p>The story of HoopSpaces began with a passion for sports and a frustration with the complexity of booking sports venues. Founders were avid sports enthusiasts who found it difficult to find a reliable, easy-to-use platform for booking sports facilities in Singapore.</p>
+                    <p>The idea was born out of the belief that sports and physical activity should be a part of everyone's life, regardless of their background or skill level. However, booking sports spaces was often a daunting and time-consuming task.</p>
+                    <p>That's when HoopSpaces was conceived, as a one-stop solution for people to book venues for their sports events quickly and easily. As we continue to expand and refine our services, we are committed to providing the best experience for all our users.</p>
                 </div>
             </div>
         </div>
@@ -118,23 +111,23 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
                             <p>David leads our marketing efforts to reach more event planners and make HoopSpaces the top choice for booking event spaces in Singapore.</p>
                         </div>
                         <div class="team-member">
-                        <h3>Lim Sheng Yang</h3>
-                        <p>Operations Manager</p>
-                        <p>Lim Sheng Yang oversees the day-to-day operations of HoopSpaces, ensuring that everything runs smoothly. With a keen eye for detail, he manages logistics and ensures an excellent user experience for our clients.</p>
+                            <h3>Lim Sheng Yang</h3>
+                            <p>Operations Manager</p>
+                            <p>Lim Sheng Yang oversees the day-to-day operations of HoopSpaces, ensuring that everything runs smoothly. With a keen eye for detail, he manages logistics and ensures an excellent user experience for our clients.</p>
                         </div>
                         <div class="team-member">
                             <h3>Lee Jian Yu</h3>
                             <p>Customer Support Manager</p>
                             <p>Lee Jian Yu provides outstanding customer support to our users, ensuring that every question is answered and every issue is resolved promptly. With a passion for helping others, Jian Yu makes sure our clients have the best experience possible when using HoopSpaces.</p>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-    <?php include 'inc/footer.inc.php'; ?>
-
-    <script src="js/main.js"></script>
+<?php include 'inc/footer.inc.php'; ?>
+<script src="js/main.js"></script>
 </body>
 </html>

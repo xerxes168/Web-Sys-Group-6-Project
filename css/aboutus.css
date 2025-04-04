@@ -5,11 +5,13 @@
 }
 
 .about-us h1 {
-    font-size: 48px;
+    font-size: clamp(24px, 6vw, 48px); /* makes it responsive */
     font-weight: bold;
     color: #5f52b0;
     margin-bottom: 30px;
     text-transform: uppercase;
+    white-space: normal;
+    word-break: normal;
 }
 
 .about-us p {
@@ -147,3 +149,44 @@
     color: #333;
     line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+    .about-content, .history, .why-choose-us, .team {
+        padding: 15px;
+    }
+
+    .about-content h1,
+    .history h2,
+    .why-choose-us h2,
+    .team h2 {
+        font-size: 24px;
+        word-break: normal;
+        white-space: normal;
+    }
+
+    .about-content p,
+    .history p,
+    .choose-item p,
+    .team-member p {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+
+    .choose-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 20px;
+    }
+}
+

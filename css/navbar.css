@@ -1,19 +1,21 @@
 /* Navbar container */
-.navbar {
+.nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #5f52b0;
     color: white;
-    padding: 10px 20px;
+    padding: 0px 20px;
     font-family: 'Open Sans', sans-serif;
-    position: fixed;  /* Fix navbar to top of screen */
-    top: 0;  /* Keep navbar on top */
+    position: fixed; 
+    top: 0;
     left: 0;
     width: 100%;
+    min-height: 50px;
     box-sizing: border-box;
-    z-index: 1000;  /* Ensures navbar is above other elements */
+    z-index: 1000;
     flex-wrap: wrap;
+    gap: 1vw;
 }
 
 /* Nav Menu Items should always be visible */
@@ -22,16 +24,18 @@
     align-items: center;
     margin: 0;
     padding: 0;
-    flex-grow: 1;  /* Allow menu to take up remaining space */
+    height: 100%;
     flex-wrap: wrap;  
     justify-content: space-between;
-    gap: 15px;  /* Space between menu items */
+    gap: 10px;
 }
 
 /* Individual nav items */
 .nav-menu-item {
     font-size: 14px;
     font-weight: 500;
+    padding: 10px;
+    background-color: #5f52b0;
     position: relative;
     cursor: pointer;
 }
@@ -49,6 +53,7 @@
 .nav-actions {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .nav-button {
@@ -107,8 +112,9 @@
     .hamburger {
         display: grid;  /* Display hamburger icon */
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 50%;              
+        left: 20px;
+        transform: translateY(-50%);
         z-index: 100;
         cursor: pointer;
     }
@@ -118,6 +124,20 @@
         height: 2px;
         margin: 4px 0;
         background-color: white;
+    }
+
+    .nav-logo {
+        font-size: 16px; /* smaller font-size */
+    }
+
+    .nav-logo img {
+        width: 100px; /* smaller logo image if used */
+    }
+
+    /* Reduce Register/Login button size on mobile */
+    .nav-button {
+        padding: 5px 10px;
+        font-size: 12px;
     }
 
     .nav-menu-items {
