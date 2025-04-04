@@ -3,11 +3,11 @@ session_start();
 
 // Ensure the user is logged in
 if (!isset($_SESSION['member_id'])) {
-    header("Location: login.php");
+    echo "Error: User not logged in.";
     exit;
 }
 
-// Database connection function (same as your profile.php)
+// Database connection function
 function getDbConnection() {
     $configFile = '/var/www/private/db-config.ini';
     if (!file_exists($configFile)) {
@@ -37,25 +37,31 @@ if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] ===
     // Define allowed file types
     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     $fileTmpPath = $_FILES['profile_picture']['tmp_name'];
-    $fileType = mime_content_type($fileTmpPath);
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $fileType = finfo_file($finfo, $fileTmpPath);
+    finfo_close($finfo);
 
     if (!in_array($fileType, $allowedTypes)) {
-        die("Error: Only JPG, PNG, and GIF files are allowed.");
+        echo "Error: Only JPG, PNG, and GIF files are allowed.";
+        exit;
     }
 
     // Define the upload directory (must be writable)
-    $uploadDir = 'uploads/profile_pictures/';
+    $uploadDir = '/var/www/html/uploads/profile_pictures/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
 
-    // Generate a unique file name using the user id and a timestamp
+    // Generate a unique file name using the user ID and a timestamp
     $extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
     $newFileName = $_SESSION['member_id'] . '_' . time() . '.' . $extension;
     $destPath = $uploadDir . $newFileName;
 
     // Move the file from the temporary location to the uploads folder
     if (move_uploaded_file($fileTmpPath, $destPath)) {
+        // Convert to web-accessible path
+        $webAccessiblePath = '/uploads/profile_pictures/' . $newFileName;
+
         // Connect to the database
         $conn = getDbConnection();
         if ($conn) {
@@ -74,15 +80,15 @@ if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] ===
             $stmt->close();
 
             // If the current profile picture is not the default, delete it from the server
-            if ($oldPic !== $defaultPic && file_exists($oldPic)) {
-                unlink($oldPic);
+            if ($oldPic !== $defaultPic && file_exists($_SERVER['DOCUMENT_ROOT'] . $oldPic)) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . $oldPic);
             }
 
             // Now update the user's record with the new file path
             $updateStmt = $conn->prepare("UPDATE members SET profile_picture = ? WHERE member_id = ?");
-            $updateStmt->bind_param("si", $destPath, $_SESSION['member_id']);
+            $updateStmt->bind_param("si", $webAccessiblePath, $_SESSION['member_id']);
             if ($updateStmt->execute()) {
-                echo "Profile picture uploaded and updated successfully!";
+                echo "Profile picture uploaded and updated successfully!|$webAccessiblePath";
             } else {
                 echo "Database update failed: " . $conn->error;
             }
