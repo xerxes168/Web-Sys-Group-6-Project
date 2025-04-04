@@ -1,16 +1,13 @@
 <?php
 session_start();
-
 // Check if user is logged in, if not redirect to login page
 if (!isset($_SESSION['member_id'])) {
     header("Location: login.php");
     exit;
 }
-
 // Initialize variables for password change
 $passwordSuccess = false;
 $passwordError = "";
-
 // Database connection function
 function getDbConnection() {
     $configFile = '/var/www/private/db-config.ini';
@@ -32,7 +29,6 @@ function getDbConnection() {
     }
     return $conn;
 }
-
 // Get user data from database
 function getUserData($conn, $member_id) {
     $stmt = $conn->prepare("SELECT fname, lname, email, credit, profile_picture FROM members WHERE member_id = ?");
@@ -44,14 +40,11 @@ function getUserData($conn, $member_id) {
     }
     return null;
 }
-
 // Handle password change if form submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
     $currentPassword = $_POST['current_password'];
     $newPassword = $_POST['new_password'];
     $confirmPassword = $_POST['confirm_password'];
-    
-    // Validate input server-side
     if (empty($currentPassword) || empty($newPassword) || empty($confirmPassword)) {
         $passwordError = "All password fields are required";
     } elseif ($newPassword !== $confirmPassword) {
@@ -90,7 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_password'])) {
         }
     }
 }
-
 // Get user data
 $userData = null;
 $conn = getDbConnection();
@@ -105,10 +97,10 @@ if ($conn) {
     <?php include "inc/head.inc.php"; ?>
     <title>My Profile - HoopSpaces</title>
     <link rel="stylesheet" href="css/myProfile.css">
+    <?php include "inc/head.inc.php"; ?> 
 </head>
 <body>
     <?php include "inc/nav.inc.php"; ?>
-
     <!-- Profile Section -->
     <section class="profile-section">
         <div class="container">
@@ -124,10 +116,9 @@ if ($conn) {
                             // Use default image if none is set
                             $profilePic = !empty($userData['profile_picture'])
                                 ? $userData['profile_picture']
-                                : 'uploads/profile_pictures/default.png';
+                                : 'uploads/profile_pictures/default.jpeg';
                             ?>
                             <img src="<?php echo htmlspecialchars($profilePic); ?>" alt="Profile Picture" class="profile-picture">
-
                             <?php if ($userData): ?>
                                 <div class="profile-info">
                                     <h4>Personal Information</h4>
@@ -158,7 +149,6 @@ if ($conn) {
                         </div>
                     </div>
                 </div>
-
                 <!-- Right Column -->
                 <div class="col-md-8">
                     <!-- Change Password Card -->
@@ -177,7 +167,6 @@ if ($conn) {
                                     <i class="fa fa-exclamation-circle"></i> <?php echo $passwordError; ?>
                                 </div>
                             <?php endif; ?>
-                            
                             <form id="change_password_form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -191,7 +180,6 @@ if ($conn) {
                                             </div>
                                         </div>
                                     </div>
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="new_password">New Password</label>
@@ -201,12 +189,11 @@ if ($conn) {
                                                     <i class="fa fa-eye"></i>
                                                 </span>
                                             </div>
-                                            <small class="form-text text-muted">Password must be at least 6 characters long.</small>
+                                            <small class="form-text text-muted" style="color: #333333;">Password must be at least 6 characters long.</small>
                                             <!-- Password Strength Indicator -->
                                             <div id="password_strength" class="password-strength"></div>
                                         </div>
                                     </div>
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="confirm_password">Confirm New Password</label>
@@ -227,8 +214,7 @@ if ($conn) {
                             </form>
                         </div>
                     </div>
-
-                    <!-- New Card: Upload Profile Picture (Placed Below Change Password) -->
+                    <!-- New Card: Upload Profile Picture (Below Change Password) -->
                     <div class="profile-card" style="margin-top: 20px;">
                         <div class="profile-header">
                             <h3>Upload Profile Picture</h3>
@@ -239,20 +225,21 @@ if ($conn) {
                                     <label for="profile_picture">Select an Image</label>
                                     <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
                                 </div>
-                                <button type="submit" class="btn-upload" style="margin-top: 15px;">Upload Picture</button>
+                                <button type="submit" class="btn-upload">Upload Picture</button>
                             </form>
+                            <!-- Container for upload status message -->
+                            <div id="upload_status"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <?php include "inc/footer.inc.php"; ?>
-
     <!-- Scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>

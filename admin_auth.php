@@ -1,15 +1,9 @@
 <?php
-// Authentication functions for admin access
 
-/**
- * Get database connection
- * @return mysqli|false Database connection or false on failure
- */
 function authgetDbConnection() {
-    // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if config file exists
     if (!file_exists($configFile)) {
         return false;
     }
@@ -112,9 +106,6 @@ function logoutAdmin() {
     
     // Unset admin-specific session variables
     unset($_SESSION['role']);
-    
-    // Optional: destroy the entire session
-    // session_destroy();
     
     // Redirect to login page
     header("Location: login.php");

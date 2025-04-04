@@ -1,9 +1,6 @@
 <?php
 // Start the session
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 // Include authentication functions
 require_once 'admin_auth.php';
@@ -24,7 +21,7 @@ function getDbConnection() {
     // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg = "Database configuration file not found.";
         return false;
@@ -82,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $conn->begin_transaction();
                 
                 try {
-                    // Update only the credits column
+                    // Update credits column
                     $stmt = $conn->prepare("UPDATE members SET credit = credit + ? WHERE member_id = ?");
                     $stmt->bind_param("di", $amount, $member_id);
                     
