@@ -586,6 +586,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/datepicker.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

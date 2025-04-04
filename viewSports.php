@@ -93,6 +93,7 @@ if (empty($sportTypes)) {
 <head>
     <title>HoopSpaces - Browse Sports</title>
     <?php include "inc/head.inc.php"; ?>
+
     <style>
         .sports-container {
             padding: 60px 0;
@@ -200,6 +201,7 @@ if (empty($sportTypes)) {
 
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

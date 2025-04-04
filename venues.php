@@ -97,6 +97,8 @@ if (getDbConnection()) {
 <head>
     <title>GatherSpot - <?php echo htmlspecialchars($sport_name); ?> Venues</title>
     <?php include "inc/head.inc.php"; ?>
+
+    <script src="js/main.js"></script>
     <style>
         p {
             color: #ffffff;
@@ -341,6 +343,7 @@ if (getDbConnection()) {
 
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

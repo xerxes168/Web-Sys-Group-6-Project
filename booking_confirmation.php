@@ -104,54 +104,113 @@ unset($_SESSION['remaining_credits']);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GatherSpot - Booking Confirmation</title>
     <?php include "inc/head.inc.php"; ?>
     <style>
-        .confirmation-header {
-            background-color: #e8f5e9;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
+        /* Main container styling */
+        .booking-confirmation-container {
+            max-width: 800px;
+            margin: 60px auto 40px auto;
+            padding: 0 15px;
         }
-        .confirmation-header h1 {
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus {
+            outline: 3px solid #4d90fe;
+            outline-offset: 2px;
+        }
+
+        /* Success banner styling */
+        .confirmation-banner {
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-banner h1 {
             color: #2e7d32;
             margin-bottom: 0.5rem;
+            font-size: 28px;
         }
-        .booking-id {
+
+        .confirmation-banner p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Booking ID badge */
+        .booking-id-badge {
             display: inline-block;
-            background-color: #757575;
+            background-color: #2e7d32;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 50px;
             margin: 1rem 0;
+            font-weight: bold;
         }
-        .booking-details {
-            background-color: #f9f9f9;
-            padding: 1.5rem;
+
+        /* Card styling */
+        .info-card {
+            background-color: #ffffff;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
         }
+
+        .card-title {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        /* Detail rows */
         .detail-row {
             display: flex;
+            flex-wrap: wrap;
             margin-bottom: 1rem;
             align-items: baseline;
         }
+
         .detail-label {
             font-weight: 600;
-            color: #666;
+            color: #555;
             width: 140px;
+            margin-right: 10px;
         }
-        .payment-summary {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+
+        .detail-value {
+            flex: 1;
+            min-width: 200px;
+            color: #333;
         }
+
+        /* Payment info */
         .payment-amount {
-            font-size: 1.25rem;
+            font-size: 18px;
             font-weight: 600;
             color: #333;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
         }
+
+        /* Special requests section */
+        .special-requests-content {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-top: 10px;
+            white-space: pre-line;
+        }
+
+        /* Action buttons */
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -159,110 +218,177 @@ unset($_SESSION['remaining_credits']);
             margin-top: 2rem;
             flex-wrap: wrap;
         }
-        .action-buttons a {
+
+        .action-button {
             padding: 0.75rem 1.5rem;
-            border-radius: 50px;
+            border-radius: 30px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             min-width: 150px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        .action-buttons i {
-            margin-right: 0.5rem;
-        }
-        .blue-btn {
-            background-color: #1976d2;
+
+        .primary-button {
+            background-color: #f4bc51;
             color: white;
         }
-        .blue-btn:hover {
-            background-color: #1565c0;
+
+        .primary-button:hover, .primary-button:focus {
+            background-color: #e8a430;
             color: white;
+            text-decoration: none;
         }
-        .outline-btn {
-            border: 1px solid #666;
-            color: #666;
-        }
-        .outline-btn:hover {
+
+        .secondary-button {
             background-color: #f5f5f5;
             color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .secondary-button:hover, .secondary-button:focus {
+            background-color: #e0e0e0;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .button-icon {
+            margin-right: 0.5rem;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            .action-buttons, .nav, footer {
+                display: none !important;
+            }
+
+            .booking-confirmation-container {
+                margin: 0;
+                width: 100%;
+            }
+
+            .confirmation-banner, .info-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .detail-label {
+                width: 100%;
+                margin-bottom: 0.25rem;
+            }
+
+            .detail-value {
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .action-button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <?php include "inc/nav.inc.php"; ?>
     
-    <main class="container mt-4 mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="confirmation-header">
-                    <h1>Booking Confirmed!</h1>
-                    <p>Your reservation has been successfully processed</p>
-                    <div class="booking-id">Booking ID: #<?php echo $booking_id; ?></div>
+    <div class="booking-confirmation-container">
+        <!-- Success Banner -->
+        <div class="confirmation-banner" role="alert" aria-live="polite">
+            <h1>Booking Confirmed!</h1>
+            <p>Your reservation has been successfully processed</p>
+            <div class="booking-id-badge">
+                Booking ID: #<?php echo $booking_id; ?>
+            </div>
+        </div>
+        
+        <!-- Booking Details Card -->
+        <div class="info-card">
+            <h2 class="card-title">Booking Details</h2>
+            
+            <div class="detail-row">
+                <div class="detail-label">Sport:</div>
+                <div class="detail-value"><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Venue:</div>
+                <div class="detail-value">
+                    <?php echo htmlspecialchars($booking['venue_name']); ?> 
+                    (<?php echo htmlspecialchars($booking['venue_location']); ?>)
                 </div>
-                
-                <section>
-                    <h2>Booking Details</h2>
-                    <div class="booking-details">
-                        <div class="detail-row">
-                            <div class="detail-label">Sport:</div>
-                            <div><?php echo ucfirst(htmlspecialchars($booking['sport_type'])); ?></div>
-                        </div>
-                        
-                        <div class="detail-row">
-                            <div class="detail-label">Venue:</div>
-                            <div><?php echo htmlspecialchars($booking['venue_name']); ?> 
-                                (<?php echo htmlspecialchars($booking['venue_location']); ?>)
-                            </div>
-                        </div>
-                        
-                        <div class="detail-row">
-                            <div class="detail-label">Date:</div>
-                            <div><?php echo date('l, F j, Y', strtotime($booking['event_date'])); ?></div>
-                        </div>
-                        
-                        <div class="detail-row">
-                            <div class="detail-label">Time:</div>
-                            <div><?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></div>
-                        </div>
-                        
-                        <div class="detail-row">
-                            <div class="detail-label">Participants:</div>
-                            <div><?php echo htmlspecialchars($booking['num_participants']); ?></div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="payment-summary">
-                    <h2>Payment Summary</h2>
-                    
-                    <div class="detail-row">
-                        <div class="detail-label">Amount Paid:</div>
-                        <div class="payment-amount"><?php echo number_format($booking_cost, 2); ?> credits</div>
-                    </div>
-                    
-                    <div class="detail-row">
-                        <div class="detail-label">Remaining Balance:</div>
-                        <div class="payment-amount"><?php echo number_format($remaining_credits, 2); ?> credits</div>
-                    </div>
-                </section>
-                
-                <?php if (!empty($booking['special_requests'])): ?>
-                <section class="special-requests">
-                    <h2>Special Requests</h2>
-                    <p><?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?></p>
-                </section>
-                <?php endif; ?>
-                
-                <div class="action-buttons">
-                    <a href="index.php" class="blue-btn"><i class="fas fa-home"></i> Return to Home</a>
-                    <a href="my_bookings.php" class="outline-btn"><i class="fas fa-list"></i> My Bookings</a>
-                    <a href="javascript:window.print()" class="outline-btn"><i class="fas fa-print"></i> Print</a>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Date:</div>
+                <div class="detail-value"><?php echo date('l, F j, Y', strtotime($booking['event_date'])); ?></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Time:</div>
+                <div class="detail-value"><?php echo htmlspecialchars($booking['start_time'] . ' - ' . $booking['end_time']); ?></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Participants:</div>
+                <div class="detail-value"><?php echo htmlspecialchars($booking['num_participants']); ?></div>
+            </div>
+        </div>
+        
+        <!-- Payment Summary Card -->
+        <div class="info-card">
+            <h2 class="card-title">Payment Summary</h2>
+            
+            <div class="detail-row">
+                <div class="detail-label">Amount Paid:</div>
+                <div class="detail-value">
+                    <span class="payment-amount"><?php echo number_format($booking_cost, 2); ?> credits</span>
+                </div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Remaining Balance:</div>
+                <div class="detail-value">
+                    <span class="payment-amount"><?php echo number_format($remaining_credits, 2); ?> credits</span>
                 </div>
             </div>
         </div>
-    </main>
+        
+        <?php if (!empty($booking['special_requests'])): ?>
+        <!-- Special Requests Card -->
+        <div class="info-card">
+            <h2 class="card-title">Special Requests</h2>
+            <div class="special-requests-content">
+                <?php echo nl2br(htmlspecialchars($booking['special_requests'])); ?>
+            </div>
+        </div>
+        <?php endif; ?>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="index.php" class="action-button primary-button">
+                <i class="fa fa-home button-icon" aria-hidden="true"></i> Return to Home
+            </a>
+            <a href="mybookings.php" class="action-button secondary-button">
+                <i class="fa fa-list button-icon" aria-hidden="true"></i> My Bookings
+            </a>
+            <button onclick="window.print()" class="action-button secondary-button">
+                <i class="fa fa-print button-icon" aria-hidden="true"></i> Print
+            </button>
+        </div>
+    </div>
 
     <?php include "inc/footer.inc.php"; ?>
+    <script src="js/main.js"></script>
 </body>
 </html>
