@@ -50,7 +50,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .price-card.popular {
-    border: 3px solid #ff589e;
+    border: 3px solid #AD0048;
     position: relative;
 }
 
@@ -58,7 +58,7 @@ body {
     position: absolute;
     top: -5px;
     right: 10px;
-    background-color: #ff589e;
+    background-color: #AD0048;
     color: white;
     padding: 5px 10px;
     font-size: 12px;
@@ -93,7 +93,7 @@ body {
 .price {
     font-size: 1.8rem;
     margin: 15px 0;
-    color: #ff589e;
+    color: #AD0048;
 }
 .price-card p {
     color: #666;
@@ -113,14 +113,14 @@ body {
     transition: background-color 0.3s;
 }
 .price-card.popular .btn-buy {
-    background-color: #ff589e;
+    background-color: #AD0048;
 }
 .btn-buy:hover {
     background-color: #4a4098;
     transform: translateY(-2px);
 }
 .price-card.popular .btn-buy:hover {
-    background-color: #ff417e;
+    background-color: #AD0048;
 }
 .login-prompt {
     background-color: #f8f9fa;
@@ -137,7 +137,7 @@ body {
 .btn-login {
     display: inline-block;
     padding: 10px 25px;
-    background-color: #ff589e;
+    background-color: #AD0048;
     color: white;
     border: none;
     border-radius: 5px;
@@ -147,7 +147,7 @@ body {
     transition: background-color 0.3s;
 }
 .btn-login:hover {
-    background-color: #ff417e;
+    background-color: #AD0048;
     text-decoration: none;
     color: white;
 }
