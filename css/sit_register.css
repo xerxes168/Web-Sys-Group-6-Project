@@ -109,12 +109,3 @@ html, body {
         margin-bottom: 12px;
     }
 }
-
-@media (max-width: 650px) {
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        width: 100%;
-        border: none;
-    }
-}
