@@ -17,7 +17,7 @@ function getDbConnection() {
 
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg .= "<li>Database configuration file not found.</li>";
         $success = false;
@@ -71,7 +71,7 @@ if ($isLoggedIn && getDbConnection()) {
     $conn->close();
 }
 
-// Define credit packages
+// Defining credit packages
 $credit_packages = [
     [
         'id' => 'basic',
@@ -112,7 +112,7 @@ $payment_package = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isLoggedIn) {
     $package_id = $_POST['package_id'];
     
-    // Find the selected package
+    // Find selected package
     foreach ($credit_packages as $package) {
         if ($package['id'] == $package_id) {
             $payment_package = $package;
@@ -141,7 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
 </head>
 
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <?php include "inc/nav.inc.php"; ?>
     </nav>
@@ -164,13 +163,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
 
         <section class="credits-content">
             <div class="container">
-                <!-- Introduction -->
+                <!-- Intro -->
                 <div class="credits-intro">
                     <h2>Simple Pricing, No Surprises</h2>
                     <p>HoopSpace credits work like a digital wallet for all your bookings. Purchase credits in advance and use them whenever you're ready to book a venue. The more credits you buy, the more you save!</p>
                 </div>
                 
-                <!-- Login Prompt for Non-Logged In Users -->
+                <!-- Login Prompt -->
                 <?php if (!$isLoggedIn): ?>
                 <div class="login-prompt">
                     <h3>Ready to get started?</h3>
@@ -310,7 +309,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
         </section>
     </main>
     
-    <!-- Footer -->
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
@@ -332,7 +330,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['buy_credits']) && $isL
             });
         });
     </script>
-
+    
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -18,10 +18,10 @@ $bookings = [];
 function getDbConnection() {
     global $errorMsg, $success, $conn;
     
-    // Define the config file path relative to this script
+    // Define the config file path
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg .= "<li>Database configuration file not found.</li>";
         $success = false;
@@ -67,7 +67,6 @@ if (getDbConnection()) {
                            ORDER BY b.event_date DESC, b.start_time ASC");
     
     if ($stmt) {
-        // Bind parameters and execute
         $stmt->bind_param("i", $member_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -87,7 +86,7 @@ if (getDbConnection()) {
     $conn->close();
 }
 
-// Process booking cancellation if requested
+// Process booking cancellation
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
     $booking_id = $_POST['booking_id'];
     
@@ -118,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             $now = time();
             $hours_difference = ($event_datetime - $now) / 3600;
             
-            $refund_percentage = ($hours_difference >= 24) ? 1.0 : 0.5; // 100% if >= 24 hours, 50% otherwise
+            $refund_percentage = ($hours_difference >= 24) ? 1.0 : 0.5; // 100% if more than or equals to 24 hours, 50% otherwise
             $booking_cost = $booking['hourly_rate'] * 2; // 2 hours per slot
             $refund_amount = $booking_cost * $refund_percentage;
             
@@ -155,7 +154,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             exit;
         } 
         catch (Exception $e) {
-            // Rollback on error
             $conn->rollback();
             $errorMsg = "Error: " . $e->getMessage();
             $success = false;
@@ -178,7 +176,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
 </head>
 
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner" aria-label="Site header">
@@ -340,7 +337,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
                                                 <div class="booking-actions">
                                                     <?php if ($booking['status'] != 'cancelled'): ?>
                                                         <?php
-                                                        // Calculate if it's still possible to cancel (e.g., not in the past)
+                                                        // Check if booking can be cancelled
                                                         $event_datetime = strtotime($booking['event_date'] . ' ' . $booking['start_time']);
                                                         $now = time();
                                                         $can_cancel = $event_datetime > $now;
@@ -417,7 +414,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             let minutes = timeParts[1];
             let ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // Hour '0' should be '12'
+            hours = hours ? hours : 12;
             document.getElementById('modal-time').textContent = hours + ':' + minutes + ' ' + ampm;
             
             // Show the popup
@@ -492,6 +489,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             }, 1000);
         });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>
 <?php

@@ -139,7 +139,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner" aria-label="Site header">
@@ -272,7 +271,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
-        // Client-side filtering with accessibility improvements
+        // Status and date filters 
         document.addEventListener('DOMContentLoaded', function() {
             const statusFilter = document.getElementById('status-filter');
             const dateFilter = document.getElementById('date-filter');
@@ -289,7 +288,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 document.body.appendChild(liveRegion);
                 
-                // Remove the live region after it's been announced
                 setTimeout(() => {
                     document.body.removeChild(liveRegion);
                 }, 1000);
@@ -313,8 +311,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             showRow = false;
                         }
                     }
-                    
-                    // Date filtering would go here if implemented
                     
                     row.style.display = showRow ? '' : 'none';
                     
@@ -340,7 +336,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             });
             
-            // Improve the cancel confirmation
             const cancelForms = document.querySelectorAll('.cancel-form');
             
             cancelForms.forEach(form => {
@@ -355,5 +350,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>

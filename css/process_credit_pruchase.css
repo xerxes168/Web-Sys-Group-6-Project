@@ -145,7 +145,7 @@
     margin-right: 5px;
     color: #28a745;
 }
-/* Accessibility improvements */
+
 .skip-to-content {
     position: absolute;
     left: -9999px;
@@ -179,7 +179,6 @@
     border-width: 0;
 }
 
-/* Form accessibility */
 .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -192,7 +191,6 @@
     margin-top: 5px;
 }
 
-/* Package details as definition list */
 dl.package-details {
     margin: 0;
 }
@@ -215,13 +213,11 @@ dl.package-details {
     margin-top: 8px;
 }
 
-/* Focus styles for payment methods */
 .payment-method:focus {
     outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
-/* Improve focus styles for all interactive elements */
 a:focus, button:focus, input:focus, select:focus, textarea:focus {
     outline: 2px solid #007bff;
     outline-offset: 2px;

@@ -13,17 +13,17 @@
 }
 
 .booking-header {
-  background: #2a2351; /* Further darkened purple for maximum contrast */
+  background: #2a2351; 
   color: white;
   padding: 15px 20px;
   font-weight: bold;
 }
 
-/* Ensure ALL text in header is white */
+
 .booking-header p,
 .booking-header span,
 .booking-header div {
-  color: white !important; /* Force white text in header with !important */
+  color: white !important; 
 }
 
 .booking-body {
@@ -31,7 +31,7 @@
   background-color: #fff;
 }
 
-/* Badge styling with improved contrast */
+/* Badge styling */
 .badge {
   padding: 5px 10px;
   border-radius: 4px;
@@ -40,28 +40,28 @@
 }
 
 .badge-confirmed {
-  background-color: #0a4219; /* Further darkened green for maximum contrast */
+  background-color: #0a4219; 
   color: white;
 }
 
 .badge-cancelled {
-  background-color: #8b0000; /* Adjusted red for better contrast */
+  background-color: #8b0000;
   color: white;
 }
 
 .badge-pending {
-  background-color: #5f4200; /* Further darkened gold for maximum contrast */
+  background-color: #5f4200; 
   color: white;
-  font-weight: 700; /* Make it bold for better readability */
+  font-weight: 700; 
 }
 
 .badge-secondary {
-  background-color: #3a3f45; /* Further darkened grey for maximum contrast */
+  background-color: #3a3f45; 
   color: white;
 }
 
 .badge-info {
-  background-color: #085461; /* Further darkened info blue for maximum contrast */
+  background-color: #085461; 
   color: white;
 }
 
@@ -77,19 +77,19 @@
 }
 
 .btn-cancel {
-  background-color: #8b0000; /* Match cancelled badge color */
+  background-color: #8b0000; 
   color: white;
   border: none;
 }
 
 .btn-details {
-  background-color: #2a2351; /* Match the header color */
+  background-color: #2a2351;
   color: white;
   border: none;
 }
 
 .btn-primary {
-  background-color: #004494; /* Further darkened blue for maximum contrast */
+  background-color: #004494; 
   color: white;
 }
 
@@ -105,7 +105,7 @@
 
 .empty-bookings i {
   font-size: 48px;
-  color: #444444; /* Further darkened icon color for maximum contrast */
+  color: #444444;
   margin-bottom: 20px;
 }
 
@@ -147,12 +147,12 @@
   padding: 20px;
   z-index: 1001;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  color: #222; /* Darker text */
+  color: #222; 
 }
 
 #cancel-modal h4, 
 #cancel-modal h5 {
-  color: #000; /* Black headings */
+  color: #000; 
 }
 
 /* Date grouping */
@@ -162,7 +162,7 @@
   margin-bottom: 15px;
   border-radius: 5px;
   font-weight: 600;
-  color: #222; /* Darker text */
+  color: #222; 
 }
 
 .confirmation-badge {
@@ -171,17 +171,17 @@
   font-size: 14px;
 }
 
-/* Layout fixes */
+
 body {
   padding-top: 30px;
-  color: #222; /* Set a default text color for the whole page */
+  color: #222; 
 }
 
 .container, .main-content {
   padding-top: 40px;
 }
 
-/* Fixed navbar adjustment */
+
 .navbar + .container {
   padding-top: 70px;
 }
@@ -191,7 +191,6 @@ body {
   margin-top: 20px;
 }
 
-/* Accessibility improvements */
 .skip-to-content {
   position: absolute;
   left: -9999px;
@@ -208,22 +207,21 @@ body {
   width: auto;
   height: auto;
   padding: 15px;
-  background: #000; /* Pure black for maximum contrast */
+  background: #000; 
   color: white;
   z-index: 10000;
 }
 
-/* Form element accessibility */
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
-  color: #222; /* Ensure label text has good contrast */
+  color: #222; 
 }
 
 input, select, textarea {
-  border: 1px solid #444; /* Darker border for form elements */
-  color: #222; /* Ensure text in form elements has good contrast */
+  border: 1px solid #444; 
+  color: #222; 
 }
 
 .sr-only {
@@ -238,7 +236,6 @@ input, select, textarea {
   border-width: 0;
 }
 
-/* Modal accessibility */
 #cancel-modal[aria-modal="true"] {
   outline: none;
 }
@@ -247,7 +244,6 @@ input, select, textarea {
   outline: 2px solid #2a2351;
 }
 
-/* Definition list proper styling */
 dl.booking-details {
   margin: 0 0 15px 0;
   display: grid;
@@ -257,38 +253,35 @@ dl.booking-details {
 
 dl.booking-details dt.booking-label {
   font-weight: 600;
-  color: #222; /* Darker text for contrast */
+  color: #222; 
   grid-column: 1;
 }
 
 dl.booking-details dd.detail-value {
   margin: 0;
   grid-column: 2;
-  color: #222; /* Ensure good contrast */
+  color: #222; 
 }
 
-/* Improved focus styles for all interactive elements */
 a:focus, button:focus, select:focus, input:focus {
   outline: 3px solid #2a2351;
   outline-offset: 2px;
 }
 
-/* Text link color adjustment */
 a {
-  color: #004494; /* Darker blue for links on white background */
-  text-decoration: underline; /* Always underline links for better accessibility */
+  color: #004494; 
+  text-decoration: underline; 
 }
 
 a:hover, a:focus {
-  color: #003366; /* Even darker on hover/focus */
+  color: #003366; 
 }
 
 /* Text color enforcement */
 p, h1, h2, h3, h4, h5, h6, span, div {
-  color: #222; /* Default dark color for all text elements */
+  color: #222; 
 }
 
-/* Override for elements inside .booking-header */
 .booking-header p, 
 .booking-header h1, 
 .booking-header h2, 
@@ -298,10 +291,9 @@ p, h1, h2, h3, h4, h5, h6, span, div {
 .booking-header h6, 
 .booking-header span, 
 .booking-header div {
-  color: white !important; /* Force white text in header */
+  color: white !important; 
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   dl.booking-details {
     grid-template-columns: 1fr;

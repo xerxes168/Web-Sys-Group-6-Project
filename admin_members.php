@@ -2,6 +2,7 @@
 // Start the session
 session_start();
 
+
 // Include authentication functions
 require_once 'admin_auth.php';
 
@@ -29,7 +30,7 @@ $member = [
 function getDbConnection() {
     global $errorMsg, $conn;
     
-    // Define the config file path relative to this script
+    // Define the config file path
     $configFile = '/var/www/private/db-config.ini';
 
     // Check if the file exists before parsing
@@ -280,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
     }
 } else {
-    // Initial page load - load all members
+    // Initial page load to load all members
     if (getDbConnection()) {
         $result = $conn->query("SELECT * FROM members ORDER BY lname, fname");
         if ($result) {
@@ -291,8 +292,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
     }
 }
-
-// Determine if we're in add/edit mode
+// Check if add or edit mode
 $addMode = isset($_GET['action']) && $_GET['action'] == 'add';
 $editMode = isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']);
 $showForm = $addMode || $editMode;
@@ -309,7 +309,6 @@ $showForm = $addMode || $editMode;
 </head>
 
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner" aria-label="Site header">
@@ -470,7 +469,7 @@ $showForm = $addMode || $editMode;
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="admin_members.php?action=edit&id=<?php echo $m['member_id']; ?>" class="btn btn-edit">Edit</a>
+                                                        <a href="edit_members.php?id=<?php echo $m['member_id']; ?>" class="btn btn-edit">Edit</a>
                                                         
                                                         <?php if ($_SESSION['member_id'] != $m['member_id']): ?>
                                                         <form method="post" action="admin_members.php" class="delete-form">
@@ -497,7 +496,7 @@ $showForm = $addMode || $editMode;
     
     <?php include "inc/footer.inc.php"; ?>
     
-    <!-- Add accessible modal confirmation for delete actions -->
+    <!-- Add popup confirmation for deletion -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const deleteForms = document.querySelectorAll('.delete-form');
@@ -514,5 +513,6 @@ $showForm = $addMode || $editMode;
         });
     });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>

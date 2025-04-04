@@ -6,15 +6,14 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Header section with improved contrast */
+/* Header section */
 .booking-header {
-    background: #362e6a; /* Darkened purple for better contrast */
+    background: #362e6a; 
     color: white;
     padding: 20px;
     position: relative;
 }
 
-/* Ensure ALL text in the header is white */
 .booking-header p, 
 .booking-header span,
 .booking-header div {
@@ -26,7 +25,7 @@
     font-size: 1.75rem;
 }
 
-/* Status badges with improved contrast */
+/* Status badges */
 .booking-badge {
     position: absolute;
     top: 20px;
@@ -40,17 +39,17 @@
 }
 
 .badge-confirmed {
-    background-color: #0e5522; /* Darkened green for better contrast */
+    background-color: #0e5522; 
     color: white;
 }
 
 .badge-cancelled {
-    background-color: #9b0000; /* Adjusted red for better contrast */
+    background-color: #9b0000; 
     color: white;
 }
 
 .badge-pending {
-    background-color: #704d00; /* Adjusted gold for better contrast */
+    background-color: #704d00;
     color: white;
     font-weight: 700;
 }
@@ -75,13 +74,13 @@
 }
 
 .detail-section h2 {
-    color: #362e6a; /* Darkened to match header */
+    color: #362e6a; 
     margin-bottom: 15px;
     font-weight: 600;
-    font-size: 1.4rem; /* Fixed typo where it was "A1.4rem" */
+    font-size: 1.4rem;
 }
 
-/* Details list semantic structure */
+/* Details list */
 dl.detail-list {
     margin: 0;
     display: grid;
@@ -91,14 +90,14 @@ dl.detail-list {
 
 dt.detail-label {
     font-weight: 600;
-    color: #222; /* Darker for better contrast */
+    color: #222; 
 }
 
 dd.detail-value {
     margin-left: 0;
 }
 
-/* Venue amenities as list */
+/* Venue amenities */
 .venue-amenities {
     display: flex;
     flex-wrap: wrap;
@@ -113,7 +112,7 @@ dd.detail-value {
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 14px;
-    color: #222; /* Darker for better contrast */
+    color: #222;
 }
 
 /* Action buttons section */
@@ -123,21 +122,21 @@ dd.detail-value {
     justify-content: space-between;
 }
 
-/* Button styles with better contrast */
+/* Button styles */
 .btn-back {
-    background-color: #494f56; /* Darkened gray for better contrast */
+    background-color: #494f56; 
     color: white;
     border: none;
 }
 
 .btn-cancel {
-    background-color: #9b0000; /* Match adjusted badge color */
+    background-color: #9b0000; 
     color: white;
     border: none;
 }
 
 .btn-print {
-    background-color: #362e6a; /* Match darkened header */
+    background-color: #362e6a;
     color: white;
     border: none;
 }
@@ -148,7 +147,7 @@ dd.detail-value {
     padding: 15px;
     border-radius: 5px;
     margin-top: 10px;
-    color: #222; /* Darker text */
+    color: #222; 
 }
 
 /* Booking timeline */
@@ -175,7 +174,7 @@ dd.detail-value {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #362e6a; /* Match darkened header */
+    background-color: #362e6a; 
     z-index: 1;
 }
 
@@ -186,7 +185,7 @@ dd.detail-value {
     top: 12px;
     width: 1px;
     height: 100%;
-    background-color: #777; /* Darker for better contrast */
+    background-color: #777; 
 }
 
 .timeline-item:last-child:after {
@@ -195,14 +194,14 @@ dd.detail-value {
 
 .timeline-date {
     font-size: 12px;
-    color: #444; /* Darker gray for better contrast */
+    color: #444; 
     margin-bottom: 5px;
-    font-weight: 600; /* Make it bolder for better readability */
+    font-weight: 600; 
 }
 
 .timeline-content {
     font-weight: 500;
-    color: #222; /* Ensure good contrast */
+    color: #222;
 }
 
 /* Venue image and map */
@@ -261,7 +260,6 @@ dd.detail-value {
     z-index: 10000;
 }
 
-/* Improved focus styles */
 a:focus, 
 button:focus,
 input:focus,
@@ -283,7 +281,6 @@ select:focus {
     border-width: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     dl.detail-list {
         grid-template-columns: 1fr;
@@ -306,7 +303,6 @@ select:focus {
     }
 }
 
-/* Print styles */
 @media print {
     .skip-to-content,
     .btn-back,

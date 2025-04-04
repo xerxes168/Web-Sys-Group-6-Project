@@ -79,7 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['process_payment'])) {
                 unset($_SESSION['payment_package']);
             } 
             catch (Exception $e) {
-                // Rollback on error
                 $conn->rollback();
                 $errorMsg = "Transaction failed: " . $e->getMessage();
                 $success = false;
@@ -142,7 +141,6 @@ function getDbConnection() {
 </head>
 
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a style="color: #962231" href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner">
@@ -380,5 +378,6 @@ function getDbConnection() {
             }
         });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>

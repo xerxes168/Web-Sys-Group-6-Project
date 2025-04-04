@@ -88,9 +88,6 @@ if (getDbConnection()) {
         $is_available = isset($_POST['is_available']) ? 1 : 0;
         $hourly_rate = floatval($_POST['hourly_rate']);
         $suitable_for_sports = isset($_POST['suitable_for_sports']) ? 1 : 0;
-        $suitable_for_birthday = isset($_POST['suitable_for_birthday']) ? 1 : 0;
-        $suitable_for_networking = isset($_POST['suitable_for_networking']) ? 1 : 0;
-        $suitable_for_seminar = isset($_POST['suitable_for_seminar']) ? 1 : 0;
         $description = sanitize_input($_POST['description']);
         $amenities = sanitize_input($_POST['amenities']);
         $image_url = sanitize_input($_POST['image_url']);
@@ -122,25 +119,19 @@ if (getDbConnection()) {
                                 is_available = ?, 
                                 hourly_rate = ?, 
                                 suitable_for_sports = ?, 
-                                suitable_for_birthday = ?, 
-                                suitable_for_networking = ?, 
-                                suitable_for_seminar = ?, 
                                 description = ?,
                                 amenities = ?,
                                 image_url = ?,
                                 sport_type = ?
                                 WHERE id = ?");
             
-            $stmt->bind_param("ssiidiiisssssi", 
+            $stmt->bind_param("ssiidissssi", 
                 $name, 
                 $location, 
                 $capacity, 
                 $is_available,
                 $hourly_rate, 
                 $suitable_for_sports, 
-                $suitable_for_birthday,
-                $suitable_for_networking,
-                $suitable_for_seminar,
                 $description,
                 $amenities,
                 $image_url,
@@ -304,18 +295,6 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
                                             <input type="checkbox" id="suitable_for_sports" name="suitable_for_sports" value="1" <?php echo $venue['suitable_for_sports'] ? 'checked' : ''; ?>>
                                             <label for="suitable_for_sports">Sports</label>
                                         </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_birthday" name="suitable_for_birthday" value="1" <?php echo $venue['suitable_for_birthday'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_birthday">Birthday Celebrations</label>
-                                        </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_networking" name="suitable_for_networking" value="1" <?php echo $venue['suitable_for_networking'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_networking">Networking Events</label>
-                                        </div>
-                                        <div class="checkbox-group">
-                                            <input type="checkbox" id="suitable_for_seminar" name="suitable_for_seminar" value="1" <?php echo $venue['suitable_for_seminar'] ? 'checked' : ''; ?>>
-                                            <label for="suitable_for_seminar">Seminars/Workshops</label>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -336,5 +315,6 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
     </div>
     
     <?php include "inc/footer.inc.php"; ?>
+<script src="js/main.js"></script>
 </body>
 </html>

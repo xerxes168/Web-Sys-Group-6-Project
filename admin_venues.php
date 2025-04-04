@@ -1,7 +1,9 @@
 <?php
 // Start the session
 session_start();
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Include authentication functions
 require_once 'admin_auth.php';
 
@@ -23,9 +25,6 @@ $venue = [
     'is_available' => 1,
     'hourly_rate' => '',
     'suitable_for_sports' => 1,
-    'suitable_for_birthday' => 0,
-    'suitable_for_networking' => 0,
-    'suitable_for_seminar' => 0,
     'description' => '',
     'amenities' => '',
     'image_url' => '',
@@ -89,9 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $venue['is_available'] = isset($_POST['is_available']) ? 1 : 0;
             $venue['hourly_rate'] = floatval($_POST['hourly_rate']);
             $venue['suitable_for_sports'] = isset($_POST['suitable_for_sports']) ? 1 : 0;
-            $venue['suitable_for_birthday'] = isset($_POST['suitable_for_birthday']) ? 1 : 0;
-            $venue['suitable_for_networking'] = isset($_POST['suitable_for_networking']) ? 1 : 0;
-            $venue['suitable_for_seminar'] = isset($_POST['suitable_for_seminar']) ? 1 : 0;
             $venue['description'] = sanitize_input($_POST['description']);
             $venue['amenities'] = sanitize_input($_POST['amenities']);
             $venue['image_url'] = sanitize_input($_POST['image_url']);
@@ -127,25 +123,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         is_available = ?, 
                                         hourly_rate = ?, 
                                         suitable_for_sports = ?, 
-                                        suitable_for_birthday = ?, 
-                                        suitable_for_networking = ?, 
-                                        suitable_for_seminar = ?, 
                                         description = ?,
                                         amenities = ?,
                                         image_url = ?,
                                         sport_type = ?
                                         WHERE id = ?");
                     
-                    $stmt->bind_param("ssiidiiisssssi", 
+                    $stmt->bind_param("ssiidissssi", 
                         $venue['name'], 
                         $venue['location'], 
                         $venue['capacity'], 
                         $venue['is_available'],
                         $venue['hourly_rate'], 
                         $venue['suitable_for_sports'], 
-                        $venue['suitable_for_birthday'],
-                        $venue['suitable_for_networking'],
-                        $venue['suitable_for_seminar'],
                         $venue['description'],
                         $venue['amenities'],
                         $venue['image_url'],
@@ -164,9 +154,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             'is_available' => 1,
                             'hourly_rate' => '',
                             'suitable_for_sports' => 1,
-                            'suitable_for_birthday' => 0,
-                            'suitable_for_networking' => 0,
-                            'suitable_for_seminar' => 0,
                             'description' => '',
                             'amenities' => '',
                             'image_url' => '',
@@ -186,25 +173,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         is_available,
                                         hourly_rate, 
                                         suitable_for_sports, 
-                                        suitable_for_birthday,
-                                        suitable_for_networking,
-                                        suitable_for_seminar,
                                         description,
                                         amenities,
                                         image_url,
                                         sport_type) 
-                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     
-                    $stmt->bind_param("ssiidiiiissss", 
+                    $stmt->bind_param("ssiidissss", 
                         $venue['name'], 
                         $venue['location'], 
                         $venue['capacity'], 
                         $venue['is_available'],
                         $venue['hourly_rate'], 
-                        $venue['suitable_for_sports'], 
-                        $venue['suitable_for_birthday'],
-                        $venue['suitable_for_networking'],
-                        $venue['suitable_for_seminar'],
+                        $venue['suitable_for_sports'],
                         $venue['description'],
                         $venue['amenities'],
                         $venue['image_url'],
@@ -222,9 +203,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             'is_available' => 1,
                             'hourly_rate' => '',
                             'suitable_for_sports' => 1,
-                            'suitable_for_birthday' => 0,
-                            'suitable_for_networking' => 0,
-                            'suitable_for_seminar' => 0,
                             'description' => '',
                             'amenities' => '',
                             'image_url' => '',
@@ -336,7 +314,6 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
 </head>
 
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner" aria-label="Site header">
@@ -480,24 +457,6 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
                                                 <label for="suitable_for_sports">Sports</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="checkbox-group">
-                                                <input type="checkbox" id="suitable_for_birthday" name="suitable_for_birthday" <?php echo $venue['suitable_for_birthday'] ? 'checked' : ''; ?>>
-                                                <label for="suitable_for_birthday">Birthday Parties</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="checkbox-group">
-                                                <input type="checkbox" id="suitable_for_networking" name="suitable_for_networking" <?php echo $venue['suitable_for_networking'] ? 'checked' : ''; ?>>
-                                                <label for="suitable_for_networking">Networking Events</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="checkbox-group">
-                                                <input type="checkbox" id="suitable_for_seminar" name="suitable_for_seminar" <?php echo $venue['suitable_for_seminar'] ? 'checked' : ''; ?>>
-                                                <label for="suitable_for_seminar">Seminars</label>
-                                            </div>
-                                        </div>
                                     </div>
                                 </fieldset>
                                 
@@ -547,7 +506,7 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="admin_venues.php?action=edit&id=<?php echo $v['id']; ?>" class="btn btn-edit">Edit</a>
+                                                        <a href="edit_venues.php?id=<?php echo $v['id']; ?>" class="btn btn-edit">Edit</a>
                                                         <form method="post" action="admin_venues.php" class="delete-form">
                                                             <input type="hidden" name="venue_id" value="<?php echo $v['id']; ?>">
                                                             <button type="submit" name="delete_venue" class="btn btn-delete" 
@@ -572,7 +531,7 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
-        // Improve the delete confirmation
+        // Delete confirmation
         document.addEventListener('DOMContentLoaded', function() {
             const deleteForms = document.querySelectorAll('.delete-form');
             
@@ -588,5 +547,6 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
             });
         });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>

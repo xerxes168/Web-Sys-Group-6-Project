@@ -1,9 +1,7 @@
 /* 
- * HoopSpaces Admin Panel Stylesheet
- * Standardized CSS for all admin pages
+ CSS for all admin pages
  */
 
-/* Base styles */
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f5f7fa;
@@ -16,7 +14,7 @@ body {
     margin: 0 auto;
 }
 
-/* Welcome banner - Improved contrast */
+/* Welcome banner */
 .admin-welcome {
     background: linear-gradient(to right, #3a3078, #b71c1c); /* Darker colors for better contrast */
     color: white;
@@ -32,7 +30,6 @@ body {
     font-weight: 600;
 }
 
-/* Fix navbar overlapping content */
 .navbar {
     margin-bottom: 30px;
 }
@@ -75,7 +72,7 @@ body {
     margin-top: 20px;
 }
 
-/* Sidebar navigation - Improved contrast */
+/* Sidebar navigation */
 .admin-sidebar {
     width: 220px;
     background-color: white;
@@ -98,7 +95,7 @@ body {
 .admin-sidebar a {
     display: block;
     padding: 15px 20px;
-    color: #0042a9; /* Darker blue for better contrast */
+    color: #0042a9;
     text-decoration: none;
     transition: all 0.3s;
     border-left: 4px solid transparent;
@@ -107,7 +104,7 @@ body {
 .admin-sidebar a:hover, .admin-sidebar a.active {
     background-color: #f0f2f5;
     border-left-color: #3a3078;
-    color: #3a3078; /* Darker purple for better contrast */
+    color: #3a3078;
 }
 
 .admin-sidebar a.active {
@@ -150,7 +147,7 @@ body {
     border-radius: 4px;
     text-decoration: none;
     color: white;
-    background-color: #3a3078; /* Darker purple for better contrast */
+    background-color: #3a3078; 
     transition: background-color 0.3s;
 }
 
@@ -159,7 +156,6 @@ body {
     color: white;
 }
 
-/* Container adjustments for fixed navbar */
 .container {
     padding-top: 70px;
 }
@@ -200,23 +196,23 @@ table tr:hover,
     overflow-x: auto;
 }
 
-/* Status indicators - Improved contrast */
+/* Status indicators */
 .status-confirmed {
-    color: #166629; /* Darker green for better contrast */
+    color: #166629; 
     font-weight: 600;
 }
 
 .status-cancelled {
-    color: #b71c1c; /* Darker red for better contrast */
+    color: #b71c1c; 
     font-weight: 600;
 }
 
 .status-pending {
-    color: #996000; /* Darker orange/yellow for better contrast */
+    color: #996000; 
     font-weight: 600;
 }
 
-/* Badges - Improved contrast */
+/* Badges */
 .badge, .role-admin, .role-member {
     display: inline-block;
     padding: 4px 8px;
@@ -227,18 +223,18 @@ table tr:hover,
 }
 
 .bg-success, .role-admin {
-    background-color: #1a7433; /* Darker green for better contrast */
+    background-color: #1a7433; 
     color: white;
     padding: 4px 8px;
 }
 
 .bg-danger {
-    background-color: #b71c1c; /* Darker red for better contrast */
+    background-color: #b71c1c; 
     color: white;
 }
 
 .role-member {
-    background-color: #0d5c6b; /* Darker teal for better contrast */
+    background-color: #0d5c6b; 
     color: white;
     padding: 4px 8px;
 }
@@ -246,7 +242,7 @@ table tr:hover,
 /* Credit display */
 .credit-amount {
     font-weight: bold;
-    color: #1a7433; /* Darker green for better contrast */
+    color: #1a7433; 
 }
 
 /* Form elements */
@@ -284,7 +280,7 @@ table tr:hover,
     margin-bottom: 5px;
 }
 
-/* Buttons - Improved contrast */
+/* Buttons */
 .btn, button[type="submit"] {
     display: inline-block;
     padding: 6px 12px;
@@ -302,7 +298,7 @@ table tr:hover,
 
 .btn-primary, .btn-add, .btn-manage, .btn-add-credits, .btn-manage-credits {
     color: white !important;
-    background-color: #3a3078 !important; /* Darker purple for better contrast */
+    background-color: #3a3078 !important; 
     border: none;
     padding: 8px 16px;
 }
@@ -315,7 +311,7 @@ table tr:hover,
 
 .btn-edit, .btn-view {
     color: white !important;
-    background-color: #0d5c6b !important; /* Darker teal for better contrast */
+    background-color: #0d5c6b !important; 
     border: none;
 }
 
@@ -326,7 +322,7 @@ table tr:hover,
 
 .btn-danger, .btn-delete {
     color: white !important;
-    background-color: #b71c1c !important; /* Darker red for better contrast */
+    background-color: #b71c1c !important;
     border: none;
 }
 
@@ -337,7 +333,7 @@ table tr:hover,
 
 .btn-save {
     color: white !important;
-    background-color: #1a7433 !important; /* Darker green for better contrast */
+    background-color: #1a7433 !important; 
     border: none;
     padding: 8px 16px;
 }
@@ -349,7 +345,7 @@ table tr:hover,
 
 .btn-cancel {
     color: white !important;
-    background-color: #4a4a4a !important; /* Darker gray for better contrast */
+    background-color: #4a4a4a !important; 
     border: none;
     padding: 8px 16px;
     text-decoration: none;
@@ -363,7 +359,7 @@ table tr:hover,
 /* Apply Filters button in booking page */
 #apply-filters, button#apply-filters {
     padding: 8px 16px;
-    background-color: #3a3078; /* Darker purple for better contrast */
+    background-color: #3a3078;
     color: white;
     border: none;
     border-radius: 4px;
@@ -375,7 +371,7 @@ table tr:hover,
     background-color: #312766;
 }
 
-/* Alerts - No contrast issues here */
+/* Alerts */
 .alert {
     padding: 15px;
     margin-bottom: 20px;
@@ -394,7 +390,6 @@ table tr:hover,
     border: 1px solid #c3e6cb;
 }
 
-/* Pagination */
 .pagination {
     margin-top: 20px;
     display: flex;
@@ -402,7 +397,7 @@ table tr:hover,
 }
 
 .pagination a {
-    color: #3a3078; /* Darker purple for better contrast */
+    color: #3a3078; 
     padding: 8px 16px;
     text-decoration: none;
     border: 1px solid #ddd;
@@ -410,7 +405,7 @@ table tr:hover,
 }
 
 .pagination a.active {
-    background-color: #3a3078; /* Darker purple for better contrast */
+    background-color: #3a3078; 
     color: white;
     border: 1px solid #3a3078;
 }
@@ -434,7 +429,7 @@ table tr:hover,
 }
 
 .search-form button {
-    background-color: #3a3078; /* Darker purple for better contrast */
+    background-color: #3a3078; 
     color: white;
     border: none;
     padding: 8px 16px;
@@ -467,7 +462,7 @@ table tr:hover,
 
 .booking-filters button {
     padding: 8px 16px;
-    background-color: #3a3078; /* Darker purple for better contrast */
+    background-color: #3a3078;
     color: white;
     border: none;
     border-radius: 4px;
@@ -504,7 +499,7 @@ table tr:hover,
 }
 
 .member-email {
-    color: #4d4d4d; /* Darker gray for better contrast */
+    color: #4d4d4d;
     margin-bottom: 15px;
     font-size: 0.9rem;
 }
@@ -519,13 +514,13 @@ table tr:hover,
 
 .member-credits .label {
     font-size: 0.8rem;
-    color: #4d4d4d; /* Darker gray for better contrast */
+    color: #4d4d4d; 
 }
 
 .member-credits .value {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #3a3078; /* Darker purple for better contrast */
+    color: #3a3078;
 }
 
 /* Credit management form */
@@ -536,13 +531,13 @@ table tr:hover,
     margin-bottom: 30px;
 }
 
-/* Button groups (for edit/delete buttons) */
+/* Edit/delete buttons */
 .btn-group {
     display: flex;
     gap: 5px;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .admin-panel {
         flex-direction: column;
@@ -572,7 +567,7 @@ table tr:hover,
     }
 }
 
-/* Action buttons in tables - Improved contrast */
+/* Action buttons in tables */
 .action-buttons a, 
 .action-buttons button,
 a.btn-edit, 
@@ -592,11 +587,11 @@ button.btn-delete {
 }
 
 a.btn-edit, button.btn-edit {
-    background-color: #0d5c6b; /* Darker teal for better contrast */
+    background-color: #0d5c6b; 
 }
 
 a.btn-delete, button.btn-delete {
-    background-color: #b71c1c; /* Darker red for better contrast */
+    background-color: #b71c1c; 
 }
 
 a.btn-edit:hover, button.btn-edit:hover {
@@ -607,12 +602,12 @@ a.btn-delete:hover, button.btn-delete:hover {
     background-color: #a00f0f;
 }
 
-/* Availability badge - Improved contrast */
+/* Availability badge */
 .badge.bg-success, 
 span.badge.bg-success,
 .bg-success,
 a.bg-success {
-    background-color: #1a7433; /* Darker green for better contrast */
+    background-color: #1a7433; 
     color: white;
     padding: 4px 8px;
     border-radius: 4px;
@@ -625,7 +620,7 @@ a.bg-success {
 span.badge.bg-danger,
 .bg-danger,
 a.bg-danger {
-    background-color: #b71c1c; /* Darker red for better contrast */
+    background-color: #b71c1c; 
     color: white;
     padding: 4px 8px;
     border-radius: 4px;
@@ -634,9 +629,8 @@ a.bg-danger {
     display: inline-block;
 }
 
-/* Fix for the dropdown toggle that was previously identified */
 .dropdown-toggle {
-    color: white !important; /* Use white text instead of the reddish color */
+    color: white !important; 
 }
 
 /* Screen reader only class */
@@ -652,9 +646,7 @@ a.bg-danger {
     border-width: 0;
 }
 
-/* === ACCESSIBILITY IMPROVEMENTS === */
 
-/* Improve table caption visibility - previously was sr-only class */
 table caption {
     font-weight: 600;
     color: #333;
@@ -663,7 +655,6 @@ table caption {
     margin-bottom: 10px;
 }
 
-/* Improved role badges with better naming consistency */
 .role-badge {
     display: inline-block;
     padding: 4px 8px;
@@ -673,7 +664,7 @@ table caption {
     text-align: center;
 }
 
-/* Improved focus states for all interactive elements */
+
 a:focus, 
 button:focus, 
 input:focus, 
@@ -683,7 +674,6 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* Error message styling for form validation */
 .error-message {
     color: #721c24;
     background-color: #f8d7da;
@@ -694,7 +684,6 @@ textarea:focus {
     font-size: 0.9rem;
 }
 
-/* Skip to content styling */
 .skip-to-content {
     position: absolute;
     left: -9999px;
@@ -718,7 +707,6 @@ textarea:focus {
     outline: 3px solid #3a3078;
 }
 
-/* Delete form styling */
 .delete-form {
     display: inline;
 }
@@ -731,13 +719,11 @@ textarea:focus {
     font-weight: 600;
 }
 
-/* Better table cell spacing for readability */
 .table-responsive table td,
 .table-responsive table th {
     padding: 12px 15px;
 }
 
-/* Fieldset and legend for form groups */
 fieldset {
     border: none;
     padding: 0;
@@ -752,13 +738,11 @@ legend {
     color: #333;
 }
 
-/* Ensure color contrast for placeholder text */
 ::placeholder {
     color: #666;
     opacity: 1;
 }
 
-/* Improve modal dialog for delete confirmation */
 .modal-dialog {
     background: white;
     border-radius: 8px;

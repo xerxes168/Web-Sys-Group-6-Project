@@ -301,5 +301,6 @@ if (getDbConnection()) {
     </div>
     
     <?php include "inc/footer.inc.php"; ?>
+<script src="js/main.js"></script>
 </body>
 </html>

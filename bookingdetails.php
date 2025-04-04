@@ -18,10 +18,10 @@ $booking = null;
 function getDbConnection() {
     global $errorMsg, $success, $conn;
     
-    // Define the config file path relative to this script
+    // Define the config file path
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg .= "<li>Database configuration file not found.</li>";
         $success = false;
@@ -109,7 +109,6 @@ if (getDbConnection()) {
 </head>
 
 <body>
-    <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <header role="banner" aria-label="Site header">
@@ -359,5 +358,6 @@ if (getDbConnection()) {
             }, 1000);
         });
     </script>
+<script src="js/main.js"></script>
 </body>
 </html>
