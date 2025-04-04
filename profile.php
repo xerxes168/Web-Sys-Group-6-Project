@@ -188,7 +188,7 @@ if ($conn) {
                                                     <i class="fa fa-eye"></i>
                                                 </span>
                                             </div>
-                                            <small class="form-text text-muted">Password must be at least 6 characters long.</small>
+                                            <small class="form-text text-muted" style="color: #333333;">Password must be at least 6 characters long.</small>
                                             <!-- Password Strength Indicator -->
                                             <div id="password_strength" class="password-strength"></div>
                                         </div>
@@ -221,10 +221,10 @@ if ($conn) {
                         <div class="profile-body">
                             <form id="profile_picture_form" method="post" action="upload_profile_pic.php" enctype="multipart/form-data">
                                 <div class="profile-picture-upload">
-                                    <label for="upload_profile_picture">Select an Image</label>
+                                    <label for="profile_picture">Select an Image</label>
                                     <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
                                 </div>
-                                <button type="submit" class="btn-upload" style="margin-top: 15px;">Upload Picture</button>
+                                <button type="submit" class="btn-upload">Upload Picture</button>
                             </form>
                             <!-- Container for upload status message -->
                             <div id="upload_status"></div>
