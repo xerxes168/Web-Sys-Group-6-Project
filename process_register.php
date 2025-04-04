@@ -182,7 +182,7 @@ function sanitize_input($data) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <?php include "inc/head.inc.php"; ?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
