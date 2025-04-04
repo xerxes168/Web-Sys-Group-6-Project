@@ -143,7 +143,7 @@ function getDbConnection() {
 
 <body>
     <!-- Skip to content link for keyboard users -->
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <a style="color: #962231" href="#main-content" class="skip-to-content">Skip to main content</a>
     
     <header role="banner">
         <?php include "inc/nav.inc.php"; ?>
