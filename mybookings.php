@@ -178,7 +178,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
 </head>
 
 <body>
-    <!-- Navigation Bar -->
     <?php include "inc/nav.inc.php"; ?>
 
     <div class="container mt-5">
@@ -363,7 +362,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
         </div>
     </div>
     
-    <!-- Cancellation Modal -->
+    <!-- Cancellation Popup -->
     <div id="modal-backdrop"></div>
     <div id="cancel-modal">
         <h4>Confirm Cancellation</h4>
@@ -392,7 +391,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
-        // Function to show the cancellation modal
+        // Function to show the cancellation popup
         function showCancelModal(bookingId, venueName, eventDate, startTime) {
             document.getElementById('modal-booking-id').value = bookingId;
             document.getElementById('modal-venue').textContent = venueName;
@@ -411,18 +410,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
             hours = hours ? hours : 12; // Hour '0' should be '12'
             document.getElementById('modal-time').textContent = hours + ':' + minutes + ' ' + ampm;
             
-            // Show the modal
+            // Show the popup
             document.getElementById('modal-backdrop').style.display = 'block';
             document.getElementById('cancel-modal').style.display = 'block';
         }
         
-        // Function to hide the modal
+        // Function to hide the popup
         function hideModal() {
             document.getElementById('modal-backdrop').style.display = 'none';
             document.getElementById('cancel-modal').style.display = 'none';
         }
         
-        // Close modal if backdrop is clicked
+        // Close popup if backdrop is clicked
         document.getElementById('modal-backdrop').addEventListener('click', hideModal);
         
         // Filter functionality
@@ -446,9 +445,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancel_booking'])) {
                 if (sportFilter !== 'all' && card.dataset.sport !== sportFilter) {
                     show = false;
                 }
-                
-                // TODO: Implement date range filtering
-                // This would need additional attributes on the card or a more complex method
                 
                 // Show or hide the card
                 card.style.display = show ? 'block' : 'none';

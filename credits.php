@@ -14,8 +14,7 @@ $conn = null;
 // Function to establish database connection
 function getDbConnection() {
     global $errorMsg, $success, $conn;
-    
-    // Define the config file path relative to this script
+
     $configFile = '/var/www/private/db-config.ini';
 
     // Check if the file exists before parsing

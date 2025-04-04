@@ -24,7 +24,7 @@ $conn = null;
 
 // Process payment form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['process_payment'])) {
-    // Validate card details (simple validation for demo)
+    // Validate card details
     $cardNumber = $_POST['card_number'] ?? '';
     $cardName = $_POST['card_name'] ?? '';
     $expiryDate = $_POST['expiry_date'] ?? '';
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['process_payment'])) {
         $success = false;
     }
     
-    // If validation passes, process the payment
+    // If validation passes, process payment
     if ($success) {
         // Connect to database and update user credits
         if (getDbConnection()) {
@@ -94,11 +94,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['process_payment'])) {
 // Function to establish database connection
 function getDbConnection() {
     global $errorMsg, $success, $conn;
-    
-    // Define the config file path relative to this script
+
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg .= "Database configuration file not found.<br>";
         $success = false;
@@ -143,7 +142,6 @@ function getDbConnection() {
 </head>
 
 <body>
-    <!-- Navigation Bar -->
     <?php include "inc/nav.inc.php"; ?>
 
     <div class="payment-container">

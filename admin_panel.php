@@ -17,10 +17,9 @@ $conn = null;
 function getDbConnection() {
     global $errorMsg, $conn;
     
-    // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg = "Database configuration file not found.";
         return false;
@@ -128,7 +127,6 @@ if (getDbConnection()) {
             </div>
         <?php endif; ?>
         
-        <!-- Stats Overview -->
         <div class="stats-container">
             <div class="stat-card">
                 <h3>Total Venues</h3>
@@ -164,7 +162,6 @@ if (getDbConnection()) {
                     </div>
                 </div>
                 
-                <!-- Recent Bookings -->
                 <div class="recent-bookings">
                     <h2>Recent Bookings</h2>
                     <?php if (empty($stats['recent_bookings'])): ?>

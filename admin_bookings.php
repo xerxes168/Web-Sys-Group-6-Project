@@ -1,9 +1,6 @@
 <?php
 // Start the session
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 // Include authentication functions
 require_once 'admin_auth.php';
@@ -21,10 +18,9 @@ $conn = null;
 function getDbConnection() {
     global $errorMsg, $conn;
     
-    // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg = "Database configuration file not found.";
         return false;
@@ -258,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include "inc/footer.inc.php"; ?>
     
     <script>
-        // Simple client-side filtering
+        // Client-side filtering
         document.addEventListener('DOMContentLoaded', function() {
             const statusFilter = document.getElementById('status-filter');
             const dateFilter = document.getElementById('date-filter');
@@ -280,10 +276,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             showRow = false;
                         }
                     }
-                    
-                    // We would need additional attributes for date filtering
-                    // This is simplified for now
-                    
                     row.style.display = showRow ? '' : 'none';
                 });
             });

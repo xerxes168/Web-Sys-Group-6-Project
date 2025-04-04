@@ -36,10 +36,9 @@ $venue = [
 function getDbConnection() {
     global $errorMsg, $conn;
     
-    // Define the config file path relative to this script
     $configFile = '/var/www/private/db-config.ini';
 
-    // Check if the file exists before parsing
+    // Check if the file exists
     if (!file_exists($configFile)) {
         $errorMsg = "Database configuration file not found.";
         return false;
@@ -305,7 +304,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
     }
 } else {
-    // Initial page load - load all venues
+    // Load all venues on admin venues page
     if (getDbConnection()) {
         $result = $conn->query("SELECT * FROM venues ORDER BY name");
         if ($result) {
@@ -317,7 +316,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Determine if we're in add/edit mode
+// Check if in add/edit mode
 $addMode = isset($_GET['action']) && $_GET['action'] == 'add';
 $editMode = isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id']);
 $showForm = $addMode || $editMode;
@@ -369,7 +368,7 @@ $sportTypes = ['Basketball', 'Volleyball', 'Badminton', 'Soccer', 'Tennis', 'Tab
                     </div>
                 <?php endif; ?>
                 
-                <!-- Venue Form (for Add/Edit) -->
+                <!-- Venue form for add/edit -->
                 <?php if ($showForm): ?>
                     <div class="form-section">
                         <h2><?php echo $editMode ? 'Edit Venue' : 'Add New Venue'; ?></h2>

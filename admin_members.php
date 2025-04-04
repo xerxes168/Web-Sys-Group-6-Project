@@ -1,9 +1,6 @@
 <?php
 // Start the session
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 // Include authentication functions
 require_once 'admin_auth.php';
@@ -414,7 +411,6 @@ $showForm = $addMode || $editMode;
                         </form>
                     </div>
                 <?php else: ?>
-                    <!-- Members List -->
                     <div class="admin-header">
                         <h1>Manage Members</h1>
                         <a href="admin_members.php?action=add" class="btn btn-add">Add New Member</a>
@@ -453,7 +449,7 @@ $showForm = $addMode || $editMode;
                                             <div class="btn-group">
                                                 <a href="edit_members.php?id=<?php echo $m['member_id']; ?>" class="btn btn-edit">Edit</a>
                                                 
-                                                <?php if ($_SESSION['member_id'] != $m['member_id']): // Prevent self-deletion ?>
+                                                <?php if ($_SESSION['member_id'] != $m['member_id']): ?>
                                                 <form method="post" action="admin_members.php" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this member?');">
                                                     <input type="hidden" name="member_id" value="<?php echo $m['member_id']; ?>">
                                                     <button type="submit" name="delete_member" class="btn btn-delete">Delete</button>

@@ -20,8 +20,7 @@ $member = null;
 // Function to establish database connection
 function getDbConnection() {
     global $errorMsg, $conn;
-    
-    // Define the config file path relative to this script
+
     $configFile = '/var/www/private/db-config.ini';
 
     if (!file_exists($configFile)) {
