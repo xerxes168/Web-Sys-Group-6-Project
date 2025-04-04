@@ -89,6 +89,7 @@ if (empty($sportTypes)) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>HoopSpaces - Browse Sports</title>
     <?php include "inc/head.inc.php"; ?>
@@ -96,6 +97,7 @@ if (empty($sportTypes)) {
     <style>
         .sports-container {
             padding: 60px 0;
+            min-height: calc(100vh - 90px);
         }
 
         .sport-card {
@@ -177,7 +179,7 @@ if (empty($sportTypes)) {
                 <div class="line-dec"></div>
                 <p>Select a sport to view available venues and make your booking</p>
             </div>
-        
+
 
             <div class="row">
                 <?php foreach ($sportTypes as $sport): ?>
@@ -196,7 +198,7 @@ if (empty($sportTypes)) {
                     </div>
                 <?php endforeach; ?>
             </div>
-            </section>
+        </section>
     </main>
     <?php include "inc/footer.inc.php"; ?>
 
