@@ -27,7 +27,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['member_id'])) {
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HoopSpaces</title>
 <!-- 
@@ -198,7 +198,7 @@ http://www.templatemo.com/tm-513-avalon
                 </div>
     </section>
 
-    <section class="contact-details" id="contact-details-section">
+<section class="contact-details" id="contact-details-section">
   <div class="container-fluid">
     <div class="contact-details-container">
       <!-- Main title spanning full width -->
